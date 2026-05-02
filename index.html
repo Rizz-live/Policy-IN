@@ -516,23 +516,23 @@ body {
 .agency-sub-txt { color: rgba(16,185,129,0.55); }
 
 /* ── TABLE FIXES for mobile ── */
-.pol-table { width: 100%; border-collapse: collapse; margin: 10px 0; table-layout: fixed; }
+.pol-table { width: 100%; border-collapse: collapse; margin: 10px 0; table-layout: auto; }
 .h-th {
-  font-size: 8px; letter-spacing: 1.5px; text-transform: uppercase;
-  padding: 8px 6px; text-align: left; color: rgba(212,175,55,0.55);
+  font-size: 7.5px; letter-spacing: 0; text-transform: uppercase;
+  padding: 8px 4px; text-align: left; color: rgba(212,175,55,0.55);
   border-bottom: 1px solid rgba(212,175,55,0.12);
-  word-break: break-word;
+  white-space: nowrap;
 }
 .a-th {
-  font-size: 8px; letter-spacing: 1.5px; text-transform: uppercase;
-  padding: 8px 6px; text-align: left; color: rgba(16,185,129,0.55);
+  font-size: 7.5px; letter-spacing: 0; text-transform: uppercase;
+  padding: 8px 4px; text-align: left; color: rgba(16,185,129,0.55);
   border-bottom: 1px solid rgba(16,185,129,0.12);
-  word-break: break-word;
+  white-space: nowrap;
 }
 .pol-table td {
-  padding: 9px 6px; font-size: 12px;
+  padding: 9px 4px; font-size: 11.5px;
   color: var(--text-mid); border-bottom: 1px solid rgba(212,175,55,0.05);
-  font-weight: 300; word-break: break-word; vertical-align: middle;
+  font-weight: 300; white-space: nowrap; vertical-align: middle;
 }
 .agency-block .pol-table td { border-bottom-color: rgba(16,185,129,0.05); }
 .pol-table tr:last-child td { border-bottom: none; }
@@ -583,23 +583,22 @@ td.red { color: #FCA5A5; font-weight: 500; }
 /* ── BULLET LIST FIX ── */
 .bul { list-style: none; margin: 8px 0; }
 .bul li {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
+  display: block;
   font-size: 12px;
   color: var(--text-mid);
-  padding: 5px 0;
+  padding: 5px 0 5px 20px;
   line-height: 1.65;
   font-weight: 300;
+  position: relative;
   word-break: normal;
   overflow-wrap: break-word;
 }
 .bul li::before {
   content: '';
+  position: absolute;
+  left: 0; top: 8px;
   width: 7px; height: 7px;
   transform: rotate(45deg);
-  flex-shrink: 0;
-  margin-top: 5px;
 }
 .hb li::before { background: var(--gold); box-shadow: 0 0 5px rgba(212,175,55,0.4); }
 .ab li::before { background: #10B981; box-shadow: 0 0 5px rgba(16,185,129,0.4); }
@@ -915,12 +914,12 @@ td.red { color: #FCA5A5; font-weight: 500; }
 
         <div class="sub-label"><div class="sub-txt host-sub-txt">1.3 Rules</div><div class="sub-line host-sub-line"></div></div>
         <ul class="bul hb">
-          <li><b>Withdrawal Rate: </b> <span class="gold">20,000 Ruby = 1 USD</span></li>
-          <li><b>Day Change:</b>Daily at 10:30 PM</li>
-          <li><b>Weekly Period:</b>Sunday 10:30 PM to Sunday 10:30 PM</li>
-          <li><b>Valid Day:</b>Minimum<b>120 minutes (2 hours)</b>Live</li>
+          <li><b>Withdrawal Rate:</b> <span class="gold">20,000 Ruby = 1 USD</span></li>
+          <li><b>Day Change:</b> Daily at 10:30 PM</li>
+          <li><b>Weekly Period:</b> Sunday 10:30 PM to Sunday 10:30 PM</li>
+          <li><b>Valid Day:</b> Minimum <b>120 minutes (2 hours)</b> Live</li>
           <li><b>Valid Hour:</b> 60+ minutes = <span class="gold">1 valid hour</span></li>
-          <li><b>Minimum Live Time:</b>Sessions below<b>30 minutes</b>are not counted</li>
+          <li><b>Minimum Live Time:</b> Sessions below <b>30 minutes</b> are not counted</li>
           <li><b>Bonus Payment:</b> Every <b>Monday</b> (In Rubies)</li>
           <li><b>Withdrawal:</b> Once per day — Minimum <span class="gold">$10 USD</span></li>
         </ul>
@@ -952,8 +951,8 @@ td.red { color: #FCA5A5; font-weight: 500; }
         </table>
         <ul class="bul hb" style="margin-top:14px">
           <li>Host earns <b>1 Ruby</b> for every <b>1,000 coins</b> used in games</li>
-          <li>This income<span style="white-space:nowrap"><b><span class="red">does NOT count</span></b>toward weekly targets</span></li>
-          <li>Earnings <span style="white-space:nowrap"><b>credited instantly</b>after each stream ends</span></li>
+          <li>This income <b><span class="red">does NOT count</span></b> toward weekly targets</li>
+          <li>Earnings <b>credited instantly</b> after each stream ends</li>
         </ul>
       </div>
     </div>
@@ -974,11 +973,11 @@ td.red { color: #FCA5A5; font-weight: 500; }
           <tr><td style="white-space:nowrap">Week 4</td><td class="gold" style="white-space:nowrap">150,000</td><td>4</td><td>10</td><td class="green">$5</td></tr>
         </table>
         <ul class="bul hb" style="margin-top:14px">
-          <li>New hosts must be <b>approved</b>to get guarantee for first 4 weeks</li>
-          <li><b>Week 1:</b>No target – guarantee given automatically</li>
-          <li>Missing one week's target<span style="white-space:nowrap"><b>does not cancel</b> next week's guarantee</span></li>
-          <li>If Valid Days &amp; Hours not met → <span style="white-space:nowrap"><b>salary under basic policy</b></span></li>
-          <li>From <b>Week 5 onward</b>,only basic policy applies</li>
+          <li>New hosts must be <b>approved</b> to get guarantee for first 4 weeks</li>
+          <li><b>Week 1:</b> No target – guarantee given automatically</li>
+          <li>Missing one week's target <b>does not cancel</b> next week's guarantee</li>
+          <li>If Valid Days &amp; Hours not met → <b>salary under basic policy</b></li>
+          <li>From <b>Week 5 onward</b>, only basic policy applies</li>
         </ul>
       </div>
     </div>
@@ -1000,9 +999,9 @@ td.red { color: #FCA5A5; font-weight: 500; }
           <tr><td style="white-space:nowrap">Week 5+</td><td class="gold" style="white-space:nowrap">300,000</td><td>4</td><td>10</td><td class="green">$15</td></tr>
         </table>
         <ul class="bul hb" style="margin-top:14px">
-          <li>Only<b>approved hosts</b>can join this program</li>
-          <li>Missing one week's target<span style="white-space:nowrap"><b>does not cancel</b>next week's guarantee</span></li>
-          <li>If targets not met → <span style="white-space:nowrap"><b>salary follows basic policy</b></span></li>
+          <li>Only <b>approved hosts</b> can join this program</li>
+          <li>Missing one week's target <b>does not cancel</b> next week's guarantee</li>
+          <li>If targets not met → <b>salary follows basic policy</b></li>
         </ul>
 
         <div class="sub-label"><div class="sub-txt host-sub-txt">4.1 Requirements</div><div class="sub-line host-sub-line"></div></div>
@@ -1108,7 +1107,7 @@ td.red { color: #FCA5A5; font-weight: 500; }
         </div>
         <div class="sub-label"><div class="sub-txt agency-sub-txt">Requirements</div><div class="sub-line agency-sub-line"></div></div>
         <ul class="bul ab">
-          <li>Agency must maintain at least <span style="white-space:nowrap"><b>5 active hosts</b> every week</span></li>
+          <li>Agency must maintain at least <b>5 active hosts</b> every week</li>
           <li>Actively encourage hosts to go live &amp; join platform events</li>
         </ul>
         <div class="ibox ibox-agency" style="margin-top:12px">
