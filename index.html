@@ -7,7 +7,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;600;700;900&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=Noto+Serif+Devanagari:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root {
-  /* Saffron-Gold-Green Indian palette */
   --saffron:    #FF6B1A;
   --saffron-d:  #C8550E;
   --saffron-l:  #FF8C42;
@@ -47,9 +46,6 @@ body {
   min-height: 100vh;
 }
 
-/* ═══════════════════════════════
-   LAYERED BACKGROUND SYSTEM
-═══════════════════════════════ */
 #scene {
   position: fixed; inset: 0; z-index: 0;
   pointer-events: none;
@@ -59,7 +55,6 @@ body {
   width: 100%; height: 100%;
 }
 
-/* Rangoli overlay pattern */
 .rangoli-bg {
   position: fixed; inset: 0; z-index: 1;
   pointer-events: none;
@@ -72,7 +67,6 @@ body {
 }
 @keyframes rangoliSpin { to { background-position: 280px 280px, 0 0; } }
 
-/* Jali grid */
 .jali {
   position: fixed; inset: 0; z-index: 1;
   pointer-events: none;
@@ -81,7 +75,6 @@ body {
     repeating-linear-gradient(90deg, transparent, transparent 59px, rgba(212,175,55,0.028) 59px, rgba(212,175,55,0.028) 60px);
 }
 
-/* Top glow arch */
 .arch-glow {
   position: fixed; top: -10%; left: 50%;
   transform: translateX(-50%);
@@ -98,7 +91,6 @@ body {
   50% { opacity:1; transform:translateX(-50%) scaleX(1.06); }
 }
 
-/* Floating diya particles */
 .particles {
   position: fixed; inset: 0; z-index: 1; pointer-events: none;
 }
@@ -117,9 +109,6 @@ body {
   100% { transform: translateY(-300px) scale(0.3); opacity: 0; }
 }
 
-/* ═══════════════════════════════
-   PAGE SYSTEM
-═══════════════════════════════ */
 .page { display: none; position: relative; z-index: 10; max-width: 540px; margin: 0 auto; padding-bottom: 100px; }
 .page.active { display: block; animation: pageIn 0.45s cubic-bezier(0.16,1,0.3,1) both; }
 @keyframes pageIn {
@@ -127,9 +116,6 @@ body {
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* ═══════════════════════════════
-   TOPBAR — Premium Mughal Frame
-═══════════════════════════════ */
 .topbar {
   position: sticky; top: 0; z-index: 200;
   padding: 0 18px;
@@ -144,7 +130,6 @@ body {
   overflow: hidden;
 }
 
-/* Topbar shimmer border */
 .topbar::after {
   content: '';
   position: absolute; bottom: 0; left: 0; right: 0; height: 1.5px;
@@ -166,7 +151,6 @@ body {
   background: linear-gradient(90deg, transparent, rgba(255,220,100,0.08) 50%, transparent);
 }
 
-/* Indian tricolor accent bar */
 .tri-bar {
   position: absolute; left: 0; top: 0; bottom: 0;
   width: 4px; display: flex; flex-direction: column;
@@ -175,7 +159,6 @@ body {
 .tri-w { flex:1; background: rgba(251,245,229,0.9); }
 .tri-g { flex:1; background: var(--green-i); }
 
-/* Lotus Logo */
 .logo-wrap {
   position: relative; width: 50px; height: 50px;
   flex-shrink: 0; margin-left: 10px;
@@ -230,7 +213,6 @@ body {
 }
 .topbar-right { margin-left: auto; display: flex; align-items: center; gap: 8px; }
 
-/* Live badge */
 .live-badge {
   display: flex; align-items: center; gap: 5px;
   padding: 5px 11px; border-radius: 24px;
@@ -244,7 +226,6 @@ body {
 @keyframes livePulse { 0%,100%{transform:scale(1);opacity:1} 50%{transform:scale(1.4);opacity:0.65} }
 .live-txt { font-size: 8px; letter-spacing: 2.5px; text-transform: uppercase; color: rgba(255,140,66,0.9); font-weight: 600; }
 
-/* India flag badge */
 .india-badge {
   display: flex; align-items: center; gap: 5px;
   padding: 4px 10px 4px 7px; border-radius: 20px;
@@ -253,7 +234,6 @@ body {
 .india-flag { font-size: 15px; line-height: 1; }
 .india-txt { font-size: 7.5px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: rgba(240,208,96,0.45); }
 
-/* Back btn */
 .back-btn {
   display: flex; align-items: center; gap: 6px;
   padding: 6px 13px; border-radius: 22px;
@@ -270,22 +250,17 @@ body {
 .back-btn.gb:hover { background: rgba(4,106,56,0.24); border-color: rgba(34,197,94,0.5); }
 .back-btn svg { width: 12px; height: 12px; fill: currentColor; flex-shrink: 0; }
 
-/* ═══════════════════════════════
-   HOME HERO
-═══════════════════════════════ */
 .hero {
   padding: 48px 24px 40px;
   text-align: center;
   position: relative; overflow: hidden;
 }
 
-/* Mughal arch SVG behind hero */
 .mughal-arch {
   position: absolute; top: 0; left: 50%; transform: translateX(-50%);
   width: 360px; height: 240px; pointer-events: none; opacity: 0.06;
 }
 
-/* Animated Diya */
 .diya-container {
   position: relative; width: 90px; height: 90px; margin: 0 auto 24px;
 }
@@ -296,7 +271,6 @@ body {
 }
 @keyframes auraPulse { 0%,100%{transform:scale(1);opacity:0.7} 50%{transform:scale(1.3);opacity:1} }
 
-/* Brand text */
 .brand-eyebrow {
   font-size: 9px; font-weight: 500; letter-spacing: 6px;
   text-transform: uppercase; color: rgba(200,85,14,0.6);
@@ -314,7 +288,6 @@ body {
   text-transform: uppercase; color: rgba(240,208,96,0.38); margin-top: 10px;
 }
 
-/* Ornament divider */
 .ornament {
   display: flex; align-items: center; justify-content: center;
   gap: 12px; width: 280px; margin: 20px auto;
@@ -329,7 +302,6 @@ body {
   transform: rotate(45deg); box-shadow: 0 0 14px rgba(212,175,55,0.6);
 }
 
-/* Tricolor stripe */
 .tricolor {
   display: flex; height: 3.5px; width: 200px;
   margin: 0 auto 16px; border-radius: 3px; overflow: hidden;
@@ -352,7 +324,6 @@ body {
   animation: livePulse 1.4s ease-in-out infinite;
 }
 
-/* Section labels */
 .sec-label {
   display: flex; align-items: center; gap: 12px;
   padding: 20px 22px 10px;
@@ -366,9 +337,6 @@ body {
 }
 .sl-line { flex:1; height: 1px; background: linear-gradient(90deg, rgba(212,175,55,0.18), transparent); }
 
-/* ═══════════════════════════════
-   HOME CARDS
-═══════════════════════════════ */
 .cards { padding: 0 18px; display: flex; flex-direction: column; gap: 14px; }
 
 .nav-card {
@@ -381,7 +349,6 @@ body {
   backdrop-filter: blur(12px);
 }
 
-/* Left accent bar */
 .nav-card::before {
   content: ''; position: absolute; left: 0; top: 12px; bottom: 12px;
   width: 3px; border-radius: 2px;
@@ -390,7 +357,6 @@ body {
 .nc-agency::before { background: linear-gradient(180deg, var(--green-l), var(--green-i)); box-shadow: 0 0 14px rgba(4,106,56,0.5); }
 .nc-wa::before { background: linear-gradient(180deg, #25D366, #128C7E); }
 
-/* Card shimmer on hover */
 .nav-card::after {
   content: ''; position: absolute; inset: 0;
   background: linear-gradient(135deg, transparent 40%, rgba(212,175,55,0.04) 100%);
@@ -399,7 +365,6 @@ body {
 .nav-card:hover::after { opacity: 1; }
 .nav-card:hover { transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,0.6), var(--shadow-gold); border-color: rgba(212,175,55,0.32); }
 
-/* Card icon box */
 .nc-icon {
   width: 54px; height: 54px; border-radius: 14px;
   display: flex; align-items: center; justify-content: center;
@@ -437,16 +402,10 @@ body {
   color: var(--gold-l); transform: translateX(4px);
 }
 
-/* ═══════════════════════════════
-   ROTATING CHAKRA BOTTOM
-═══════════════════════════════ */
 .chakra-wrap { display: flex; justify-content: center; padding: 36px 0 20px; }
 .chakra-svg { width: 56px; height: 56px; opacity: 0.16; animation: chakraSpin 40s linear infinite; }
 @keyframes chakraSpin { to { transform: rotate(360deg); } }
 
-/* ═══════════════════════════════
-   FOOTER
-═══════════════════════════════ */
 .footer {
   text-align: center; padding: 0 24px 20px;
 }
@@ -460,9 +419,6 @@ body {
 }
 .footer-text b { color: rgba(212,175,55,0.3); font-weight: 700; }
 
-/* ═══════════════════════════════
-   POLICY PAGE HERO
-═══════════════════════════════ */
 .policy-hero { padding: 38px 24px 30px; text-align: center; position: relative; overflow: hidden; }
 
 .ph-eyebrow { font-size: 8.5px; letter-spacing: 5px; text-transform: uppercase; margin-bottom: 12px; }
@@ -497,9 +453,6 @@ body {
 .phg-agency-s { background: var(--green-l); }
 .phg-agency-l { background: #10B981; box-shadow: 0 0 10px rgba(16,185,129,0.5); }
 
-/* ═══════════════════════════════
-   POLICY SECTIONS
-═══════════════════════════════ */
 .sections { padding: 0 16px; }
 
 .sec-block {
@@ -513,7 +466,6 @@ body {
 .host-block { border: 1px solid rgba(212,175,55,0.12); }
 .agency-block { border: 1px solid rgba(16,185,129,0.12); }
 
-/* Left accent gradient per block */
 .sec-block::before {
   content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3.5px;
 }
@@ -554,7 +506,6 @@ body {
 .sec-block.open .sec-body { display: block; animation: fadeSlide 0.35s ease both; }
 @keyframes fadeSlide { from{opacity:0;transform:translateY(-8px)} to{opacity:1;transform:translateY(0)} }
 
-/* Sub labels */
 .sub-label { display: flex; align-items: center; gap: 10px; margin: 18px 0 10px; }
 .sub-label:first-child { margin-top: 4px; }
 .sub-line { flex:1; height: 0.6px; }
@@ -564,22 +515,24 @@ body {
 .host-sub-txt { color: rgba(200,85,14,0.6); }
 .agency-sub-txt { color: rgba(16,185,129,0.55); }
 
-/* Tables */
-.pol-table { width: 100%; border-collapse: collapse; margin: 10px 0; }
+/* ── TABLE FIXES for mobile ── */
+.pol-table { width: 100%; border-collapse: collapse; margin: 10px 0; table-layout: fixed; }
 .h-th {
-  font-size: 8.5px; letter-spacing: 2.5px; text-transform: uppercase;
-  padding: 8px 10px; text-align: left; color: rgba(212,175,55,0.55);
+  font-size: 8px; letter-spacing: 1.5px; text-transform: uppercase;
+  padding: 8px 6px; text-align: left; color: rgba(212,175,55,0.55);
   border-bottom: 1px solid rgba(212,175,55,0.12);
+  word-break: break-word;
 }
 .a-th {
-  font-size: 8.5px; letter-spacing: 2.5px; text-transform: uppercase;
-  padding: 8px 10px; text-align: left; color: rgba(16,185,129,0.55);
+  font-size: 8px; letter-spacing: 1.5px; text-transform: uppercase;
+  padding: 8px 6px; text-align: left; color: rgba(16,185,129,0.55);
   border-bottom: 1px solid rgba(16,185,129,0.12);
+  word-break: break-word;
 }
 .pol-table td {
-  padding: 10px 10px; font-size: 12.5px;
+  padding: 9px 6px; font-size: 12px;
   color: var(--text-mid); border-bottom: 1px solid rgba(212,175,55,0.05);
-  font-weight: 300;
+  font-weight: 300; word-break: break-word; vertical-align: middle;
 }
 .agency-block .pol-table td { border-bottom-color: rgba(16,185,129,0.05); }
 .pol-table tr:last-child td { border-bottom: none; }
@@ -588,7 +541,6 @@ td.gold { color: var(--gold-l); font-weight: 600; }
 td.green { color: #4ADE80; font-weight: 600; }
 td.red { color: #FCA5A5; font-weight: 500; }
 
-/* Info boxes */
 .ibox {
   padding: 13px 15px; border-radius: 12px; margin: 10px 0;
   position: relative; overflow: hidden;
@@ -628,16 +580,27 @@ td.red { color: #FCA5A5; font-weight: 500; }
 .ibox-red .ibox-text b { color: #FCA5A5; }
 .ibox-warn .ibox-text b { color: #FCD34D; }
 
-/* Bullet lists */
+/* ── BULLET LIST FIX ── */
 .bul { list-style: none; margin: 8px 0; }
 .bul li {
-  display: flex; align-items: flex-start; gap: 10px;
-  font-size: 12.5px; color: var(--text-mid);
-  padding: 5px 0; line-height: 1.65; font-weight: 300;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 12px;
+  color: var(--text-mid);
+  padding: 5px 0;
+  line-height: 1.65;
+  font-weight: 300;
+  /* FIX: prevent awkward mid-word/mid-phrase breaks */
+  word-break: normal;
+  overflow-wrap: anywhere;
 }
 .bul li::before {
-  content: ''; width: 7px; height: 7px; transform: rotate(45deg);
-  flex-shrink: 0; margin-top: 5px;
+  content: '';
+  width: 7px; height: 7px;
+  transform: rotate(45deg);
+  flex-shrink: 0;
+  margin-top: 5px;
 }
 .hb li::before { background: var(--gold); box-shadow: 0 0 5px rgba(212,175,55,0.4); }
 .ab li::before { background: #10B981; box-shadow: 0 0 5px rgba(16,185,129,0.4); }
@@ -646,7 +609,7 @@ td.red { color: #FCA5A5; font-weight: 500; }
 .bul li .green { color: #4ADE80; }
 .bul li .gold { color: var(--gold-l); }
 
-/* Stat cells */
+/* ── STAT CELLS ── */
 .stat-row { display: flex; gap: 10px; margin: 12px 0; }
 .stat-cell {
   flex:1; padding: 13px 10px; text-align: center;
@@ -657,11 +620,11 @@ td.red { color: #FCA5A5; font-weight: 500; }
 .stat-val { font-family: 'Cinzel', serif; font-size: 22px; font-weight: 700; color: var(--gold-l); }
 .stat-val.green { color: #4ADE80; }
 
-/* Agency Tier cards */
+/* ── TIER CARDS ── */
 .tier-grid { display: flex; flex-direction: column; gap: 9px; margin: 12px 0; }
 .tier-card {
-  display: flex; align-items: center; gap: 16px;
-  padding: 14px 16px; border-radius: 12px;
+  display: flex; align-items: center; gap: 12px;
+  padding: 14px 14px; border-radius: 12px;
   background: rgba(255,255,255,0.025); position: relative; overflow: hidden;
 }
 .tier-card::before { content: ''; position: absolute; left:0; top:0; bottom:0; width:3px; border-radius: 1px; }
@@ -671,24 +634,21 @@ td.red { color: #FCA5A5; font-weight: 500; }
 .tc2::before { background: linear-gradient(180deg, #34D399, #059669); }
 .tc3 { border: 1px solid rgba(212,175,55,0.15); }
 .tc3::before { background: linear-gradient(180deg, var(--gold-l), var(--gold)); }
-.tier-lvl { font-family: 'Cinzel', serif; font-size: 10px; font-weight: 700; color: rgba(74,222,128,0.75); min-width: 54px; }
+.tier-lvl { font-family: 'Cinzel', serif; font-size: 10px; font-weight: 700; color: rgba(74,222,128,0.75); min-width: 50px; flex-shrink: 0; }
 .tier-range { font-size: 12px; color: rgba(251,245,229,0.6); flex:1; line-height: 1.4; }
-.tier-pct { font-family: 'Cinzel Decorative', serif; font-size: 22px; font-weight: 700; color: #4ADE80; }
+.tier-pct { font-family: 'Cinzel Decorative', serif; font-size: 22px; font-weight: 700; color: #4ADE80; flex-shrink: 0; }
 .tc2 .tier-pct { color: #34D399; }
 .tc3 .tier-pct { color: var(--gold-l); }
 
-/* Fee rows */
+/* ── FEE ROWS ── */
 .fee-row {
   display: flex; align-items: center; gap: 14px;
   padding: 11px 14px; border-radius: 9px; margin: 5px 0;
   background: rgba(255,255,255,0.02); border: 1px solid rgba(16,185,129,0.07);
 }
 .fee-label { font-size: 12px; color: var(--text-mid); flex:1; line-height: 1.45; }
-.fee-val { font-size: 12.5px; font-weight: 600; color: #FCA5A5; white-space: nowrap; }
+.fee-val { font-size: 12.5px; font-weight: 600; color: #FCA5A5; white-space: nowrap; flex-shrink: 0; }
 
-/* ═══════════════════════════════
-   DIVIDER
-═══════════════════════════════ */
 .divider {
   display: flex; align-items: center; padding: 22px 22px 4px;
 }
@@ -699,7 +659,6 @@ td.red { color: #FCA5A5; font-weight: 500; }
 .dc-sm { width: 4px; height: 4px; background: var(--saffron); transform: rotate(45deg); opacity: 0.7; }
 .dc-lg { width: 9px; height: 9px; background: var(--gold); transform: rotate(45deg); box-shadow: 0 0 9px rgba(212,175,55,0.5); }
 
-/* Scrollbar */
 ::-webkit-scrollbar { width: 3px; }
 ::-webkit-scrollbar-track { background: var(--bg1); }
 ::-webkit-scrollbar-thumb { background: rgba(212,175,55,0.25); border-radius: 2px; }
@@ -707,7 +666,6 @@ td.red { color: #FCA5A5; font-weight: 500; }
 </head>
 <body>
 
-<!-- Background layers -->
 <div id="scene">
   <canvas id="bgCanvas"></canvas>
 </div>
@@ -716,9 +674,7 @@ td.red { color: #FCA5A5; font-weight: 500; }
 <div class="arch-glow"></div>
 <div class="particles" id="particles"></div>
 
-<!-- ═══════════════════════════
-     PAGE 1 · HOME
-═══════════════════════════ -->
+<!-- PAGE 1 · HOME -->
 <div class="page active" id="page-home">
 
   <div class="topbar">
@@ -745,7 +701,6 @@ td.red { color: #FCA5A5; font-weight: 500; }
     </div>
   </div>
 
-  <!-- Hero -->
   <div class="hero">
     <svg class="mughal-arch" viewBox="0 0 360 240" fill="none">
       <path d="M55 240 L55 98 Q55 20 180 20 Q305 20 305 98 L305 240" stroke="#D4AF37" stroke-width="2.5" fill="none"/>
@@ -756,45 +711,34 @@ td.red { color: #FCA5A5; font-weight: 500; }
       <rect x="176" y="19" width="8" height="16" rx="2" fill="#D4AF37" opacity=".55"/>
       <circle cx="55" cy="95" r="5" fill="#D4AF37" opacity=".4"/>
       <circle cx="305" cy="95" r="5" fill="#D4AF37" opacity=".4"/>
-      <!-- Decorative lotuses at base -->
       <ellipse cx="110" cy="235" rx="20" ry="6" stroke="#D4AF37" stroke-width=".8" fill="none" opacity=".4"/>
       <ellipse cx="250" cy="235" rx="20" ry="6" stroke="#D4AF37" stroke-width=".8" fill="none" opacity=".4"/>
       <line x1="55" y1="128" x2="305" y2="128" stroke="#D4AF37" stroke-width=".6" opacity=".2" stroke-dasharray="6,8"/>
       <line x1="55" y1="162" x2="305" y2="162" stroke="#D4AF37" stroke-width=".5" opacity=".12" stroke-dasharray="2,12"/>
     </svg>
 
-    <!-- Diya SVG -->
     <div class="diya-container">
       <div class="diya-aura"></div>
       <svg width="90" height="90" viewBox="0 0 90 90" fill="none">
-        <!-- Glow rings -->
         <circle cx="45" cy="29" r="18" fill="rgba(200,85,14,0.14)">
           <animate attributeName="r" values="13;22;12;20;13" dur="2.1s" repeatCount="indefinite"/>
           <animate attributeName="opacity" values=".14;.3;.08;.22;.14" dur="2.1s" repeatCount="indefinite"/>
         </circle>
-        <!-- Flame outer -->
         <path d="M45 11 Q52 19 52 27 Q52 35 45 38 Q38 35 38 27 Q38 19 45 11Z" fill="#C8550E">
           <animate attributeName="d" values="M45 11 Q52 19 52 27 Q52 35 45 38 Q38 35 38 27 Q38 19 45 11Z;M45 6 Q54 17 54 26 Q54 36 45 39 Q36 36 36 26 Q36 17 45 6Z;M45 11 Q52 19 52 27 Q52 35 45 38 Q38 35 38 27 Q38 19 45 11Z" dur="1.4s" repeatCount="indefinite"/>
         </path>
-        <!-- Flame mid -->
         <path d="M45 15 Q50 22 50 27 Q50 33 45 35 Q40 33 40 27 Q40 22 45 15Z" fill="#D4A000"/>
-        <!-- Flame core -->
         <ellipse cx="45" cy="23" rx="3" ry="5.5" fill="#FFFDE8">
           <animate attributeName="ry" values="5.5;8;4;7;5.5" dur="0.9s" repeatCount="indefinite"/>
           <animate attributeName="cy" values="23;18;24;19;23" dur="0.9s" repeatCount="indefinite"/>
         </ellipse>
-        <!-- Wick -->
         <line x1="45" y1="38" x2="45" y2="50" stroke="rgba(212,175,55,0.65)" stroke-width="2" stroke-linecap="round"/>
-        <!-- Diya bowl -->
         <path d="M24 50 Q27 70 45 72 Q63 70 66 50Z" fill="rgba(212,175,55,0.55)" stroke="rgba(240,210,50,0.7)" stroke-width="1"/>
         <path d="M22 50 Q45 44 68 50" stroke="rgba(240,210,50,0.7)" stroke-width="1.8" fill="none"/>
-        <!-- Oil dots -->
         <circle cx="34" cy="59" r="2" fill="rgba(240,210,50,0.45)"/>
         <circle cx="45" cy="63" r="2" fill="rgba(240,210,50,0.45)"/>
         <circle cx="56" cy="59" r="2" fill="rgba(240,210,50,0.45)"/>
-        <!-- Shadow base -->
         <ellipse cx="45" cy="74" rx="26" ry="5" fill="rgba(212,175,55,0.18)" stroke="rgba(212,175,55,0.28)" stroke-width=".8"/>
-        <!-- Decorative dots around -->
         <circle cx="18" cy="50" r="1.5" fill="rgba(212,175,55,0.3)"/>
         <circle cx="72" cy="50" r="1.5" fill="rgba(212,175,55,0.3)"/>
         <circle cx="20" cy="43" r="1" fill="rgba(200,85,14,0.4)"/>
@@ -858,7 +802,6 @@ td.red { color: #FCA5A5; font-weight: 500; }
     </a>
   </div>
 
-  <!-- Chakra -->
   <div class="chakra-wrap">
     <svg class="chakra-svg" viewBox="0 0 100 100" fill="none">
       <circle cx="50" cy="50" r="44" stroke="#1A3596" stroke-width="3.5"/>
@@ -901,9 +844,7 @@ td.red { color: #FCA5A5; font-weight: 500; }
 </div><!-- /page-home -->
 
 
-<!-- ═══════════════════════════
-     PAGE 2 · HOST POLICY
-═══════════════════════════ -->
+<!-- PAGE 2 · HOST POLICY -->
 <div class="page" id="page-host">
 
   <div class="topbar">
@@ -980,7 +921,7 @@ td.red { color: #FCA5A5; font-weight: 500; }
           <li><b>Weekly Period:</b> Sunday 10:30 PM to Sunday 10:30 PM</li>
           <li><b>Valid Day:</b> Minimum <b>120 minutes (2 hours)</b> Live</li>
           <li><b>Valid Hour:</b> 60+ minutes = <span class="gold">1 valid hour</span></li>
-          <li><b>Minimum Live Time:</b> Sessions below <b>30 minutes</b> not counted</li>
+          <li><b>Minimum Live Time:</b> Sessions below <b>30 minutes</b> are not counted</li>
           <li><b>Bonus Payment:</b> Every <b>Monday</b> (In Rubies)</li>
           <li><b>Withdrawal:</b> Once per day — Minimum <span class="gold">$10 USD</span></li>
         </ul>
@@ -1036,8 +977,8 @@ td.red { color: #FCA5A5; font-weight: 500; }
         <ul class="bul hb" style="margin-top:14px">
           <li>New hosts must be <b>approved</b> to get guarantee for first 4 weeks</li>
           <li><b>Week 1:</b> No target – guarantee given automatically</li>
-          <li>Missing one week's target <b><span class="red">does not cancel</span></b> next week's guarantee</li>
-          <li>If Valid Days &amp; Hours not met → <b><span class="red">salary under basic policy</span></b></li>
+          <li>Missing one week's target <b>does not cancel</b> next week's guarantee</li>
+          <li>If Valid Days &amp; Hours not met → <b>salary under basic policy</b></li>
           <li>From <b>Week 5 onward</b>, only basic policy applies</li>
         </ul>
       </div>
@@ -1061,8 +1002,8 @@ td.red { color: #FCA5A5; font-weight: 500; }
         </table>
         <ul class="bul hb" style="margin-top:14px">
           <li>Only <b>approved hosts</b> can join this program</li>
-          <li>Missing one week's target <b><span class="red">does not cancel</span></b> next week's guarantee</li>
-          <li>If targets not met → <b><span class="red">salary follows basic policy</span></b></li>
+          <li>Missing one week's target <b>does not cancel</b> next week's guarantee</li>
+          <li>If targets not met → <b>salary follows basic policy</b></li>
         </ul>
 
         <div class="sub-label"><div class="sub-txt host-sub-txt">4.1 Requirements</div><div class="sub-line host-sub-line"></div></div>
@@ -1104,9 +1045,7 @@ td.red { color: #FCA5A5; font-weight: 500; }
 </div><!-- /page-host -->
 
 
-<!-- ═══════════════════════════
-     PAGE 3 · AGENCY POLICY
-═══════════════════════════ -->
+<!-- PAGE 3 · AGENCY POLICY -->
 <div class="page" id="page-agency">
 
   <div class="topbar">
@@ -1278,7 +1217,6 @@ td.red { color: #FCA5A5; font-weight: 500; }
 </div><!-- /page-agency -->
 
 <script>
-/* ── PAGE NAVIGATION ── */
 function showPage(id) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   const target = document.getElementById(id);
@@ -1286,13 +1224,11 @@ function showPage(id) {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-/* ── SECTION TOGGLE ── */
 function toggleSection(header) {
   const block = header.closest('.sec-block');
   block.classList.toggle('open');
 }
 
-/* ── FLOATING PARTICLES ── */
 (function() {
   const container = document.getElementById('particles');
   const colors = ['rgba(255,180,0,0.8)', 'rgba(255,100,0,0.7)', 'rgba(212,175,55,0.7)', 'rgba(255,220,100,0.5)'];
@@ -1313,12 +1249,10 @@ function toggleSection(header) {
     container.appendChild(p);
     setTimeout(() => p.remove(), (dur + delay) * 1000);
   }
-  // Create initial batch
   for(let i = 0; i < 12; i++) createParticle();
   setInterval(createParticle, 900);
 })();
 
-/* ── BACKGROUND CANVAS ── */
 (function() {
   const c = document.getElementById('bgCanvas');
   const ctx = c.getContext('2d');
@@ -1331,7 +1265,6 @@ function toggleSection(header) {
   resize();
   window.addEventListener('resize', resize);
 
-  /* Rangoli / Mandala drawing */
   function drawMandala(cx, cy, r, rotation, alpha) {
     ctx.save();
     ctx.translate(cx, cy);
@@ -1342,12 +1275,10 @@ function toggleSection(header) {
     for(let i = 0; i < spokes; i++) {
       const a = (i / spokes) * Math.PI * 2;
       ctx.save(); ctx.rotate(a);
-      // Petal
       ctx.beginPath();
       ctx.ellipse(0, -r * 0.52, r * 0.07, r * 0.25, 0, 0, Math.PI * 2);
       ctx.strokeStyle = `rgba(212,175,55,0.4)`;
       ctx.lineWidth = 0.7; ctx.stroke();
-      // Dot at petal tip
       ctx.beginPath();
       ctx.arc(0, -r * 0.78, r * 0.03, 0, Math.PI * 2);
       ctx.fillStyle = `rgba(200,85,14,0.35)`;
@@ -1355,7 +1286,6 @@ function toggleSection(header) {
       ctx.restore();
     }
 
-    // Concentric rings
     const rings = [0.25, 0.5, 0.75, 1.0];
     rings.forEach((f, i) => {
       ctx.beginPath();
@@ -1365,7 +1295,6 @@ function toggleSection(header) {
       ctx.lineWidth = 0.6; ctx.stroke();
     });
 
-    // Inner lotus petals (8)
     for(let i = 0; i < 8; i++) {
       const a = (i / 8) * Math.PI * 2;
       ctx.save(); ctx.rotate(a);
@@ -1379,7 +1308,6 @@ function toggleSection(header) {
     ctx.restore();
   }
 
-  /* Ambient glow spots */
   const spots = Array.from({length: 8}, () => ({
     x: Math.random() * 500,
     y: Math.random() * 900,
@@ -1392,14 +1320,12 @@ function toggleSection(header) {
   function draw() {
     ctx.clearRect(0, 0, W, H);
 
-    // Deep dark base
     const bg = ctx.createRadialGradient(W/2, 0, 0, W/2, H * 0.6, H * 0.9);
     bg.addColorStop(0, 'rgba(30,16,5,0.98)');
     bg.addColorStop(0.4, 'rgba(14,10,4,1)');
     bg.addColorStop(1, 'rgba(8,6,2,1)');
     ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
 
-    // Animated glow spots
     spots.forEach(s => {
       const dy = Math.sin(t * s.speed + s.phase) * 30;
       const dx = Math.cos(t * s.speed * 0.7 + s.phase) * 15;
@@ -1410,11 +1336,8 @@ function toggleSection(header) {
       ctx.beginPath(); ctx.arc(s.x + dx, s.y + dy, s.r, 0, Math.PI * 2); ctx.fill();
     });
 
-    // Primary mandala top center
     drawMandala(W/2, H * 0.12, Math.min(160, W * 0.32), t * 0.006, 0.45);
-    // Secondary mandala bottom
     drawMandala(W/2, H * 0.9, Math.min(110, W * 0.22), -t * 0.005, 0.28);
-    // Side accent
     drawMandala(W * 0.1, H * 0.5, 60, t * 0.008, 0.12);
     drawMandala(W * 0.9, H * 0.5, 60, -t * 0.008, 0.12);
 
