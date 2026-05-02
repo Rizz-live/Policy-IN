@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Rizz Live – India Policies</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Noto+Serif+Devanagari:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --saffron:    #E8670A;
+  --saffron-lt: #FF9030;
+  --gold:       #D4A017;
+  --gold-lt:    #F5C842;
+  --ivory:      #FDF6E3;
+  --ashoka-blu: #183DB5;
+  --green:      #0B6E2B;
+  --ink:        #0A0804;
+  --paper:      #12100C;
+  --paper2:     #1A1610;
+  --paper3:     #221E18;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  min-height:100vh;
+  background: var(--paper);
+  font-family: 'DM Sans', sans-serif;
+  overflow-x: hidden;
+  color: var(--ivory);
+}
+
+/* ══════════════════════════════════
+   MANDALA BACKGROUND
+══════════════════════════════════ */
+.bg-canvas {
+  position: fixed; inset:0; z-index:0; overflow:hidden;
+  background: radial-gradient(ellipse 90% 70% at 50% 0%, #2a1a04 0%, #12100C 55%, #0A0804 100%);
+}
+
+.mandala-wrap {
+  position:absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  width: min(100vw, 100vh);
+  height: min(100vw, 100vh);
+  opacity: 0.07;
+  animation: mandalaRot 80s linear infinite;
+}
+@keyframes mandalaRot { to { transform: translate(-50%,-50%) rotate(360deg); } }
+
+.mandala-wrap2 {
+  position:absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  width: min(80vw, 80vh);
+  height: min(80vw, 80vh);
+  opacity: 0.05;
+  animation: mandalaRot2 55s linear infinite;
+}
+@keyframes mandalaRot2 { to { transform: translate(-50%,-50%) rotate(-360deg); } }
+
+/* Fabric grain overlay */
+.grain {
+  position: absolute; inset:0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.08'/%3E%3C/svg%3E");
+  pointer-events:none; opacity:0.4;
+}
+
+/* Top glow burst */
+.top-burst {
+  position:absolute; top:-20%; left:50%;
+  transform:translateX(-50%);
+  width:700px; height:400px;
+  background: radial-gradient(ellipse, rgba(232,103,10,0.18) 0%, rgba(212,160,23,0.1) 35%, transparent 70%);
+  pointer-events:none;
+}
+
+/* Horizontal lines like woven cloth */
+.weave-lines {
+  position:absolute; inset:0; pointer-events:none;
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 47px,
+    rgba(212,160,23,0.025) 47px,
+    rgba(212,160,23,0.025) 48px
+  );
+}
+
+/* ══════════════════════════════════
+   LAYOUT
+══════════════════════════════════ */
+.wrap {
+  position:relative; z-index:2;
+  max-width:480px; margin:0 auto;
+  padding-bottom:80px;
+}
+
+/* ══════════════════════════════════
+   STICKY HEADER
+══════════════════════════════════ */
+.topbar {
+  position: sticky; top:0; z-index:20;
+  display:flex; align-items:center; gap:12px;
+  padding:13px 18px 13px;
+  background: rgba(10,8,4,0.85);
+  backdrop-filter:blur(28px);
+  border-bottom:1px solid rgba(212,160,23,0.2);
+}
+.topbar::after {
+  content:'';
+  position:absolute; bottom:0; left:0; right:0; height:1px;
+  background: linear-gradient(90deg, transparent 0%, var(--gold) 30%, var(--saffron-lt) 50%, var(--gold) 70%, transparent 100%);
+  opacity:0.5;
+}
+
+.back-btn {
+  width:34px; height:34px; border-radius:8px;
+  background:rgba(212,160,23,0.1); border:1px solid rgba(212,160,23,0.25);
+  display:flex; align-items:center; justify-content:center;
+  cursor:pointer; color:var(--gold-lt); font-size:20px;
+  transition: all .25s;
+}
+.back-btn:hover { background:rgba(212,160,23,0.2); }
+
+.topbar-title {
+  font-family:'Cinzel', serif;
+  font-size:14px; font-weight:600;
+  color:rgba(253,246,227,0.9);
+  letter-spacing:2px; text-transform:uppercase;
+}
+
+.topbar-flag { margin-left:auto; font-size:22px; }
+
+/* ══════════════════════════════════
+   HERO SECTION
+══════════════════════════════════ */
+.hero {
+  position:relative;
+  padding: 42px 22px 36px;
+  text-align:center;
+  overflow:hidden;
+}
+
+/* Decorative arch top */
+.hero-arch {
+  position:absolute; top:0; left:50%;
+  transform:translateX(-50%);
+  width:320px; height:180px;
+  border-radius:0 0 160px 160px;
+  background: radial-gradient(ellipse at 50% 0%, rgba(232,103,10,0.14) 0%, transparent 70%);
+  pointer-events:none;
+}
+
+/* Kalash lamp icon */
+.kalash-icon {
+  width:72px; height:72px;
+  margin:0 auto 18px;
+  position:relative;
+}
+.kalash-icon svg { width:100%; height:100%; }
+
+/* Thin ornamental line with diamond */
+.orn-line {
+  display:flex; align-items:center; justify-content:center;
+  gap:8px; margin:14px auto 16px;
+  width:260px;
+}
+.orn-line .line { flex:1; height:1px; background:linear-gradient(90deg, transparent, rgba(212,160,23,0.5)); }
+.orn-line .line.r { background:linear-gradient(90deg, rgba(212,160,23,0.5), transparent); }
+.orn-line .diamond {
+  width:7px; height:7px;
+  background:var(--gold);
+  transform:rotate(45deg);
+  box-shadow:0 0 8px rgba(212,160,23,0.6);
+}
+
+.hero-brand {
+  font-family:'Cinzel', serif;
+  font-size:36px; font-weight:900;
+  letter-spacing:6px;
+  line-height:1;
+  background: linear-gradient(180deg, #FDF6E3 0%, #F5C842 45%, #D4A017 100%);
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+  filter: drop-shadow(0 2px 20px rgba(212,160,23,0.35));
+}
+
+.hero-sub {
+  font-size:11px; letter-spacing:4px; text-transform:uppercase;
+  color:rgba(245,200,66,0.6); margin-top:6px;
+  font-weight:400;
+}
+
+/* Tricolor bar */
+.tribar {
+  display:flex; height:3px; border-radius:2px;
+  overflow:hidden; width:180px; margin:20px auto 0;
+  box-shadow:0 0 12px rgba(232,103,10,0.3);
+}
+.tb-s { flex:1; background:#E8670A; }
+.tb-w { flex:1; background:rgba(253,246,227,0.9); }
+.tb-g { flex:1; background:#0B6E2B; }
+
+/* India pill badge */
+.india-pill {
+  display:inline-flex; align-items:center; gap:6px;
+  margin-top:14px;
+  padding:6px 16px;
+  border-radius:50px;
+  background:rgba(232,103,10,0.12);
+  border:1px solid rgba(232,103,10,0.3);
+  font-size:11px; font-weight:600; letter-spacing:2px; text-transform:uppercase;
+  color:var(--saffron-lt);
+}
+
+/* ══════════════════════════════════
+   DOCUMENT STRIP (Official badge)
+══════════════════════════════════ */
+.doc-strip {
+  margin:0 22px 32px;
+  padding:14px 18px;
+  background:rgba(212,160,23,0.07);
+  border:1px solid rgba(212,160,23,0.18);
+  border-radius:14px;
+  display:flex; align-items:center; gap:14px;
+  position:relative; overflow:hidden;
+}
+.doc-strip::before {
+  content:''; position:absolute; left:0; top:0; bottom:0; width:3px;
+  background:linear-gradient(180deg, var(--saffron), var(--gold));
+}
+.doc-strip-icon {
+  width:40px; height:40px; border-radius:10px; flex-shrink:0;
+  background:linear-gradient(135deg, var(--saffron) 0%, var(--gold) 100%);
+  display:flex; align-items:center; justify-content:center; font-size:20px;
+}
+.doc-strip-text .t1 {
+  font-family:'Cinzel', serif;
+  font-size:13px; font-weight:600; color:var(--gold-lt);
+  letter-spacing:1px;
+}
+.doc-strip-text .t2 {
+  font-size:11px; color:rgba(253,246,227,0.45); margin-top:2px; font-weight:300;
+}
+.doc-seal {
+  margin-left:auto; flex-shrink:0;
+  width:36px; height:36px; border-radius:50%;
+  border:2px solid rgba(212,160,23,0.35);
+  background:rgba(212,160,23,0.08);
+  display:flex; align-items:center; justify-content:center;
+  font-size:16px;
+}
+
+/* ══════════════════════════════════
+   SECTION LABEL
+══════════════════════════════════ */
+.sec-label {
+  display:flex; align-items:center; gap:10px;
+  padding:0 22px; margin-bottom:14px;
+}
+.sec-label .deco-left {
+  display:flex; align-items:center; gap:6px;
+}
+.sec-label .deco-left span {
+  width:6px; height:6px; background:var(--gold); transform:rotate(45deg);
+  display:block; box-shadow:0 0 6px rgba(212,160,23,0.5);
+}
+.sec-label .deco-left span.sm { width:4px; height:4px; background:var(--saffron); }
+.sec-label .txt {
+  font-family:'Cinzel', serif;
+  font-size:11px; letter-spacing:3px; text-transform:uppercase;
+  color:rgba(245,200,66,0.5); white-space:nowrap;
+}
+.sec-label .line-ext { flex:1; height:1px; background:linear-gradient(90deg, rgba(212,160,23,0.25), transparent); }
+
+/* ══════════════════════════════════
+   POLICY CARDS
+══════════════════════════════════ */
+.card {
+  display:flex; align-items:center; gap:16px;
+  margin:0 22px 14px;
+  padding:18px 18px 18px 20px;
+  background: var(--paper2);
+  border:1px solid rgba(212,160,23,0.12);
+  border-radius:16px;
+  cursor:pointer;
+  text-decoration:none;
+  position:relative; overflow:hidden;
+  transition: all .35s cubic-bezier(.16,1,.3,1);
+}
+
+/* Left accent stripe */
+.card::before {
+  content:''; position:absolute; left:0; top:16px; bottom:16px; width:2px;
+  border-radius:2px;
+  transition: all .3s;
+}
+.card-host::before   { background:var(--saffron); box-shadow:0 0 10px var(--saffron); }
+.card-agency::before { background:var(--green); box-shadow:0 0 10px var(--green); }
+.card-wa::before     { background:#25D366; box-shadow:0 0 10px #25D366; }
+
+/* Subtle pattern inlay */
+.card::after {
+  content:''; position:absolute; right:-20px; top:-20px;
+  width:120px; height:120px;
+  border-radius:50%;
+  opacity:0;
+  transition: opacity .4s;
+}
+.card-host::after   { background:radial-gradient(circle, rgba(232,103,10,0.1) 0%, transparent 70%); }
+.card-agency::after { background:radial-gradient(circle, rgba(11,110,43,0.1) 0%, transparent 70%); }
+.card-wa::after     { background:radial-gradient(circle, rgba(37,211,102,0.1) 0%, transparent 70%); }
+
+.card:hover {
+  transform:translateY(-2px);
+  border-color:rgba(212,160,23,0.28);
+  box-shadow:0 16px 48px rgba(0,0,0,0.5), 0 0 0 1px rgba(212,160,23,0.08);
+}
+.card:hover::after { opacity:1; }
+
+/* Icon box with border-image feel */
+.card-icon {
+  width:50px; height:50px; border-radius:12px;
+  display:flex; align-items:center; justify-content:center;
+  font-size:22px; flex-shrink:0;
+  position:relative;
+}
+.card-icon::before {
+  content:''; position:absolute; inset:0; border-radius:12px;
+  border:1px solid transparent;
+  background-clip:padding-box;
+}
+.icon-host   {
+  background:linear-gradient(135deg, rgba(232,103,10,0.18), rgba(232,103,10,0.06));
+  border:1px solid rgba(232,103,10,0.25);
+}
+.icon-agency {
+  background:linear-gradient(135deg, rgba(11,110,43,0.18), rgba(11,110,43,0.06));
+  border:1px solid rgba(11,110,43,0.28);
+}
+.icon-wa {
+  background:linear-gradient(135deg, rgba(37,211,102,0.18), rgba(37,211,102,0.06));
+  border:1px solid rgba(37,211,102,0.28);
+}
+
+.card-body { flex:1; min-width:0; }
+.card-title {
+  font-family:'Cinzel', serif;
+  font-size:15px; font-weight:700;
+  letter-spacing:1.5px;
+  color:var(--ivory);
+  line-height:1.2;
+}
+.card-desc {
+  font-size:12px; color:rgba(253,246,227,0.38);
+  margin-top:4px; font-weight:300; letter-spacing:.3px;
+}
+
+/* Tag */
+.tag {
+  display:inline-flex; align-items:center;
+  padding:2px 7px; border-radius:5px; margin-left:8px;
+  font-size:9px; font-weight:700; letter-spacing:1px;
+  background:rgba(37,211,102,0.15); color:#25D366;
+  border:1px solid rgba(37,211,102,0.3);
+  vertical-align:middle;
+  text-transform:uppercase;
+}
+
+.card-arrow {
+  width:30px; height:30px; border-radius:8px;
+  background:rgba(212,160,23,0.07); border:1px solid rgba(212,160,23,0.15);
+  display:flex; align-items:center; justify-content:center;
+  color:rgba(212,160,23,0.5); font-size:16px; flex-shrink:0;
+  transition: all .3s;
+}
+.card:hover .card-arrow {
+  background:rgba(212,160,23,0.15);
+  border-color:rgba(212,160,23,0.4);
+  color:var(--gold-lt);
+  transform:translateX(2px);
+}
+
+/* ══════════════════════════════════
+   DIVIDER — MUGHAL MOTIF
+══════════════════════════════════ */
+.mughal-divider {
+  display:flex; align-items:center; justify-content:center;
+  gap:0; padding:28px 22px 10px;
+}
+.mug-line { flex:1; height:1px; background:linear-gradient(90deg, transparent, rgba(212,160,23,0.2)); }
+.mug-line.r { background:linear-gradient(90deg, rgba(212,160,23,0.2), transparent); }
+.mug-center {
+  padding:0 12px;
+  display:flex; align-items:center; gap:5px;
+}
+.mug-d { width:5px; height:5px; background:var(--saffron); transform:rotate(45deg); }
+.mug-d2 { width:8px; height:8px; background:var(--gold); transform:rotate(45deg); border:1px solid rgba(212,160,23,0.4); }
+.mug-d3 { width:5px; height:5px; background:var(--saffron); transform:rotate(45deg); }
+
+/* ══════════════════════════════════
+   ASHOKA CHAKRA WATERMARK
+══════════════════════════════════ */
+.chakra-mark {
+  display:flex; justify-content:center;
+  margin:24px auto 0;
+  opacity:0.2;
+}
+.chakra-mark svg { width:50px; height:50px; animation:chakraSpin 30s linear infinite; }
+@keyframes chakraSpin { to { transform:rotate(360deg); } }
+
+/* ══════════════════════════════════
+   FOOTER
+══════════════════════════════════ */
+.footer {
+  text-align:center; margin-top:28px; padding:0 22px;
+}
+.footer-divider {
+  display:flex; height:1px; margin-bottom:20px;
+}
+.footer-divider div { flex:1; }
+.fd-s { background:linear-gradient(90deg, transparent, var(--saffron) 50%); }
+.fd-w { background:rgba(253,246,227,0.5); }
+.fd-g { background:linear-gradient(90deg, var(--green) 50%, transparent); }
+
+.footer-text {
+  font-family:'Cinzel', serif;
+  font-size:10px; letter-spacing:2.5px; text-transform:uppercase;
+  color:rgba(253,246,227,0.2);
+}
+.footer-text strong {
+  color:rgba(245,200,66,0.45); font-weight:600;
+}
+
+/* ══════════════════════════════════
+   ANIMATIONS
+══════════════════════════════════ */
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(22px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+.hero      { animation:fadeUp .7s .1s both; }
+.doc-strip { animation:fadeUp .6s .25s both; }
+.sec-label { animation:fadeUp .6s .3s both; }
+.card:nth-child(1) { animation:fadeUp .55s .35s both; }
+.card:nth-child(2) { animation:fadeUp .55s .45s both; }
+.card:nth-child(3) { animation:fadeUp .55s .55s both; }
+
+/* Ripple */
+@keyframes rpl { to { transform:scale(80); opacity:0; } }
+
+/* ══════════════════════════════════
+   SCROLLBAR
+══════════════════════════════════ */
+::-webkit-scrollbar { width:4px; }
+::-webkit-scrollbar-track { background:var(--paper); }
+::-webkit-scrollbar-thumb { background:rgba(212,160,23,0.3); border-radius:2px; }
+</style>
+</head>
+<body>
+
+<!-- ═══ BACKGROUND ═══ -->
+<div class="bg-canvas">
+  <div class="grain"></div>
+  <div class="weave-lines"></div>
+  <div class="top-burst"></div>
+
+  <!-- Mandala SVG 1 -->
+  <div class="mandala-wrap">
+    <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" fill="none">
+      <g stroke="#D4A017" stroke-width="0.8">
+        <circle cx="250" cy="250" r="230"/>
+        <circle cx="250" cy="250" r="200"/>
+        <circle cx="250" cy="250" r="170"/>
+        <circle cx="250" cy="250" r="140"/>
+        <circle cx="250" cy="250" r="110"/>
+        <circle cx="250" cy="250" r="80"/>
+        <circle cx="250" cy="250" r="50"/>
+        <!-- 24 radial spokes -->
+        <script type="text/javascript">/* handled below */</script>
+      </g>
+      <!-- petals -->
+      <g fill="rgba(212,160,23,0.3)">
+        <ellipse cx="250" cy="80" rx="12" ry="38"/>
+        <ellipse cx="250" cy="80" rx="12" ry="38" transform="rotate(15 250 250)"/>
+        <ellipse cx="250" cy="80" rx="12" ry="38" transform="rotate(30 250 250)"/>
+        <ellipse cx="250" cy="80" rx="12" ry="38" transform="rotate(45 250 250)"/>
+        <ellipse cx="250" cy="80" rx="12" ry="38" transform="rotate(60 250 250)"/>
+        <ellipse cx="250" cy="80" rx="12" ry="38" transform="rotate(75 250 250)"/>
+        <ellipse cx="250" cy="80" rx="12" ry="38" transform="rotate(90 250 250)"/>
+        <ellipse cx="250" cy="80" rx="12" ry="38" transform="rotate(105 250 250)"/>
+        <ellipse cx="250" cy="80" rx="12" ry="38" transform="rotate(120 250 250)"/>
+        <ellipse cx="250" cy="80" rx="12" ry="38" transform="rotate(135 250 250)"/>
+        <ellipse cx="250" cy="80" rx="12" ry="38" transform="rotate(150 250 250)"/>
+        <ellipse cx="250" cy="80" rx="12" ry="38" transform="rotate(165 250 250)"/>
+        <ellipse cx="250" cy="80" rx="12" ry="38" transform="rotate(180 250 250)"/>
+        <ellipse cx="250" cy="80" rx="12" ry="38" transform="rotate(195 250 250)"/>
+        <ellipse cx="250" cy="80" rx="12" ry="38" transform="rotate(210 250 250)"/>
+        <ellipse cx="250" cy="80" rx="12" ry="38" transform="rotate(225 250 250)"/>
+        <ellipse cx="250" cy="80" rx="12" ry="38" transform="rotate(240 250 250)"/>
+        <ellipse cx="250" cy="80" rx="12" ry="38" transform="rotate(255 250 250)"/>
+        <ellipse cx="250" cy="80" rx="12" ry="38" transform="rotate(270 250 250)"/>
+        <ellipse cx="250" cy="80" rx="12" ry="38" transform="rotate(285 250 250)"/>
+        <ellipse cx="250" cy="80" rx="12" ry="38" transform="rotate(300 250 250)"/>
+        <ellipse cx="250" cy="80" rx="12" ry="38" transform="rotate(315 250 250)"/>
+        <ellipse cx="250" cy="80" rx="12" ry="38" transform="rotate(330 250 250)"/>
+        <ellipse cx="250" cy="80" rx="12" ry="38" transform="rotate(345 250 250)"/>
+      </g>
+      <!-- outer diamond ring -->
+      <g fill="rgba(232,103,10,0.25)">
+        <rect x="244" y="14" width="12" height="12" transform="rotate(45 250 20)"/>
+        <rect x="244" y="14" width="12" height="12" transform="rotate(45 250 20) rotate(15 250 250)"/>
+        <rect x="244" y="14" width="12" height="12" transform="rotate(45 250 20) rotate(30 250 250)"/>
+        <rect x="244" y="14" width="12" height="12" transform="rotate(45 250 20) rotate(45 250 250)"/>
+        <rect x="244" y="14" width="12" height="12" transform="rotate(45 250 20) rotate(60 250 250)"/>
+        <rect x="244" y="14" width="12" height="12" transform="rotate(45 250 20) rotate(75 250 250)"/>
+        <rect x="244" y="14" width="12" height="12" transform="rotate(45 250 20) rotate(90 250 250)"/>
+        <rect x="244" y="14" width="12" height="12" transform="rotate(45 250 20) rotate(105 250 250)"/>
+        <rect x="244" y="14" width="12" height="12" transform="rotate(45 250 20) rotate(120 250 250)"/>
+        <rect x="244" y="14" width="12" height="12" transform="rotate(45 250 20) rotate(135 250 250)"/>
+        <rect x="244" y="14" width="12" height="12" transform="rotate(45 250 20) rotate(150 250 250)"/>
+        <rect x="244" y="14" width="12" height="12" transform="rotate(45 250 20) rotate(165 250 250)"/>
+        <rect x="244" y="14" width="12" height="12" transform="rotate(45 250 20) rotate(180 250 250)"/>
+        <rect x="244" y="14" width="12" height="12" transform="rotate(45 250 20) rotate(195 250 250)"/>
+        <rect x="244" y="14" width="12" height="12" transform="rotate(45 250 20) rotate(210 250 250)"/>
+        <rect x="244" y="14" width="12" height="12" transform="rotate(45 250 20) rotate(225 250 250)"/>
+        <rect x="244" y="14" width="12" height="12" transform="rotate(45 250 20) rotate(240 250 250)"/>
+        <rect x="244" y="14" width="12" height="12" transform="rotate(45 250 20) rotate(255 250 250)"/>
+        <rect x="244" y="14" width="12" height="12" transform="rotate(45 250 20) rotate(270 250 250)"/>
+        <rect x="244" y="14" width="12" height="12" transform="rotate(45 250 20) rotate(285 250 250)"/>
+        <rect x="244" y="14" width="12" height="12" transform="rotate(45 250 20) rotate(300 250 250)"/>
+        <rect x="244" y="14" width="12" height="12" transform="rotate(45 250 20) rotate(315 250 250)"/>
+        <rect x="244" y="14" width="12" height="12" transform="rotate(45 250 20) rotate(330 250 250)"/>
+        <rect x="244" y="14" width="12" height="12" transform="rotate(45 250 20) rotate(345 250 250)"/>
+      </g>
+      <circle cx="250" cy="250" r="20" fill="rgba(212,160,23,0.18)" stroke="#D4A017" stroke-width="1"/>
+      <circle cx="250" cy="250" r="10" fill="rgba(232,103,10,0.4)"/>
+    </svg>
+  </div>
+
+  <!-- Mandala 2 (counter-rotate) -->
+  <div class="mandala-wrap2">
+    <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" fill="none">
+      <g stroke="#E8670A" stroke-width="0.5">
+        <circle cx="250" cy="250" r="240"/>
+        <circle cx="250" cy="250" r="210"/>
+        <circle cx="250" cy="250" r="155"/>
+        <circle cx="250" cy="250" r="95"/>
+      </g>
+      <!-- Spokes -->
+      <g stroke="#D4A017" stroke-width="0.7">
+        <line x1="250" y1="10" x2="250" y2="490"/>
+        <line x1="10" y1="250" x2="490" y2="250"/>
+        <line x1="68" y1="68" x2="432" y2="432"/>
+        <line x1="432" y1="68" x2="68" y2="432"/>
+        <line x1="250" y1="10" x2="250" y2="490" transform="rotate(22.5 250 250)"/>
+        <line x1="250" y1="10" x2="250" y2="490" transform="rotate(45 250 250)"/>
+        <line x1="250" y1="10" x2="250" y2="490" transform="rotate(67.5 250 250)"/>
+        <line x1="250" y1="10" x2="250" y2="490" transform="rotate(112.5 250 250)"/>
+        <line x1="250" y1="10" x2="250" y2="490" transform="rotate(135 250 250)"/>
+        <line x1="250" y1="10" x2="250" y2="490" transform="rotate(157.5 250 250)"/>
+      </g>
+    </svg>
+  </div>
+</div>
+
+<!-- ═══ MAIN ═══ -->
+<div class="wrap">
+
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <div class="back-btn">&#8249;</div>
+    <span class="topbar-title">Rizz LIve </span>
+    <div class="topbar-flag">🇮🇳</div>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-arch"></div>
+
+    <!-- Diya / Lamp icon -->
+    <div class="kalash-icon">
+      <svg viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Flame -->
+        <ellipse cx="36" cy="16" rx="5" ry="8" fill="#E8670A" opacity="0.9">
+          <animate attributeName="ry" values="8;11;7;10;8" dur="1.3s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="0.9;1;0.75;1;0.9" dur="1.1s" repeatCount="indefinite"/>
+        </ellipse>
+        <ellipse cx="36" cy="14" rx="3" ry="5" fill="#F5C842">
+          <animate attributeName="ry" values="5;7;4;6;5" dur="1.1s" repeatCount="indefinite"/>
+        </ellipse>
+        <ellipse cx="36" cy="12" rx="1.5" ry="3" fill="#FFFDE0">
+          <animate attributeName="ry" values="3;5;2.5;4;3" dur="0.9s" repeatCount="indefinite"/>
+        </ellipse>
+        <!-- Glow -->
+        <circle cx="36" cy="14" r="12" fill="rgba(232,103,10,0.18)">
+          <animate attributeName="r" values="10;16;9;14;10" dur="1.5s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="0.18;0.3;0.12;0.25;0.18" dur="1.5s" repeatCount="indefinite"/>
+        </circle>
+        <!-- Diya body -->
+        <path d="M20 38 Q22 52 36 54 Q50 52 52 38 Z" fill="rgba(212,160,23,0.6)" stroke="rgba(212,160,23,0.8)" stroke-width="1"/>
+        <path d="M18 38 Q36 34 54 38" stroke="rgba(245,200,66,0.7)" stroke-width="1.5" fill="none"/>
+        <!-- Stem/wick -->
+        <line x1="36" y1="24" x2="36" y2="38" stroke="rgba(212,160,23,0.5)" stroke-width="1.5"/>
+        <!-- Ornament dots on diya -->
+        <circle cx="28" cy="44" r="1.5" fill="rgba(245,200,66,0.5)"/>
+        <circle cx="36" cy="46" r="1.5" fill="rgba(245,200,66,0.5)"/>
+        <circle cx="44" cy="44" r="1.5" fill="rgba(245,200,66,0.5)"/>
+        <!-- Base plate -->
+        <ellipse cx="36" cy="56" rx="20" ry="4" fill="rgba(212,160,23,0.25)" stroke="rgba(212,160,23,0.35)" stroke-width="0.8"/>
+      </svg>
+    </div>
+
+    <div class="hero-brand">RIZZ LIVE</div>
+    <div class="hero-sub">Live Streaming Platform</div>
+
+    <div class="orn-line">
+      <div class="line"></div>
+      <div class="diamond"></div>
+      <div class="line r"></div>
+    </div>
+
+    <div class="tribar"></div>
+
+    <div class="india-pill"> &nbsp; Official Documents </div>
+  </div>
+
+  <!-- SECTION LABEL -->
+  <div class="sec-label">
+    <div class="deco-left">
+      <span class="sm"></span>
+      <span></span>
+    </div>
+    <span class="txt">Policies</span>
+    <div class="line-ext"></div>
+  </div>
+
+  <!-- CARDS -->
+  <a href="#" class="card card-host">
+    <div class="card-icon icon-host">🎙️</div>
+    <div class="card-body">
+      <div class="card-title">HOST POLICY</div>
+      <div class="card-desc">Rules &amp; guidelines for live hosts</div>
+    </div>
+    <div class="card-arrow">›</div>
+  </a>
+
+  <a href="#" class="card card-agency">
+    <div class="card-icon icon-agency">🏛️</div>
+    <div class="card-body">
+      <div class="card-title">AGENCY POLICY</div>
+      <div class="card-desc">Agency terms &amp; conditions</div>
+    </div>
+    <div class="card-arrow">›</div>
+  </a>
+
+  <!-- SECTION LABEL: CONTACT -->
+  <div class="mughal-divider">
+    <div class="mug-line"></div>
+    <div class="mug-center">
+      <div class="mug-d"></div>
+      <div class="mug-d2"></div>
+      <div class="mug-d"></div>
+    </div>
+    <div class="mug-line r"></div>
+  </div>
+
+  <div class="sec-label" style="margin-top:18px;">
+    <div class="deco-left">
+      <span class="sm"></span>
+      <span></span>
+    </div>
+    <span class="txt">Contact</span>
+    <div class="line-ext"></div>
+  </div>
+
+  <a href="https://wa.me/" class="card card-wa">
+    <div class="card-icon icon-wa">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="#25D366">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+      </svg>
+    </div>
+    <div class="card-body">
+      <div class="card-title">OFFICIAL CHANNEL <span class="tag">WA</span></div>
+      <div class="card-desc">Daily updates on WhatsApp</div>
+    </div>
+    <div class="card-arrow">›</div>
+  </a>
+
+  <!-- ASHOKA CHAKRA FOOTER MOTIF -->
+  <div class="chakra-mark">
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" fill="none">
+      <circle cx="50" cy="50" r="44" stroke="#183DB5" stroke-width="3"/>
+      <circle cx="50" cy="50" r="6" fill="#183DB5"/>
+      <!-- 24 spokes -->
+      <g stroke="#183DB5" stroke-width="1.2">
+        <line x1="50" y1="50" x2="50" y2="6"/>
+        <line x1="50" y1="50" x2="50" y2="6" transform="rotate(15 50 50)"/>
+        <line x1="50" y1="50" x2="50" y2="6" transform="rotate(30 50 50)"/>
+        <line x1="50" y1="50" x2="50" y2="6" transform="rotate(45 50 50)"/>
+        <line x1="50" y1="50" x2="50" y2="6" transform="rotate(60 50 50)"/>
+        <line x1="50" y1="50" x2="50" y2="6" transform="rotate(75 50 50)"/>
+        <line x1="50" y1="50" x2="50" y2="6" transform="rotate(90 50 50)"/>
+        <line x1="50" y1="50" x2="50" y2="6" transform="rotate(105 50 50)"/>
+        <line x1="50" y1="50" x2="50" y2="6" transform="rotate(120 50 50)"/>
+        <line x1="50" y1="50" x2="50" y2="6" transform="rotate(135 50 50)"/>
+        <line x1="50" y1="50" x2="50" y2="6" transform="rotate(150 50 50)"/>
+        <line x1="50" y1="50" x2="50" y2="6" transform="rotate(165 50 50)"/>
+        <line x1="50" y1="50" x2="50" y2="6" transform="rotate(180 50 50)"/>
+        <line x1="50" y1="50" x2="50" y2="6" transform="rotate(195 50 50)"/>
+        <line x1="50" y1="50" x2="50" y2="6" transform="rotate(210 50 50)"/>
+        <line x1="50" y1="50" x2="50" y2="6" transform="rotate(225 50 50)"/>
+        <line x1="50" y1="50" x2="50" y2="6" transform="rotate(240 50 50)"/>
+        <line x1="50" y1="50" x2="50" y2="6" transform="rotate(255 50 50)"/>
+        <line x1="50" y1="50" x2="50" y2="6" transform="rotate(270 50 50)"/>
+        <line x1="50" y1="50" x2="50" y2="6" transform="rotate(285 50 50)"/>
+        <line x1="50" y1="50" x2="50" y2="6" transform="rotate(300 50 50)"/>
+        <line x1="50" y1="50" x2="50" y2="6" transform="rotate(315 50 50)"/>
+        <line x1="50" y1="50" x2="50" y2="6" transform="rotate(330 50 50)"/>
+        <line x1="50" y1="50" x2="50" y2="6" transform="rotate(345 50 50)"/>
+      </g>
+    </svg>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-divider">
+      <div class="fd-s"></div>
+      <div class="fd-w"></div>
+      <div class="fd-g"></div>
+    </div>
+    <p class="footer-text">© 2025 All Rights Reserved &middot; <strong>Rizz Live</strong></p>
+  </div>
+
+</div><!-- /wrap -->
+
+<script>
+// Card ripple effect
+document.querySelectorAll('.card').forEach(card => {
+  card.addEventListener('click', function(e) {
+    e.preventDefault();
+    const rp = document.createElement('span');
+    const rect = this.getBoundingClientRect();
+    rp.style.cssText = `
+      position:absolute; border-radius:50%;
+      background:rgba(212,160,23,0.15);
+      width:4px; height:4px;
+      left:${e.clientX - rect.left}px;
+      top:${e.clientY - rect.top}px;
+      transform:scale(0);
+      animation:rpl .65s ease-out forwards;
+      pointer-events:none;
+    `;
+    this.appendChild(rp);
+    setTimeout(() => rp.remove(), 700);
+  });
+});
+</script>
+</body>
+</html>
