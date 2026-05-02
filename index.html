@@ -2,810 +2,1426 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Rizz Live – India Policies</title>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;600;700;900&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=Noto+Serif+Devanagari:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{
-  --s:#C8550E;--sl:#E8701A;--g:#BF9200;--gl:#E0B020;--gp:#F0D060;
-  --iv:#FBF5E5;--ink:#0A0804;--p1:#0F0B06;--p2:#161009;--p3:#1E1712;
-  --cb:#143090;--cg:#0A5525;
+:root {
+  /* Saffron-Gold-Green Indian palette */
+  --saffron:    #FF6B1A;
+  --saffron-d:  #C8550E;
+  --saffron-l:  #FF8C42;
+  --gold:       #D4AF37;
+  --gold-d:     #A88820;
+  --gold-l:     #F0D060;
+  --gold-p:     #FFF3C0;
+  --green-i:    #046A38;
+  --green-l:    #06A045;
+  --green-ll:   #22C55E;
+  --ivory:      #FBF5E5;
+  --ink:        #0A0704;
+  --bg1:        #0D0A05;
+  --bg2:        #120E06;
+  --bg3:        #1A1209;
+  --bg4:        #221808;
+  --card-bg:    rgba(26,18,6,0.85);
+  --border-g:   rgba(212,175,55,0.18);
+  --border-s:   rgba(200,85,14,0.22);
+  --text-dim:   rgba(251,245,229,0.42);
+  --text-mid:   rgba(251,245,229,0.72);
+  --text-full:  #FBF5E5;
+  --blue-royal: #1A3596;
+  --radius-card: 20px;
+  --radius-sm: 10px;
+  --shadow-gold: 0 0 40px rgba(212,175,55,0.12);
 }
-*{margin:0;padding:0;box-sizing:border-box;}
-html,body{height:100%;overflow-x:hidden;}
-body{font-family:'DM Sans',sans-serif;background:var(--p1);color:var(--iv);-webkit-font-smoothing:antialiased;}
 
-#bgCanvas{position:fixed;inset:0;z-index:0;width:100%;height:100%;pointer-events:none;}
-.jali{position:fixed;inset:0;z-index:1;pointer-events:none;background-image:repeating-linear-gradient(0deg,transparent,transparent 49px,rgba(191,146,0,.025) 49px,rgba(191,146,0,.025) 50px),repeating-linear-gradient(90deg,transparent,transparent 49px,rgba(191,146,0,.025) 49px,rgba(191,146,0,.025) 50px);}
-.top-glow{position:fixed;top:-20%;left:50%;transform:translateX(-50%);width:600px;height:360px;z-index:1;pointer-events:none;background:radial-gradient(ellipse,rgba(200,85,14,.16) 0%,rgba(191,146,0,.09) 35%,transparent 70%);animation:topGlowPulse 4s ease-in-out infinite;}
-@keyframes topGlowPulse{0%,100%{opacity:.8}50%{opacity:1;transform:translateX(-50%) scaleX(1.05);}}
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg1);
+  color: var(--text-full);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
 
-/* PAGES */
-.page{display:none;position:relative;z-index:10;max-width:520px;margin:0 auto;padding-bottom:80px;}
-.page.active{display:block;}
+/* ═══════════════════════════════
+   LAYERED BACKGROUND SYSTEM
+═══════════════════════════════ */
+#scene {
+  position: fixed; inset: 0; z-index: 0;
+  pointer-events: none;
+}
+#bgCanvas {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+}
 
-/* TOPBAR */
-.topbar{position:sticky;top:0;z-index:100;padding:0 20px;height:72px;display:flex;align-items:center;background:linear-gradient(135deg,rgba(30,18,6,0.78) 0%,rgba(20,12,4,0.86) 50%,rgba(25,16,5,0.80) 100%);backdrop-filter:blur(36px) saturate(1.4);-webkit-backdrop-filter:blur(36px) saturate(1.4);box-shadow:0 1px 0 rgba(191,146,0,.18),0 4px 32px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,210,80,.06);overflow:hidden;}
-.topbar::before{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent 0%,rgba(200,85,14,.55) 30%,rgba(240,208,96,.85) 50%,rgba(200,85,14,.55) 70%,transparent 100%);animation:shimmerLine 3.5s ease-in-out infinite;}
-.topbar::after{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,220,100,.12) 50%,transparent);}
-@keyframes shimmerLine{0%,100%{opacity:.7;transform:scaleX(.92);}50%{opacity:1;transform:scaleX(1);}}
-.topbar-triaccent{position:absolute;left:0;top:10px;bottom:10px;width:3px;border-radius:0 2px 2px 0;display:flex;flex-direction:column;overflow:hidden;}
-.ta-s{flex:1;background:#D4601A;}.ta-w{flex:1;background:rgba(251,245,229,.85);}.ta-g{flex:1;background:#0A7030;}
+/* Rangoli overlay pattern */
+.rangoli-bg {
+  position: fixed; inset: 0; z-index: 1;
+  pointer-events: none;
+  opacity: 0.032;
+  background-image:
+    repeating-conic-gradient(from 0deg at 50% 50%, transparent 0deg, rgba(212,175,55,1) 1deg, transparent 2deg 9deg, rgba(212,175,55,1) 10deg, transparent 11deg 20deg),
+    radial-gradient(circle at 50% 50%, rgba(200,85,14,0.3) 0%, transparent 60%);
+  background-size: 280px 280px, 100% 100%;
+  animation: rangoliSpin 120s linear infinite;
+}
+@keyframes rangoliSpin { to { background-position: 280px 280px, 0 0; } }
 
-.logo-frame{position:relative;width:46px;height:46px;flex-shrink:0;margin-left:8px;}
-.logo-ring-outer{position:absolute;inset:-5px;border-radius:16px;background:conic-gradient(from 0deg,rgba(191,146,0,0) 0%,rgba(200,85,14,.6) 25%,rgba(240,208,96,.9) 50%,rgba(200,85,14,.6) 75%,rgba(191,146,0,0) 100%);animation:spinRing 4s linear infinite;}
-@keyframes spinRing{to{transform:rotate(360deg);}}
-.logo-ring-outer::after{content:'';position:absolute;inset:2px;background:rgba(18,11,4,.95);border-radius:13px;}
-.logo-box{position:absolute;inset:0;border-radius:12px;overflow:hidden;border:1.5px solid rgba(191,146,0,.38);background:linear-gradient(135deg,rgba(40,24,8,.9),rgba(20,12,4,.95));box-shadow:0 0 18px rgba(191,146,0,.15),inset 0 1px 0 rgba(255,220,100,.1);display:flex;align-items:center;justify-content:center;z-index:1;}
-.logo-img{width:38px;height:38px;object-fit:cover;border-radius:9px;}
-.logo-fallback{font-family:'Cinzel',serif;font-size:16px;font-weight:700;background:linear-gradient(180deg,#F5E070,#BF9200);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-.logo-gem{position:absolute;width:5px;height:5px;background:var(--g);transform:rotate(45deg);box-shadow:0 0 6px rgba(191,146,0,.6);z-index:2;}
-.lg-tl{top:-3px;left:-3px;}.lg-tr{top:-3px;right:-3px;}.lg-bl{bottom:-3px;left:-3px;}.lg-br{bottom:-3px;right:-3px;}
+/* Jali grid */
+.jali {
+  position: fixed; inset: 0; z-index: 1;
+  pointer-events: none;
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 59px, rgba(212,175,55,0.028) 59px, rgba(212,175,55,0.028) 60px),
+    repeating-linear-gradient(90deg, transparent, transparent 59px, rgba(212,175,55,0.028) 59px, rgba(212,175,55,0.028) 60px);
+}
 
-.topbar-text{margin-left:14px;display:flex;flex-direction:column;gap:2px;}
-.topbar-name{font-family:'Cinzel',serif;font-size:15px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;background:linear-gradient(180deg,#F0D878 0%,#C89500 55%,#8A6400 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;filter:drop-shadow(0 1px 8px rgba(191,146,0,.25));}
-.topbar-sub{font-size:9px;font-weight:300;letter-spacing:2.5px;text-transform:uppercase;color:rgba(240,208,96,.38);}
-.topbar-right{margin-left:auto;display:flex;align-items:center;gap:10px;}
-.india-badge{display:flex;align-items:center;gap:6px;padding:5px 10px 5px 8px;border-radius:20px;background:rgba(255,255,255,.04);border:1px solid rgba(191,146,0,.2);}
-.india-flag{font-size:16px;line-height:1;}
-.india-txt{font-family:'Cinzel',serif;font-size:8px;letter-spacing:2px;text-transform:uppercase;color:rgba(240,208,96,.5);}
-.live-dot{display:flex;align-items:center;gap:5px;padding:4px 9px;border-radius:20px;background:rgba(200,85,14,.12);border:1px solid rgba(200,85,14,.28);}
-.ld-pulse{width:6px;height:6px;border-radius:50%;background:#E8701A;box-shadow:0 0 6px rgba(200,85,14,.7);animation:livePulse 1.4s ease-in-out infinite;}
-@keyframes livePulse{0%,100%{transform:scale(1);opacity:1;}50%{transform:scale(1.35);opacity:.7;}}
-.ld-txt{font-size:8px;letter-spacing:2px;text-transform:uppercase;color:rgba(232,112,26,.85);font-weight:500;}
-.back-btn{display:flex;align-items:center;gap:6px;padding:6px 12px;border-radius:20px;background:rgba(200,85,14,.1);border:1px solid rgba(200,85,14,.25);color:rgba(232,112,26,.85);font-size:9px;letter-spacing:2px;text-transform:uppercase;text-decoration:none;transition:all .3s;cursor:pointer;}
-.back-btn:hover{background:rgba(200,85,14,.2);border-color:rgba(200,85,14,.5);}
-.back-btn.green{background:rgba(10,85,37,.15);border-color:rgba(10,85,37,.3);color:rgba(74,222,128,.8);}
-.back-btn.green:hover{background:rgba(10,85,37,.28);border-color:rgba(74,222,128,.4);}
-.back-btn svg{width:12px;height:12px;fill:currentColor;}
+/* Top glow arch */
+.arch-glow {
+  position: fixed; top: -10%; left: 50%;
+  transform: translateX(-50%);
+  width: 700px; height: 420px;
+  z-index: 1; pointer-events: none;
+  background: radial-gradient(ellipse 60% 50% at 50% 0%,
+    rgba(200,85,14,0.22) 0%,
+    rgba(212,175,55,0.10) 40%,
+    transparent 75%);
+  animation: archPulse 5s ease-in-out infinite;
+}
+@keyframes archPulse {
+  0%,100% { opacity:0.8; transform:translateX(-50%) scaleX(1); }
+  50% { opacity:1; transform:translateX(-50%) scaleX(1.06); }
+}
 
-/* ════ HOME PAGE HERO ════ */
-.hero{padding:44px 24px 36px;text-align:center;position:relative;overflow:hidden;}
-.temple-arch{position:absolute;top:0;left:50%;transform:translateX(-50%);width:340px;height:220px;opacity:.055;pointer-events:none;}
-.diya-box{position:relative;width:80px;height:80px;margin:0 auto 20px;}
-.diya-halo{position:absolute;inset:-14px;border-radius:50%;background:radial-gradient(circle,rgba(200,85,14,.28),transparent 70%);animation:haloPulse 1.8s ease-in-out infinite;}
-@keyframes haloPulse{0%,100%{transform:scale(1);opacity:.8}50%{transform:scale(1.25);opacity:1;}}
-.brand-pre{font-size:9.5px;font-weight:400;letter-spacing:5px;text-transform:uppercase;color:rgba(200,85,14,.65);margin-bottom:8px;}
-.brand-main{font-family:'Cinzel',serif;font-size:40px;font-weight:900;letter-spacing:7px;line-height:1;background:linear-gradient(180deg,#F5E070 0%,#C89500 45%,#7A5800 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;filter:drop-shadow(0 3px 24px rgba(191,146,0,.3));}
-.brand-sub{font-size:12px;font-weight:300;letter-spacing:3px;text-transform:uppercase;color:rgba(240,208,96,.45);margin-top:8px;}
-.orn{display:flex;align-items:center;justify-content:center;gap:10px;width:260px;margin:18px auto;}
-.orn-line{flex:1;height:.8px;background:linear-gradient(90deg,transparent,rgba(191,146,0,.55));}
-.orn-line.r{background:linear-gradient(90deg,rgba(191,146,0,.55),transparent);}
-.orn-gems{display:flex;align-items:center;gap:5px;}
-.gem-s{width:5px;height:5px;background:var(--s);transform:rotate(45deg);}
-.gem-l{width:10px;height:10px;background:var(--g);transform:rotate(45deg);box-shadow:0 0 10px rgba(191,146,0,.55);}
-.tribar{display:flex;height:3px;width:190px;margin:0 auto;border-radius:2px;overflow:hidden;box-shadow:0 0 18px rgba(200,85,14,.3);}
-.tb-s{flex:1;background:#D4601A;}.tb-w{flex:1;background:rgba(251,245,229,.9);}.tb-g{flex:1;background:#0A5525;}
-.hero-badge{display:inline-flex;align-items:center;gap:7px;margin-top:14px;padding:6px 18px;border-radius:50px;background:rgba(200,85,14,.1);border:1px solid rgba(200,85,14,.28);font-size:10px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;color:rgba(232,112,26,.88);}
-.hero-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--sl);}
-.div-line{display:flex;align-items:center;padding:28px 24px 0;}
-.dl{flex:1;height:.8px;background:linear-gradient(90deg,transparent,rgba(191,146,0,.22));}
-.dl.r{background:linear-gradient(90deg,rgba(191,146,0,.22),transparent);}
-.dm{padding:0 14px;display:flex;align-items:center;gap:5px;}
-.dm-s{width:4px;height:4px;background:var(--s);transform:rotate(45deg);opacity:.7;}
-.dm-l{width:8px;height:8px;background:var(--g);transform:rotate(45deg);box-shadow:0 0 7px rgba(191,146,0,.45);}
-.sec{display:flex;align-items:center;gap:10px;padding:18px 24px 12px;}
-.sec-gems{display:flex;align-items:center;gap:5px;}
-.sg-s{width:4px;height:4px;background:var(--s);transform:rotate(45deg);}
-.sg-l{width:7px;height:7px;background:var(--g);transform:rotate(45deg);}
-.sec-txt{font-family:'Cinzel',serif;font-size:9.5px;letter-spacing:3.5px;text-transform:uppercase;color:rgba(224,176,32,.42);}
-.sec-ext{flex:1;height:.8px;background:linear-gradient(90deg,rgba(191,146,0,.2),transparent);}
+/* Floating diya particles */
+.particles {
+  position: fixed; inset: 0; z-index: 1; pointer-events: none;
+}
+.particle {
+  position: absolute;
+  width: 3px; height: 3px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #FFD060, #FF8C00);
+  box-shadow: 0 0 6px 2px rgba(255,180,0,0.5);
+  animation: floatUp linear infinite;
+}
+@keyframes floatUp {
+  0% { transform: translateY(0) scale(1); opacity: 0; }
+  10% { opacity: 0.8; }
+  90% { opacity: 0.2; }
+  100% { transform: translateY(-300px) scale(0.3); opacity: 0; }
+}
 
-/* CARDS */
-.cards{padding:0 20px;}
-.card{display:flex;align-items:center;gap:16px;margin-bottom:13px;padding:18px 18px 18px 20px;background:var(--p2);border:1px solid rgba(191,146,0,.11);border-radius:16px;cursor:pointer;text-decoration:none;position:relative;overflow:hidden;transition:transform .38s cubic-bezier(.16,1,.3,1),border-color .3s,box-shadow .3s;}
-.card::before{content:'';position:absolute;left:0;top:14px;bottom:14px;width:2.5px;border-radius:2px;}
-.ch::before{background:linear-gradient(180deg,var(--s),var(--g));box-shadow:0 0 12px rgba(200,85,14,.4);}
-.ca::before{background:linear-gradient(180deg,var(--cg),#1A8C3A);box-shadow:0 0 12px rgba(10,85,37,.4);}
-.cw::before{background:linear-gradient(180deg,#25D366,#128C7E);box-shadow:0 0 12px rgba(37,211,102,.4);}
-.card:hover{transform:translateY(-3px);border-color:rgba(191,146,0,.28);box-shadow:0 14px 44px rgba(0,0,0,.55);}
-.card-icon{width:50px;height:50px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;transition:transform .3s ease;}
-.card:hover .card-icon{transform:scale(1.1) rotate(-4deg);}
-.ih{background:linear-gradient(135deg,rgba(200,85,14,.18),rgba(191,146,0,.1));border:1px solid rgba(200,85,14,.28);}
-.ia{background:linear-gradient(135deg,rgba(10,85,37,.18),rgba(26,140,58,.1));border:1px solid rgba(10,85,37,.28);}
-.iw{background:linear-gradient(135deg,rgba(37,211,102,.14),rgba(18,140,126,.1));border:1px solid rgba(37,211,102,.24);}
-.card-body{flex:1;min-width:0;}
-.card-title{font-family:'Cinzel',serif;font-size:14.5px;font-weight:700;letter-spacing:1.5px;color:var(--iv);line-height:1.2;}
-.card-desc{font-size:11.5px;color:rgba(251,245,229,.36);margin-top:4px;font-weight:300;}
-.wa-tag{display:inline-flex;align-items:center;margin-top:6px;padding:2px 8px;border-radius:5px;font-size:9px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;background:rgba(37,211,102,.12);color:#25D366;border:1px solid rgba(37,211,102,.28);}
-.card-arr{width:30px;height:30px;border-radius:8px;background:rgba(191,146,0,.07);border:1px solid rgba(191,146,0,.15);display:flex;align-items:center;justify-content:center;color:rgba(191,146,0,.45);font-size:18px;flex-shrink:0;transition:all .3s;}
-.card:hover .card-arr{background:rgba(191,146,0,.16);border-color:rgba(191,146,0,.4);color:var(--gp);transform:translateX(3px);}
+/* ═══════════════════════════════
+   PAGE SYSTEM
+═══════════════════════════════ */
+.page { display: none; position: relative; z-index: 10; max-width: 540px; margin: 0 auto; padding-bottom: 100px; }
+.page.active { display: block; animation: pageIn 0.45s cubic-bezier(0.16,1,0.3,1) both; }
+@keyframes pageIn {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 
-/* CHAKRA */
-.chakra-section{display:flex;justify-content:center;margin:30px auto 0;}
-.chakra-svg{width:52px;height:52px;opacity:.2;animation:spinChakra 36s linear infinite;}
-@keyframes spinChakra{to{transform:rotate(360deg);}}
+/* ═══════════════════════════════
+   TOPBAR — Premium Mughal Frame
+═══════════════════════════════ */
+.topbar {
+  position: sticky; top: 0; z-index: 200;
+  padding: 0 18px;
+  height: 76px;
+  display: flex; align-items: center;
+  background: linear-gradient(135deg,
+    rgba(20,13,4,0.92) 0%,
+    rgba(13,9,3,0.96) 50%,
+    rgba(17,11,4,0.92) 100%);
+  backdrop-filter: blur(48px) saturate(1.6);
+  -webkit-backdrop-filter: blur(48px) saturate(1.6);
+  overflow: hidden;
+}
 
-/* FOOTER */
-.foot{text-align:center;margin-top:30px;padding:0 22px;}
-.foot-bar{display:flex;height:2px;margin-bottom:16px;overflow:hidden;}
-.fb-s{flex:1;background:linear-gradient(90deg,transparent,var(--s) 60%);}
-.fb-w{flex:1;background:rgba(251,245,229,.5);}
-.fb-g{flex:1;background:linear-gradient(90deg,var(--cg) 40%,transparent);}
-.foot-text{font-family:'Cinzel',serif;font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(251,245,229,.18);}
-.foot-text b{color:rgba(224,176,32,.35);font-weight:600;}
+/* Topbar shimmer border */
+.topbar::after {
+  content: '';
+  position: absolute; bottom: 0; left: 0; right: 0; height: 1.5px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    var(--saffron-d) 20%,
+    var(--gold-l) 50%,
+    var(--saffron-d) 80%,
+    transparent 100%);
+  animation: topShimmer 3s ease-in-out infinite;
+}
+@keyframes topShimmer {
+  0%,100% { opacity:0.6; }
+  50% { opacity:1; }
+}
+.topbar::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,220,100,0.08) 50%, transparent);
+}
 
-/* ════ POLICY PAGES ════ */
-.page-hero{padding:36px 24px 28px;text-align:center;}
-.ph-label{font-size:9px;letter-spacing:5px;text-transform:uppercase;margin-bottom:10px;}
-.ph-label.host{color:rgba(200,85,14,.6);}
-.ph-label.agency{color:rgba(10,85,37,.75);}
-.ph-title{font-family:'Cinzel',serif;font-size:34px;font-weight:900;letter-spacing:5px;}
-.ph-title.host{background:linear-gradient(180deg,#F5E070 0%,#C89500 45%,#7A5800 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;filter:drop-shadow(0 3px 20px rgba(191,146,0,.28));}
-.ph-title.agency{background:linear-gradient(180deg,#6EE7B7 0%,#059669 45%,#064E3B 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;filter:drop-shadow(0 3px 20px rgba(16,185,129,.2));}
-.ph-orn{display:flex;align-items:center;justify-content:center;gap:10px;width:240px;margin:14px auto 0;}
-.ph-line{flex:1;height:.8px;}
-.ph-line.host-line{background:linear-gradient(90deg,transparent,rgba(191,146,0,.5));}
-.ph-line.host-line.r{background:linear-gradient(90deg,rgba(191,146,0,.5),transparent);}
-.ph-line.agency-line{background:linear-gradient(90deg,transparent,rgba(16,185,129,.5));}
-.ph-line.agency-line.r{background:linear-gradient(90deg,rgba(16,185,129,.5),transparent);}
-.ph-gems{display:flex;align-items:center;gap:5px;}
-.pg-s{width:5px;height:5px;transform:rotate(45deg);}
-.pg-l{width:9px;height:9px;transform:rotate(45deg);}
-.pg-s.host,.pg-l.host{background:var(--s);}
-.pg-l.host{background:var(--g);box-shadow:0 0 8px rgba(191,146,0,.5);}
-.pg-s.agency{background:var(--cg);}
-.pg-l.agency{background:#10B981;box-shadow:0 0 8px rgba(16,185,129,.4);}
+/* Indian tricolor accent bar */
+.tri-bar {
+  position: absolute; left: 0; top: 0; bottom: 0;
+  width: 4px; display: flex; flex-direction: column;
+}
+.tri-s { flex:1; background: var(--saffron); }
+.tri-w { flex:1; background: rgba(251,245,229,0.9); }
+.tri-g { flex:1; background: var(--green-i); }
 
-/* SECTIONS */
-.sections{padding:0 16px;}
-.sec-block{background:var(--p2);border-radius:18px;margin-bottom:14px;overflow:hidden;position:relative;}
-.sec-block.host-block{border:1px solid rgba(191,146,0,.1);}
-.sec-block.agency-block{border:1px solid rgba(16,185,129,.1);}
-.sec-block::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;}
-.sb-1.host::before{background:linear-gradient(180deg,var(--s),var(--g));box-shadow:0 0 12px rgba(200,85,14,.35);}
-.sb-2.host::before{background:linear-gradient(180deg,#8B5CF6,#6D28D9);}
-.sb-3.host::before{background:linear-gradient(180deg,#059669,#10B981);}
-.sb-4.host::before{background:linear-gradient(180deg,#2563EB,#7C3AED);}
-.sb-1.agency::before{background:linear-gradient(180deg,#10B981,#059669);box-shadow:0 0 12px rgba(16,185,129,.3);}
-.sb-2.agency::before{background:linear-gradient(180deg,var(--s),var(--g));}
-.sb-3.agency::before{background:linear-gradient(180deg,#3B82F6,#8B5CF6);}
-.sb-4.agency::before{background:linear-gradient(180deg,#F59E0B,#EF4444);}
-.sb-5.agency::before{background:linear-gradient(180deg,#EC4899,#8B5CF6);}
+/* Lotus Logo */
+.logo-wrap {
+  position: relative; width: 50px; height: 50px;
+  flex-shrink: 0; margin-left: 10px;
+}
+.logo-spin-ring {
+  position: absolute; inset: -6px; border-radius: 18px;
+  background: conic-gradient(from 0deg,
+    transparent 0%, var(--saffron-d) 20%, var(--gold-l) 50%,
+    var(--saffron-d) 80%, transparent 100%);
+  animation: spinRing 5s linear infinite;
+  filter: blur(0.5px);
+}
+@keyframes spinRing { to { transform: rotate(360deg); } }
+.logo-spin-ring::after {
+  content: '';
+  position: absolute; inset: 2px;
+  background: var(--bg1); border-radius: 15px;
+}
+.logo-inner {
+  position: absolute; inset: 0; border-radius: 14px;
+  background: linear-gradient(145deg, var(--bg3), var(--bg1));
+  border: 1.5px solid rgba(212,175,55,0.35);
+  box-shadow: 0 0 20px rgba(212,175,55,0.15), inset 0 1px 0 rgba(255,220,100,0.08);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 1;
+}
+.logo-img { width: 40px; height: 40px; object-fit: cover; border-radius: 10px; }
+.logo-fallback {
+  font-family: 'Cinzel', serif; font-size: 14px; font-weight: 700;
+  background: linear-gradient(180deg, #F5E070, #BF9200);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.logo-gem {
+  position: absolute; width: 5px; height: 5px;
+  background: var(--gold); transform: rotate(45deg);
+  box-shadow: 0 0 8px rgba(212,175,55,0.7); z-index: 2;
+}
+.lg-tl{top:-2px;left:-2px} .lg-tr{top:-2px;right:-2px}
+.lg-bl{bottom:-2px;left:-2px} .lg-br{bottom:-2px;right:-2px}
 
-.sec-header{display:flex;align-items:center;gap:12px;padding:16px 18px 16px 22px;cursor:pointer;}
-.host-block .sec-header{border-bottom:1px solid rgba(191,146,0,.08);}
-.agency-block .sec-header{border-bottom:1px solid rgba(16,185,129,.08);}
-.sec-num{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Cinzel',serif;font-size:11px;font-weight:700;flex-shrink:0;}
-.host-num{background:rgba(191,146,0,.1);border:1px solid rgba(191,146,0,.22);color:var(--gl);}
-.agency-num{background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.22);color:#4ADE80;}
-.sec-title{font-family:'Cinzel',serif;font-size:13px;font-weight:700;letter-spacing:1.5px;color:var(--iv);}
-.sec-arrow{margin-left:auto;font-size:18px;transition:transform .3s;}
-.host-arrow{color:rgba(191,146,0,.45);}
-.agency-arrow{color:rgba(16,185,129,.5);}
-.sec-block.open .sec-arrow{transform:rotate(90deg);}
-.sec-body{padding:18px 18px 20px 22px;display:none;}
-.sec-block.open .sec-body{display:block;}
+.topbar-info { margin-left: 14px; display: flex; flex-direction: column; gap: 3px; }
+.topbar-name {
+  font-family: 'Cinzel', serif; font-size: 15px; font-weight: 700;
+  letter-spacing: 3px; text-transform: uppercase;
+  background: linear-gradient(180deg, #FFF0A0 0%, #D4AF37 50%, #8A6A00 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  filter: drop-shadow(0 1px 10px rgba(212,175,55,0.3));
+}
+.topbar-sub {
+  font-size: 8.5px; font-weight: 300; letter-spacing: 3px;
+  text-transform: uppercase; color: rgba(240,208,96,0.35);
+}
+.topbar-right { margin-left: auto; display: flex; align-items: center; gap: 8px; }
 
-/* POLICY sub-labels */
-.sub-label{display:flex;align-items:center;gap:8px;margin:16px 0 10px;}
-.host-sub-line{flex:1;height:.6px;background:rgba(191,146,0,.15);}
-.agency-sub-line{flex:1;height:.6px;background:rgba(16,185,129,.12);}
-.host-sub-txt{font-size:8.5px;letter-spacing:3px;text-transform:uppercase;color:rgba(200,85,14,.55);white-space:nowrap;}
-.agency-sub-txt{font-size:8.5px;letter-spacing:3px;text-transform:uppercase;color:rgba(16,185,129,.5);white-space:nowrap;}
+/* Live badge */
+.live-badge {
+  display: flex; align-items: center; gap: 5px;
+  padding: 5px 11px; border-radius: 24px;
+  background: rgba(200,85,14,0.14); border: 1px solid rgba(200,85,14,0.32);
+}
+.live-dot-pulse {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--saffron); box-shadow: 0 0 8px rgba(255,107,26,0.8);
+  animation: livePulse 1.2s ease-in-out infinite;
+}
+@keyframes livePulse { 0%,100%{transform:scale(1);opacity:1} 50%{transform:scale(1.4);opacity:0.65} }
+.live-txt { font-size: 8px; letter-spacing: 2.5px; text-transform: uppercase; color: rgba(255,140,66,0.9); font-weight: 600; }
 
-/* TABLES */
-.pol-table{width:100%;border-collapse:collapse;margin:10px 0;}
-.host-th{font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(191,146,0,.55);padding:6px 10px;text-align:left;border-bottom:1px solid rgba(191,146,0,.12);}
-.agency-th{font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(16,185,129,.55);padding:6px 10px;text-align:left;border-bottom:1px solid rgba(16,185,129,.12);}
-.pol-table td{padding:9px 10px;font-size:12.5px;color:rgba(251,245,229,.75);border-bottom:1px solid rgba(191,146,0,.06);}
-.agency-block .pol-table td{border-bottom-color:rgba(16,185,129,.06);}
-.pol-table tr:last-child td{border-bottom:none;}
-.pol-table .gold{color:var(--gl);font-weight:500;}
-.pol-table .green{color:#4ADE80;font-weight:500;}
-.pol-table .red{color:#FCA5A5;font-weight:500;}
+/* India flag badge */
+.india-badge {
+  display: flex; align-items: center; gap: 5px;
+  padding: 4px 10px 4px 7px; border-radius: 20px;
+  background: rgba(255,255,255,0.03); border: 1px solid rgba(212,175,55,0.18);
+}
+.india-flag { font-size: 15px; line-height: 1; }
+.india-txt { font-size: 7.5px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: rgba(240,208,96,0.45); }
 
-/* INFO BOX */
-.info-box{padding:12px 14px;border-radius:10px;margin:10px 0;}
-.info-box.def{background:rgba(191,146,0,.06);border:1px solid rgba(191,146,0,.16);border-left:3px solid var(--g);}
-.info-box.green{background:rgba(10,85,37,.1);border:1px solid rgba(26,140,58,.2);border-left:3px solid #10B981;}
-.info-box.orange{background:rgba(200,85,14,.08);border:1px solid rgba(200,85,14,.2);border-left:3px solid var(--s);}
-.info-box.red{background:rgba(180,30,30,.1);border:1px solid rgba(200,50,50,.2);border-left:3px solid #EF4444;}
-.info-box.blue{background:rgba(20,48,144,.1);border:1px solid rgba(37,99,235,.2);border-left:3px solid #3B82F6;}
-.info-box.gold{background:rgba(191,146,0,.06);border:1px solid rgba(191,146,0,.15);border-left:3px solid var(--g);}
-.info-box.warn{background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.2);border-left:3px solid #F59E0B;}
-.info-box.agency-def{background:rgba(16,185,129,.06);border:1px solid rgba(16,185,129,.15);border-left:3px solid #10B981;}
-.ib-label{font-size:8.5px;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:6px;display:flex;align-items:center;gap:6px;}
-.ib-label::before{content:'';width:6px;height:6px;border-radius:50%;display:block;flex-shrink:0;}
-.info-box.def .ib-label,.info-box.gold .ib-label{color:rgba(240,208,96,.55);}
-.info-box.def .ib-label::before,.info-box.gold .ib-label::before{background:var(--gl);}
-.info-box.green .ib-label{color:rgba(74,222,128,.6);}
-.info-box.green .ib-label::before{background:#10B981;}
-.info-box.orange .ib-label{color:rgba(232,112,26,.7);}
-.info-box.orange .ib-label::before{background:var(--sl);}
-.info-box.red .ib-label{color:rgba(252,165,165,.7);}
-.info-box.red .ib-label::before{background:#EF4444;}
-.info-box.warn .ib-label{color:rgba(253,211,77,.7);}
-.info-box.warn .ib-label::before{background:#F59E0B;}
-.info-box.agency-def .ib-label{color:rgba(74,222,128,.6);}
-.info-box.agency-def .ib-label::before{background:#4ADE80;}
-.ib-text{font-size:12px;color:rgba(251,245,229,.72);line-height:1.65;font-weight:300;}
-.ib-text b,.ib-text strong{color:var(--iv);font-weight:500;}
-.info-box.green .ib-text b{color:#4ADE80;}
-.info-box.orange .ib-text b{color:var(--sl);}
-.info-box.red .ib-text b{color:#FCA5A5;}
+/* Back btn */
+.back-btn {
+  display: flex; align-items: center; gap: 6px;
+  padding: 6px 13px; border-radius: 22px;
+  background: rgba(200,85,14,0.1); border: 1px solid rgba(200,85,14,0.28);
+  color: rgba(255,140,66,0.88); font-size: 8.5px; letter-spacing: 2px;
+  text-transform: uppercase; cursor: pointer; text-decoration: none;
+  transition: all 0.3s ease; font-weight: 500;
+}
+.back-btn:hover { background: rgba(200,85,14,0.22); border-color: rgba(255,107,26,0.55); }
+.back-btn.gb {
+  background: rgba(4,106,56,0.12); border-color: rgba(6,160,69,0.28);
+  color: rgba(34,197,94,0.85);
+}
+.back-btn.gb:hover { background: rgba(4,106,56,0.24); border-color: rgba(34,197,94,0.5); }
+.back-btn svg { width: 12px; height: 12px; fill: currentColor; flex-shrink: 0; }
 
-/* BULLET LIST */
-.bul-list{list-style:none;margin:6px 0;}
-.bul-list li{display:flex;align-items:flex-start;gap:9px;font-size:12.5px;color:rgba(251,245,229,.72);padding:5px 0;line-height:1.6;font-weight:300;}
-.bul-list li::before{content:'';width:6px;height:6px;transform:rotate(45deg);flex-shrink:0;margin-top:6px;}
-.host-bullets li::before{background:var(--g);}
-.agency-bullets li::before{background:#10B981;}
-.bul-list li b{color:var(--iv);font-weight:500;}
-.bul-list li .red{color:#FCA5A5;}
-.bul-list li .green{color:#4ADE80;}
-.bul-list li .gold{color:var(--gl);}
+/* ═══════════════════════════════
+   HOME HERO
+═══════════════════════════════ */
+.hero {
+  padding: 48px 24px 40px;
+  text-align: center;
+  position: relative; overflow: hidden;
+}
 
-/* RULE TAG */
-.rule-tag{display:inline-flex;align-items:center;gap:5px;padding:2px 9px;border-radius:4px;font-size:9px;letter-spacing:1.5px;font-weight:600;text-transform:uppercase;}
-.rt-warn{background:rgba(245,158,11,.12);color:#FCD34D;border:1px solid rgba(245,158,11,.25);}
-.rt-danger{background:rgba(239,68,68,.12);color:#FCA5A5;border:1px solid rgba(239,68,68,.25);}
-.rt-ok{background:rgba(74,222,128,.1);color:#4ADE80;border:1px solid rgba(74,222,128,.25);}
+/* Mughal arch SVG behind hero */
+.mughal-arch {
+  position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+  width: 360px; height: 240px; pointer-events: none; opacity: 0.06;
+}
 
-/* HOST specific */
-.h-row{display:flex;gap:10px;margin:10px 0;}
-.h-cell{flex:1;padding:12px;background:rgba(255,255,255,.03);border:1px solid rgba(191,146,0,.1);border-radius:10px;text-align:center;}
-.h-cell-label{font-size:8.5px;letter-spacing:2px;text-transform:uppercase;color:rgba(191,146,0,.45);margin-bottom:5px;}
-.h-cell-val{font-family:'Cinzel',serif;font-size:18px;font-weight:700;color:var(--gl);}
-.h-cell-val.green{color:#4ADE80;}
-.week-row{display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:8px;margin:5px 0;background:rgba(255,255,255,.02);border:1px solid rgba(191,146,0,.07);}
-.week-badge{font-size:9px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--gl);min-width:52px;}
-.week-ruby{font-size:13px;color:rgba(251,245,229,.8);flex:1;font-weight:400;}
-.week-ruby b{color:var(--gl);}
-.week-guar{font-size:11px;color:#4ADE80;font-weight:500;}
+/* Animated Diya */
+.diya-container {
+  position: relative; width: 90px; height: 90px; margin: 0 auto 24px;
+}
+.diya-aura {
+  position: absolute; inset: -20px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,100,0,0.3) 0%, rgba(212,175,55,0.12) 40%, transparent 70%);
+  animation: auraPulse 2s ease-in-out infinite;
+}
+@keyframes auraPulse { 0%,100%{transform:scale(1);opacity:0.7} 50%{transform:scale(1.3);opacity:1} }
 
-/* AGENCY specific */
-.tier-grid{display:flex;flex-direction:column;gap:8px;margin:10px 0;}
-.tier-card{display:flex;align-items:center;gap:14px;padding:12px 16px;border-radius:10px;background:rgba(255,255,255,.025);border:1px solid rgba(16,185,129,.1);position:relative;overflow:hidden;}
-.tier-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;border-radius:1px;}
-.tc-l1::before{background:linear-gradient(180deg,#4ADE80,#10B981);}
-.tc-l2::before{background:linear-gradient(180deg,#34D399,#059669);}
-.tc-l3::before{background:linear-gradient(180deg,var(--gl),var(--g));}
-.tier-lvl{font-family:'Cinzel',serif;font-size:11px;font-weight:700;color:rgba(74,222,128,.7);min-width:52px;}
-.tier-range{font-size:12.5px;color:rgba(251,245,229,.65);flex:1;}
-.tier-pct{font-family:'Cinzel',serif;font-size:20px;font-weight:700;color:#4ADE80;}
-.tc-l2 .tier-pct{color:#34D399;}
-.tc-l3 .tier-pct{color:var(--gl);}
-.fee-row{display:flex;align-items:center;gap:12px;padding:10px 14px;border-radius:8px;margin:5px 0;background:rgba(255,255,255,.02);border:1px solid rgba(16,185,129,.07);}
-.fee-amt{font-size:12.5px;color:rgba(251,245,229,.7);flex:1;}
-.fee-val{font-size:12.5px;font-weight:500;color:#FCA5A5;}
+/* Brand text */
+.brand-eyebrow {
+  font-size: 9px; font-weight: 500; letter-spacing: 6px;
+  text-transform: uppercase; color: rgba(200,85,14,0.6);
+  margin-bottom: 8px;
+}
+.brand-name {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 36px; font-weight: 900; letter-spacing: 4px; line-height: 1;
+  background: linear-gradient(180deg, #FFFDE0 0%, #D4AF37 40%, #7A5A00 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  filter: drop-shadow(0 4px 32px rgba(212,175,55,0.35));
+}
+.brand-sub {
+  font-size: 10px; font-weight: 300; letter-spacing: 4px;
+  text-transform: uppercase; color: rgba(240,208,96,0.38); margin-top: 10px;
+}
 
-::-webkit-scrollbar{width:3px;}
-::-webkit-scrollbar-track{background:var(--p1);}
-::-webkit-scrollbar-thumb{background:rgba(191,146,0,.28);border-radius:2px;}
+/* Ornament divider */
+.ornament {
+  display: flex; align-items: center; justify-content: center;
+  gap: 12px; width: 280px; margin: 20px auto;
+}
+.orn-line { flex:1; height: 1px; }
+.orn-l { background: linear-gradient(90deg, transparent, rgba(212,175,55,0.5)); }
+.orn-r { background: linear-gradient(90deg, rgba(212,175,55,0.5), transparent); }
+.orn-center { display: flex; align-items: center; gap: 6px; }
+.gem-sm { width: 6px; height: 6px; background: var(--saffron); transform: rotate(45deg); }
+.gem-lg {
+  width: 12px; height: 12px; background: var(--gold);
+  transform: rotate(45deg); box-shadow: 0 0 14px rgba(212,175,55,0.6);
+}
+
+/* Tricolor stripe */
+.tricolor {
+  display: flex; height: 3.5px; width: 200px;
+  margin: 0 auto 16px; border-radius: 3px; overflow: hidden;
+  box-shadow: 0 0 24px rgba(200,85,14,0.35);
+}
+.tc-s{flex:1;background:var(--saffron)}
+.tc-w{flex:1;background:rgba(251,245,229,0.95)}
+.tc-g{flex:1;background:var(--green-i)}
+
+.hero-pill {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 7px 20px; border-radius: 50px;
+  background: rgba(200,85,14,0.09); border: 1px solid rgba(200,85,14,0.3);
+  font-size: 9px; font-weight: 600; letter-spacing: 3px;
+  text-transform: uppercase; color: rgba(255,140,66,0.9);
+}
+.hero-pill::before {
+  content: ''; width: 7px; height: 7px; border-radius: 50%;
+  background: var(--saffron); box-shadow: 0 0 8px rgba(255,107,26,0.8);
+  animation: livePulse 1.4s ease-in-out infinite;
+}
+
+/* Section labels */
+.sec-label {
+  display: flex; align-items: center; gap: 12px;
+  padding: 20px 22px 10px;
+}
+.sl-gems { display: flex; align-items: center; gap: 5px; }
+.slg-s { width: 5px; height: 5px; background: var(--saffron); transform: rotate(45deg); }
+.slg-l { width: 8px; height: 8px; background: var(--gold); transform: rotate(45deg); box-shadow: 0 0 8px rgba(212,175,55,0.5); }
+.sl-text {
+  font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: 4px;
+  text-transform: uppercase; color: rgba(212,175,55,0.38);
+}
+.sl-line { flex:1; height: 1px; background: linear-gradient(90deg, rgba(212,175,55,0.18), transparent); }
+
+/* ═══════════════════════════════
+   HOME CARDS
+═══════════════════════════════ */
+.cards { padding: 0 18px; display: flex; flex-direction: column; gap: 14px; }
+
+.nav-card {
+  position: relative; display: flex; align-items: center;
+  gap: 18px; padding: 20px 20px 20px 22px;
+  background: var(--card-bg); border-radius: var(--radius-card);
+  border: 1px solid var(--border-g); cursor: pointer;
+  overflow: hidden; text-decoration: none;
+  transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), border-color 0.3s, box-shadow 0.3s;
+  backdrop-filter: blur(12px);
+}
+
+/* Left accent bar */
+.nav-card::before {
+  content: ''; position: absolute; left: 0; top: 12px; bottom: 12px;
+  width: 3px; border-radius: 2px;
+}
+.nc-host::before { background: linear-gradient(180deg, var(--saffron), var(--gold)); box-shadow: 0 0 14px rgba(200,85,14,0.5); }
+.nc-agency::before { background: linear-gradient(180deg, var(--green-l), var(--green-i)); box-shadow: 0 0 14px rgba(4,106,56,0.5); }
+.nc-wa::before { background: linear-gradient(180deg, #25D366, #128C7E); }
+
+/* Card shimmer on hover */
+.nav-card::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(135deg, transparent 40%, rgba(212,175,55,0.04) 100%);
+  opacity: 0; transition: opacity 0.3s;
+}
+.nav-card:hover::after { opacity: 1; }
+.nav-card:hover { transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,0.6), var(--shadow-gold); border-color: rgba(212,175,55,0.32); }
+
+/* Card icon box */
+.nc-icon {
+  width: 54px; height: 54px; border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 24px; flex-shrink: 0;
+  transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1);
+}
+.nav-card:hover .nc-icon { transform: scale(1.12) rotate(-5deg); }
+.ni-host { background: linear-gradient(135deg,rgba(200,85,14,0.2),rgba(212,175,55,0.1)); border: 1px solid rgba(200,85,14,0.3); }
+.ni-agency { background: linear-gradient(135deg,rgba(4,106,56,0.2),rgba(6,160,69,0.1)); border: 1px solid rgba(4,106,56,0.3); }
+.ni-wa { background: linear-gradient(135deg,rgba(37,211,102,0.15),rgba(18,140,126,0.1)); border: 1px solid rgba(37,211,102,0.25); }
+
+.nc-body { flex:1; min-width: 0; }
+.nc-title {
+  font-family: 'Cinzel', serif; font-size: 14px; font-weight: 700;
+  letter-spacing: 2px; color: var(--ivory); line-height: 1.2;
+}
+.nc-desc { font-size: 11px; color: var(--text-dim); margin-top: 4px; font-weight: 300; letter-spacing: 0.5px; }
+
+.wa-chip {
+  display: inline-flex; align-items: center; margin-top: 7px;
+  padding: 2px 8px; border-radius: 4px; font-size: 8.5px;
+  font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+  background: rgba(37,211,102,0.12); color: #25D366; border: 1px solid rgba(37,211,102,0.3);
+}
+
+.nc-arrow {
+  width: 34px; height: 34px; border-radius: 10px;
+  background: rgba(212,175,55,0.06); border: 1px solid rgba(212,175,55,0.14);
+  display: flex; align-items: center; justify-content: center;
+  color: rgba(212,175,55,0.4); font-size: 20px; flex-shrink: 0;
+  transition: all 0.3s;
+}
+.nav-card:hover .nc-arrow {
+  background: rgba(212,175,55,0.14); border-color: rgba(212,175,55,0.4);
+  color: var(--gold-l); transform: translateX(4px);
+}
+
+/* ═══════════════════════════════
+   ROTATING CHAKRA BOTTOM
+═══════════════════════════════ */
+.chakra-wrap { display: flex; justify-content: center; padding: 36px 0 20px; }
+.chakra-svg { width: 56px; height: 56px; opacity: 0.16; animation: chakraSpin 40s linear infinite; }
+@keyframes chakraSpin { to { transform: rotate(360deg); } }
+
+/* ═══════════════════════════════
+   FOOTER
+═══════════════════════════════ */
+.footer {
+  text-align: center; padding: 0 24px 20px;
+}
+.footer-bar { display: flex; height: 2.5px; margin-bottom: 14px; border-radius: 2px; overflow: hidden; }
+.fb-s { flex:1; background: linear-gradient(90deg, transparent, var(--saffron) 60%); }
+.fb-w { flex:1; background: rgba(251,245,229,0.5); }
+.fb-g { flex:1; background: linear-gradient(90deg, var(--green-i) 40%, transparent); }
+.footer-text {
+  font-family: 'Cinzel', serif; font-size: 8.5px; letter-spacing: 3px;
+  text-transform: uppercase; color: rgba(251,245,229,0.14);
+}
+.footer-text b { color: rgba(212,175,55,0.3); font-weight: 700; }
+
+/* ═══════════════════════════════
+   POLICY PAGE HERO
+═══════════════════════════════ */
+.policy-hero { padding: 38px 24px 30px; text-align: center; position: relative; overflow: hidden; }
+
+.ph-eyebrow { font-size: 8.5px; letter-spacing: 5px; text-transform: uppercase; margin-bottom: 12px; }
+.ph-host { color: rgba(200,85,14,0.65); }
+.ph-agency { color: rgba(6,160,69,0.7); }
+
+.ph-title {
+  font-family: 'Cinzel', serif; font-size: 32px; font-weight: 900; letter-spacing: 5px;
+}
+.ph-title-host {
+  background: linear-gradient(180deg, #FFFDE0 0%, #D4AF37 45%, #6A4A00 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  filter: drop-shadow(0 3px 22px rgba(212,175,55,0.3));
+}
+.ph-title-agency {
+  background: linear-gradient(180deg, #A7F3D0 0%, #059669 50%, #064E3B 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  filter: drop-shadow(0 3px 22px rgba(16,185,129,0.25));
+}
+
+.ph-orn { display: flex; align-items: center; justify-content: center; gap: 12px; width: 260px; margin: 16px auto 0; }
+.pho-line { flex:1; height: 1px; }
+.pho-host-l { background: linear-gradient(90deg, transparent, rgba(212,175,55,0.55)); }
+.pho-host-r { background: linear-gradient(90deg, rgba(212,175,55,0.55), transparent); }
+.pho-agency-l { background: linear-gradient(90deg, transparent, rgba(16,185,129,0.55)); }
+.pho-agency-r { background: linear-gradient(90deg, rgba(16,185,129,0.55), transparent); }
+.pho-gems { display: flex; align-items: center; gap: 6px; }
+.phg-s { width: 6px; height: 6px; transform: rotate(45deg); }
+.phg-l { width: 10px; height: 10px; transform: rotate(45deg); }
+.phg-host-s { background: var(--saffron); }
+.phg-host-l { background: var(--gold); box-shadow: 0 0 10px rgba(212,175,55,0.6); }
+.phg-agency-s { background: var(--green-l); }
+.phg-agency-l { background: #10B981; box-shadow: 0 0 10px rgba(16,185,129,0.5); }
+
+/* ═══════════════════════════════
+   POLICY SECTIONS
+═══════════════════════════════ */
+.sections { padding: 0 16px; }
+
+.sec-block {
+  background: var(--card-bg);
+  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  border-radius: 18px; margin-bottom: 13px;
+  overflow: hidden; position: relative;
+  transition: box-shadow 0.3s;
+}
+.sec-block:hover { box-shadow: 0 8px 40px rgba(0,0,0,0.4); }
+.host-block { border: 1px solid rgba(212,175,55,0.12); }
+.agency-block { border: 1px solid rgba(16,185,129,0.12); }
+
+/* Left accent gradient per block */
+.sec-block::before {
+  content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3.5px;
+}
+.sb-1.host::before { background: linear-gradient(180deg, var(--saffron), var(--gold)); box-shadow: 0 0 16px rgba(200,85,14,0.4); }
+.sb-2.host::before { background: linear-gradient(180deg, #7C3AED, #4F46E5); }
+.sb-3.host::before { background: linear-gradient(180deg, #059669, #10B981); }
+.sb-4.host::before { background: linear-gradient(180deg, #2563EB, #7C3AED); }
+.sb-1.agency::before { background: linear-gradient(180deg, #10B981, #059669); box-shadow: 0 0 16px rgba(16,185,129,0.3); }
+.sb-2.agency::before { background: linear-gradient(180deg, var(--saffron), var(--gold)); }
+.sb-3.agency::before { background: linear-gradient(180deg, #3B82F6, #8B5CF6); }
+.sb-4.agency::before { background: linear-gradient(180deg, #F59E0B, #EF4444); }
+.sb-5.agency::before { background: linear-gradient(180deg, #EC4899, #8B5CF6); }
+
+.sec-header {
+  display: flex; align-items: center; gap: 13px;
+  padding: 17px 18px 17px 22px; cursor: pointer;
+  transition: background 0.2s;
+}
+.sec-header:hover { background: rgba(255,255,255,0.02); }
+.host-block .sec-header { border-bottom: 1px solid rgba(212,175,55,0.08); }
+.agency-block .sec-header { border-bottom: 1px solid rgba(16,185,129,0.08); }
+
+.sec-num {
+  width: 30px; height: 30px; border-radius: 9px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Cinzel', serif; font-size: 11px; font-weight: 700; flex-shrink: 0;
+}
+.host-num { background: rgba(212,175,55,0.1); border: 1px solid rgba(212,175,55,0.25); color: var(--gold-l); }
+.agency-num { background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.25); color: #4ADE80; }
+
+.sec-title { font-family: 'Cinzel', serif; font-size: 13px; font-weight: 700; letter-spacing: 1.5px; color: var(--ivory); flex:1; }
+.sec-arrow { font-size: 20px; transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1); }
+.host-arrow { color: rgba(212,175,55,0.42); }
+.agency-arrow { color: rgba(16,185,129,0.5); }
+.sec-block.open .sec-arrow { transform: rotate(90deg); }
+
+.sec-body { padding: 18px 18px 22px 22px; display: none; }
+.sec-block.open .sec-body { display: block; animation: fadeSlide 0.35s ease both; }
+@keyframes fadeSlide { from{opacity:0;transform:translateY(-8px)} to{opacity:1;transform:translateY(0)} }
+
+/* Sub labels */
+.sub-label { display: flex; align-items: center; gap: 10px; margin: 18px 0 10px; }
+.sub-label:first-child { margin-top: 4px; }
+.sub-line { flex:1; height: 0.6px; }
+.host-sub-line { background: rgba(212,175,55,0.14); }
+.agency-sub-line { background: rgba(16,185,129,0.12); }
+.sub-txt { font-size: 8px; letter-spacing: 3px; text-transform: uppercase; white-space: nowrap; font-weight: 600; }
+.host-sub-txt { color: rgba(200,85,14,0.6); }
+.agency-sub-txt { color: rgba(16,185,129,0.55); }
+
+/* Tables */
+.pol-table { width: 100%; border-collapse: collapse; margin: 10px 0; }
+.h-th {
+  font-size: 8.5px; letter-spacing: 2.5px; text-transform: uppercase;
+  padding: 8px 10px; text-align: left; color: rgba(212,175,55,0.55);
+  border-bottom: 1px solid rgba(212,175,55,0.12);
+}
+.a-th {
+  font-size: 8.5px; letter-spacing: 2.5px; text-transform: uppercase;
+  padding: 8px 10px; text-align: left; color: rgba(16,185,129,0.55);
+  border-bottom: 1px solid rgba(16,185,129,0.12);
+}
+.pol-table td {
+  padding: 10px 10px; font-size: 12.5px;
+  color: var(--text-mid); border-bottom: 1px solid rgba(212,175,55,0.05);
+  font-weight: 300;
+}
+.agency-block .pol-table td { border-bottom-color: rgba(16,185,129,0.05); }
+.pol-table tr:last-child td { border-bottom: none; }
+.pol-table tr:hover td { background: rgba(255,255,255,0.02); }
+td.gold { color: var(--gold-l); font-weight: 600; }
+td.green { color: #4ADE80; font-weight: 600; }
+td.red { color: #FCA5A5; font-weight: 500; }
+
+/* Info boxes */
+.ibox {
+  padding: 13px 15px; border-radius: 12px; margin: 10px 0;
+  position: relative; overflow: hidden;
+}
+.ibox-gold { background: rgba(212,175,55,0.07); border: 1px solid rgba(212,175,55,0.18); border-left: 3px solid var(--gold); }
+.ibox-saffron { background: rgba(200,85,14,0.08); border: 1px solid rgba(200,85,14,0.22); border-left: 3px solid var(--saffron); }
+.ibox-green { background: rgba(4,106,56,0.1); border: 1px solid rgba(6,160,69,0.22); border-left: 3px solid var(--green-ll); }
+.ibox-red { background: rgba(180,30,30,0.1); border: 1px solid rgba(200,50,50,0.22); border-left: 3px solid #EF4444; }
+.ibox-blue { background: rgba(20,48,144,0.1); border: 1px solid rgba(37,99,235,0.22); border-left: 3px solid #3B82F6; }
+.ibox-warn { background: rgba(245,158,11,0.07); border: 1px solid rgba(245,158,11,0.2); border-left: 3px solid #F59E0B; }
+.ibox-agency { background: rgba(16,185,129,0.07); border: 1px solid rgba(16,185,129,0.18); border-left: 3px solid #10B981; }
+
+.ibox-lbl {
+  font-size: 8px; letter-spacing: 2.5px; text-transform: uppercase;
+  margin-bottom: 7px; display: flex; align-items: center; gap: 7px;
+}
+.ibox-lbl::before { content: ''; width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+.ibox-gold .ibox-lbl { color: rgba(240,208,96,0.55); }
+.ibox-gold .ibox-lbl::before { background: var(--gold-l); }
+.ibox-saffron .ibox-lbl { color: rgba(255,140,66,0.65); }
+.ibox-saffron .ibox-lbl::before { background: var(--saffron); }
+.ibox-green .ibox-lbl { color: rgba(74,222,128,0.6); }
+.ibox-green .ibox-lbl::before { background: var(--green-ll); }
+.ibox-red .ibox-lbl { color: rgba(252,165,165,0.65); }
+.ibox-red .ibox-lbl::before { background: #EF4444; }
+.ibox-warn .ibox-lbl { color: rgba(253,211,77,0.65); }
+.ibox-warn .ibox-lbl::before { background: #F59E0B; }
+.ibox-agency .ibox-lbl { color: rgba(74,222,128,0.6); }
+.ibox-agency .ibox-lbl::before { background: #4ADE80; }
+
+.ibox-text {
+  font-size: 12px; color: var(--text-mid); line-height: 1.7; font-weight: 300;
+}
+.ibox-text b, .ibox-text strong { color: var(--ivory); font-weight: 600; }
+.ibox-green .ibox-text b { color: #4ADE80; }
+.ibox-saffron .ibox-text b { color: var(--saffron-l); }
+.ibox-red .ibox-text b { color: #FCA5A5; }
+.ibox-warn .ibox-text b { color: #FCD34D; }
+
+/* Bullet lists */
+.bul { list-style: none; margin: 8px 0; }
+.bul li {
+  display: flex; align-items: flex-start; gap: 10px;
+  font-size: 12.5px; color: var(--text-mid);
+  padding: 5px 0; line-height: 1.65; font-weight: 300;
+}
+.bul li::before {
+  content: ''; width: 7px; height: 7px; transform: rotate(45deg);
+  flex-shrink: 0; margin-top: 5px;
+}
+.hb li::before { background: var(--gold); box-shadow: 0 0 5px rgba(212,175,55,0.4); }
+.ab li::before { background: #10B981; box-shadow: 0 0 5px rgba(16,185,129,0.4); }
+.bul li b { color: var(--ivory); font-weight: 600; }
+.bul li .red { color: #FCA5A5; }
+.bul li .green { color: #4ADE80; }
+.bul li .gold { color: var(--gold-l); }
+
+/* Stat cells */
+.stat-row { display: flex; gap: 10px; margin: 12px 0; }
+.stat-cell {
+  flex:1; padding: 13px 10px; text-align: center;
+  background: rgba(255,255,255,0.025); border-radius: 12px;
+  border: 1px solid rgba(212,175,55,0.1);
+}
+.stat-lbl { font-size: 8px; letter-spacing: 2px; text-transform: uppercase; color: rgba(212,175,55,0.42); margin-bottom: 6px; }
+.stat-val { font-family: 'Cinzel', serif; font-size: 22px; font-weight: 700; color: var(--gold-l); }
+.stat-val.green { color: #4ADE80; }
+
+/* Agency Tier cards */
+.tier-grid { display: flex; flex-direction: column; gap: 9px; margin: 12px 0; }
+.tier-card {
+  display: flex; align-items: center; gap: 16px;
+  padding: 14px 16px; border-radius: 12px;
+  background: rgba(255,255,255,0.025); position: relative; overflow: hidden;
+}
+.tier-card::before { content: ''; position: absolute; left:0; top:0; bottom:0; width:3px; border-radius: 1px; }
+.tc1 { border: 1px solid rgba(74,222,128,0.12); }
+.tc1::before { background: linear-gradient(180deg, #4ADE80, #10B981); }
+.tc2 { border: 1px solid rgba(52,211,153,0.12); }
+.tc2::before { background: linear-gradient(180deg, #34D399, #059669); }
+.tc3 { border: 1px solid rgba(212,175,55,0.15); }
+.tc3::before { background: linear-gradient(180deg, var(--gold-l), var(--gold)); }
+.tier-lvl { font-family: 'Cinzel', serif; font-size: 10px; font-weight: 700; color: rgba(74,222,128,0.75); min-width: 54px; }
+.tier-range { font-size: 12px; color: rgba(251,245,229,0.6); flex:1; line-height: 1.4; }
+.tier-pct { font-family: 'Cinzel Decorative', serif; font-size: 22px; font-weight: 700; color: #4ADE80; }
+.tc2 .tier-pct { color: #34D399; }
+.tc3 .tier-pct { color: var(--gold-l); }
+
+/* Fee rows */
+.fee-row {
+  display: flex; align-items: center; gap: 14px;
+  padding: 11px 14px; border-radius: 9px; margin: 5px 0;
+  background: rgba(255,255,255,0.02); border: 1px solid rgba(16,185,129,0.07);
+}
+.fee-label { font-size: 12px; color: var(--text-mid); flex:1; line-height: 1.45; }
+.fee-val { font-size: 12.5px; font-weight: 600; color: #FCA5A5; white-space: nowrap; }
+
+/* ═══════════════════════════════
+   DIVIDER
+═══════════════════════════════ */
+.divider {
+  display: flex; align-items: center; padding: 22px 22px 4px;
+}
+.div-line { flex:1; height: 1px; }
+.div-l { background: linear-gradient(90deg, transparent, rgba(212,175,55,0.18)); }
+.div-r { background: linear-gradient(90deg, rgba(212,175,55,0.18), transparent); }
+.div-center { padding: 0 14px; display: flex; align-items: center; gap: 6px; }
+.dc-sm { width: 4px; height: 4px; background: var(--saffron); transform: rotate(45deg); opacity: 0.7; }
+.dc-lg { width: 9px; height: 9px; background: var(--gold); transform: rotate(45deg); box-shadow: 0 0 9px rgba(212,175,55,0.5); }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: var(--bg1); }
+::-webkit-scrollbar-thumb { background: rgba(212,175,55,0.25); border-radius: 2px; }
 </style>
 </head>
 <body>
 
-<canvas id="bgCanvas"></canvas>
+<!-- Background layers -->
+<div id="scene">
+  <canvas id="bgCanvas"></canvas>
+</div>
+<div class="rangoli-bg"></div>
 <div class="jali"></div>
-<div class="top-glow"></div>
+<div class="arch-glow"></div>
+<div class="particles" id="particles"></div>
 
-<!-- ════════════════════════════
-     PAGE 1: HOME
-════════════════════════════ -->
+<!-- ═══════════════════════════
+     PAGE 1 · HOME
+═══════════════════════════ -->
 <div class="page active" id="page-home">
 
-<div class="topbar">
-  <div class="topbar-triaccent"><div class="ta-s"></div><div class="ta-w"></div><div class="ta-g"></div></div>
-  <div class="logo-frame">
-    <div class="logo-ring-outer"></div>
-    <div class="logo-box">
-      <img class="logo-img" src="logo.png" alt="Rizz Live" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-      <span class="logo-fallback" style="display:none;">RL</span>
+  <div class="topbar">
+    <div class="tri-bar"><div class="tri-s"></div><div class="tri-w"></div><div class="tri-g"></div></div>
+    <div class="logo-wrap">
+      <div class="logo-spin-ring"></div>
+      <div class="logo-inner">
+        <img class="logo-img" src="logo.png" alt="Rizz Live"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <span class="logo-fallback" style="display:none">RL</span>
+      </div>
+      <div class="logo-gem lg-tl"></div><div class="logo-gem lg-tr"></div>
+      <div class="logo-gem lg-bl"></div><div class="logo-gem lg-br"></div>
     </div>
-    <div class="logo-gem lg-tl"></div><div class="logo-gem lg-tr"></div>
-    <div class="logo-gem lg-bl"></div><div class="logo-gem lg-br"></div>
+    <div class="topbar-info">
+      <div class="topbar-name">Rizz Live</div>
+      <div class="topbar-sub">Live Streaming Platform</div>
+    </div>
+    <div class="topbar-right">
+      <div class="live-badge">
+        <div class="live-dot-pulse"></div>
+        <span class="live-txt">Live</span>
+      </div>
+    </div>
   </div>
-  <div class="topbar-text">
-    <div class="topbar-name">Rizz Live</div>
-    <div class="topbar-sub">Live Streaming Platform</div>
-  </div>
-  <div class="topbar-right">
-    <div class="live-dot"><div class="ld-pulse"></div><span class="ld-txt">Live</span></div>
-  </div>
-</div>
 
-<div class="hero">
-  <svg class="temple-arch" viewBox="0 0 340 220" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M50 220 L50 95 Q50 18 170 18 Q290 18 290 95 L290 220" stroke="#BF9200" stroke-width="2" fill="none"/>
-    <path d="M72 220 L72 102 Q72 52 170 52 Q268 52 268 102 L268 220" stroke="#BF9200" stroke-width="1" fill="none" opacity=".5"/>
-    <circle cx="170" cy="10" r="7" fill="#BF9200" opacity=".7"/><circle cx="170" cy="10" r="3" fill="#F5E070" opacity=".8"/>
-    <rect x="166" y="17" width="8" height="14" rx="1.5" fill="#BF9200" opacity=".55"/>
-    <circle cx="50" cy="90" r="4" fill="#BF9200" opacity=".4"/><circle cx="290" cy="90" r="4" fill="#BF9200" opacity=".4"/>
-    <line x1="50" y1="120" x2="290" y2="120" stroke="#BF9200" stroke-width=".6" opacity=".25" stroke-dasharray="5,7"/>
-    <line x1="50" y1="150" x2="290" y2="150" stroke="#BF9200" stroke-width=".5" opacity=".15" stroke-dasharray="2,10"/>
-  </svg>
-  <div class="diya-box">
-    <div class="diya-halo"></div>
-    <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="40" cy="26" r="16" fill="rgba(200,85,14,.14)"><animate attributeName="r" values="12;20;11;18;12" dur="1.9s" repeatCount="indefinite"/><animate attributeName="opacity" values=".14;.26;.09;.2;.14" dur="1.9s" repeatCount="indefinite"/></circle>
-      <path d="M40 10 Q45 17 45 24 Q45 31 40 34 Q35 31 35 24 Q35 17 40 10Z" fill="#C8550E"><animate attributeName="d" values="M40 10 Q45 17 45 24 Q45 31 40 34 Q35 31 35 24 Q35 17 40 10Z;M40 6 Q47 15 47 23 Q47 32 40 35 Q33 32 33 23 Q33 15 40 6Z;M40 10 Q45 17 45 24 Q45 31 40 34 Q35 31 35 24 Q35 17 40 10Z" dur="1.3s" repeatCount="indefinite"/></path>
-      <path d="M40 14 Q44 20 44 25 Q44 30 40 32 Q36 30 36 25 Q36 20 40 14Z" fill="#D4A000"></path>
-      <ellipse cx="40" cy="21" rx="2.5" ry="4.5" fill="#FFFDE8"><animate attributeName="ry" values="4.5;7;3.5;6;4.5" dur=".85s" repeatCount="indefinite"/><animate attributeName="cy" values="21;17;22;18;21" dur=".85s" repeatCount="indefinite"/></ellipse>
-      <line x1="40" y1="34" x2="40" y2="45" stroke="rgba(191,146,0,.6)" stroke-width="1.5" stroke-linecap="round"/>
-      <path d="M21 45 Q23 62 40 64 Q57 62 59 45Z" fill="rgba(191,146,0,.55)" stroke="rgba(224,176,32,.7)" stroke-width=".9"/>
-      <path d="M19 45 Q40 40 61 45" stroke="rgba(224,176,32,.65)" stroke-width="1.5" fill="none"/>
-      <circle cx="30" cy="52" r="1.7" fill="rgba(224,176,32,.45)"/><circle cx="40" cy="55" r="1.7" fill="rgba(224,176,32,.45)"/><circle cx="50" cy="52" r="1.7" fill="rgba(224,176,32,.45)"/>
-      <ellipse cx="40" cy="66" rx="23" ry="4.5" fill="rgba(191,146,0,.18)" stroke="rgba(191,146,0,.28)" stroke-width=".8"/>
+  <!-- Hero -->
+  <div class="hero">
+    <svg class="mughal-arch" viewBox="0 0 360 240" fill="none">
+      <path d="M55 240 L55 98 Q55 20 180 20 Q305 20 305 98 L305 240" stroke="#D4AF37" stroke-width="2.5" fill="none"/>
+      <path d="M78 240 L78 106 Q78 56 180 56 Q282 56 282 106 L282 240" stroke="#D4AF37" stroke-width="1.2" fill="none" opacity=".5"/>
+      <path d="M100 240 L100 114 Q100 90 180 90 Q260 90 260 114 L260 240" stroke="#D4AF37" stroke-width="0.6" fill="none" opacity=".28"/>
+      <circle cx="180" cy="11" r="8" fill="#D4AF37" opacity=".7"/>
+      <circle cx="180" cy="11" r="3.5" fill="#FFFDE0" opacity=".9"/>
+      <rect x="176" y="19" width="8" height="16" rx="2" fill="#D4AF37" opacity=".55"/>
+      <circle cx="55" cy="95" r="5" fill="#D4AF37" opacity=".4"/>
+      <circle cx="305" cy="95" r="5" fill="#D4AF37" opacity=".4"/>
+      <!-- Decorative lotuses at base -->
+      <ellipse cx="110" cy="235" rx="20" ry="6" stroke="#D4AF37" stroke-width=".8" fill="none" opacity=".4"/>
+      <ellipse cx="250" cy="235" rx="20" ry="6" stroke="#D4AF37" stroke-width=".8" fill="none" opacity=".4"/>
+      <line x1="55" y1="128" x2="305" y2="128" stroke="#D4AF37" stroke-width=".6" opacity=".2" stroke-dasharray="6,8"/>
+      <line x1="55" y1="162" x2="305" y2="162" stroke="#D4AF37" stroke-width=".5" opacity=".12" stroke-dasharray="2,12"/>
+    </svg>
+
+    <!-- Diya SVG -->
+    <div class="diya-container">
+      <div class="diya-aura"></div>
+      <svg width="90" height="90" viewBox="0 0 90 90" fill="none">
+        <!-- Glow rings -->
+        <circle cx="45" cy="29" r="18" fill="rgba(200,85,14,0.14)">
+          <animate attributeName="r" values="13;22;12;20;13" dur="2.1s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values=".14;.3;.08;.22;.14" dur="2.1s" repeatCount="indefinite"/>
+        </circle>
+        <!-- Flame outer -->
+        <path d="M45 11 Q52 19 52 27 Q52 35 45 38 Q38 35 38 27 Q38 19 45 11Z" fill="#C8550E">
+          <animate attributeName="d" values="M45 11 Q52 19 52 27 Q52 35 45 38 Q38 35 38 27 Q38 19 45 11Z;M45 6 Q54 17 54 26 Q54 36 45 39 Q36 36 36 26 Q36 17 45 6Z;M45 11 Q52 19 52 27 Q52 35 45 38 Q38 35 38 27 Q38 19 45 11Z" dur="1.4s" repeatCount="indefinite"/>
+        </path>
+        <!-- Flame mid -->
+        <path d="M45 15 Q50 22 50 27 Q50 33 45 35 Q40 33 40 27 Q40 22 45 15Z" fill="#D4A000"/>
+        <!-- Flame core -->
+        <ellipse cx="45" cy="23" rx="3" ry="5.5" fill="#FFFDE8">
+          <animate attributeName="ry" values="5.5;8;4;7;5.5" dur="0.9s" repeatCount="indefinite"/>
+          <animate attributeName="cy" values="23;18;24;19;23" dur="0.9s" repeatCount="indefinite"/>
+        </ellipse>
+        <!-- Wick -->
+        <line x1="45" y1="38" x2="45" y2="50" stroke="rgba(212,175,55,0.65)" stroke-width="2" stroke-linecap="round"/>
+        <!-- Diya bowl -->
+        <path d="M24 50 Q27 70 45 72 Q63 70 66 50Z" fill="rgba(212,175,55,0.55)" stroke="rgba(240,210,50,0.7)" stroke-width="1"/>
+        <path d="M22 50 Q45 44 68 50" stroke="rgba(240,210,50,0.7)" stroke-width="1.8" fill="none"/>
+        <!-- Oil dots -->
+        <circle cx="34" cy="59" r="2" fill="rgba(240,210,50,0.45)"/>
+        <circle cx="45" cy="63" r="2" fill="rgba(240,210,50,0.45)"/>
+        <circle cx="56" cy="59" r="2" fill="rgba(240,210,50,0.45)"/>
+        <!-- Shadow base -->
+        <ellipse cx="45" cy="74" rx="26" ry="5" fill="rgba(212,175,55,0.18)" stroke="rgba(212,175,55,0.28)" stroke-width=".8"/>
+        <!-- Decorative dots around -->
+        <circle cx="18" cy="50" r="1.5" fill="rgba(212,175,55,0.3)"/>
+        <circle cx="72" cy="50" r="1.5" fill="rgba(212,175,55,0.3)"/>
+        <circle cx="20" cy="43" r="1" fill="rgba(200,85,14,0.4)"/>
+        <circle cx="70" cy="43" r="1" fill="rgba(200,85,14,0.4)"/>
+      </svg>
+    </div>
+
+    <div class="brand-eyebrow">India's Live Streaming</div>
+    <div class="brand-name">RIZZ LIVE</div>
+    <div class="brand-sub">Live Streaming Platform</div>
+
+    <div class="ornament">
+      <div class="orn-line orn-l"></div>
+      <div class="orn-center">
+        <div class="gem-sm"></div><div class="gem-lg"></div><div class="gem-sm"></div>
+      </div>
+      <div class="orn-line orn-r"></div>
+    </div>
+
+    <div class="tricolor"><div class="tc-s"></div><div class="tc-w"></div><div class="tc-g"></div></div>
+    <div class="hero-pill">Official Policy Documents</div>
+  </div>
+
+  <div class="divider"><div class="div-line div-l"></div><div class="div-center"><div class="dc-sm"></div><div class="dc-lg"></div><div class="dc-sm"></div></div><div class="div-line div-r"></div></div>
+  <div class="sec-label"><div class="sl-gems"><div class="slg-s"></div><div class="slg-l"></div></div><span class="sl-text">Policies</span><div class="sl-line"></div></div>
+
+  <div class="cards">
+    <div class="nav-card nc-host" onclick="showPage('page-host')">
+      <div class="nc-icon ni-host">🎙️</div>
+      <div class="nc-body">
+        <div class="nc-title">HOST POLICY</div>
+        <div class="nc-desc">Rules &amp; guidelines for live hosts</div>
+      </div>
+      <div class="nc-arrow">›</div>
+    </div>
+
+    <div class="nav-card nc-agency" onclick="showPage('page-agency')">
+      <div class="nc-icon ni-agency">🏛️</div>
+      <div class="nc-body">
+        <div class="nc-title">AGENCY POLICY</div>
+        <div class="nc-desc">Agency terms &amp; conditions</div>
+      </div>
+      <div class="nc-arrow">›</div>
+    </div>
+  </div>
+
+  <div class="divider"><div class="div-line div-l"></div><div class="div-center"><div class="dc-sm"></div><div class="dc-lg"></div><div class="dc-sm"></div></div><div class="div-line div-r"></div></div>
+  <div class="sec-label"><div class="sl-gems"><div class="slg-s"></div><div class="slg-l"></div></div><span class="sl-text">Contact</span><div class="sl-line"></div></div>
+
+  <div class="cards">
+    <a href="https://wa.me/" class="nav-card nc-wa">
+      <div class="nc-icon ni-wa">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      </div>
+      <div class="nc-body">
+        <div class="nc-title">OFFICIAL CHANNEL</div>
+        <div class="nc-desc">Daily updates &amp; announcements</div>
+        <div class="wa-chip">WhatsApp</div>
+      </div>
+      <div class="nc-arrow">›</div>
+    </a>
+  </div>
+
+  <!-- Chakra -->
+  <div class="chakra-wrap">
+    <svg class="chakra-svg" viewBox="0 0 100 100" fill="none">
+      <circle cx="50" cy="50" r="44" stroke="#1A3596" stroke-width="3.5"/>
+      <circle cx="50" cy="50" r="8" fill="#1A3596"/>
+      <circle cx="50" cy="50" r="3.5" fill="#F5E070" opacity=".6"/>
+      <g stroke="#1A3596" stroke-width="1.4">
+        <line x1="50" y1="50" x2="50" y2="6" transform="rotate(0 50 50)"/>
+        <line x1="50" y1="50" x2="50" y2="6" transform="rotate(15 50 50)"/>
+        <line x1="50" y1="50" x2="50" y2="6" transform="rotate(30 50 50)"/>
+        <line x1="50" y1="50" x2="50" y2="6" transform="rotate(45 50 50)"/>
+        <line x1="50" y1="50" x2="50" y2="6" transform="rotate(60 50 50)"/>
+        <line x1="50" y1="50" x2="50" y2="6" transform="rotate(75 50 50)"/>
+        <line x1="50" y1="50" x2="50" y2="6" transform="rotate(90 50 50)"/>
+        <line x1="50" y1="50" x2="50" y2="6" transform="rotate(105 50 50)"/>
+        <line x1="50" y1="50" x2="50" y2="6" transform="rotate(120 50 50)"/>
+        <line x1="50" y1="50" x2="50" y2="6" transform="rotate(135 50 50)"/>
+        <line x1="50" y1="50" x2="50" y2="6" transform="rotate(150 50 50)"/>
+        <line x1="50" y1="50" x2="50" y2="6" transform="rotate(165 50 50)"/>
+        <line x1="50" y1="50" x2="50" y2="6" transform="rotate(180 50 50)"/>
+        <line x1="50" y1="50" x2="50" y2="6" transform="rotate(195 50 50)"/>
+        <line x1="50" y1="50" x2="50" y2="6" transform="rotate(210 50 50)"/>
+        <line x1="50" y1="50" x2="50" y2="6" transform="rotate(225 50 50)"/>
+        <line x1="50" y1="50" x2="50" y2="6" transform="rotate(240 50 50)"/>
+        <line x1="50" y1="50" x2="50" y2="6" transform="rotate(255 50 50)"/>
+        <line x1="50" y1="50" x2="50" y2="6" transform="rotate(270 50 50)"/>
+        <line x1="50" y1="50" x2="50" y2="6" transform="rotate(285 50 50)"/>
+        <line x1="50" y1="50" x2="50" y2="6" transform="rotate(300 50 50)"/>
+        <line x1="50" y1="50" x2="50" y2="6" transform="rotate(315 50 50)"/>
+        <line x1="50" y1="50" x2="50" y2="6" transform="rotate(330 50 50)"/>
+        <line x1="50" y1="50" x2="50" y2="6" transform="rotate(345 50 50)"/>
+      </g>
     </svg>
   </div>
-  <div class="brand-main">RIZZ LIVE</div>
-  <div class="brand-sub">Live Streaming Platform</div>
-  <div class="orn">
-    <div class="orn-line"></div>
-    <div class="orn-gems"><div class="gem-s"></div><div class="gem-l"></div><div class="gem-s"></div></div>
-    <div class="orn-line r"></div>
+
+  <div class="footer">
+    <div class="footer-bar"><div class="fb-s"></div><div class="fb-w"></div><div class="fb-g"></div></div>
+    <p class="footer-text">© 2026 All Rights Reserved · <b>Rizz Live India</b></p>
   </div>
-  <div class="tribar"><div class="tb-s"></div><div class="tb-w"></div><div class="tb-g"></div></div>
-  <div class="hero-badge">Policies</div>
-</div>
-
-<div class="div-line"><div class="dl"></div><div class="dm"><div class="dm-s"></div><div class="dm-l"></div><div class="dm-s"></div></div><div class="dl r"></div></div>
-<div class="sec"><div class="sec-gems"><div class="sg-s"></div><div class="sg-l"></div></div><span class="sec-txt">Policies</span><div class="sec-ext"></div></div>
-
-<div class="cards">
-  <div class="card ch" onclick="showPage('page-host')">
-    <div class="card-icon ih">🎙️</div>
-    <div class="card-body">
-      <div class="card-title">HOST POLICY</div>
-      <div class="card-desc">Rules &amp; guidelines for live hosts</div>
-    </div>
-    <div class="card-arr">›</div>
-  </div>
-  <div class="card ca" onclick="showPage('page-agency')">
-    <div class="card-icon ia">🏛️</div>
-    <div class="card-body">
-      <div class="card-title">AGENCY POLICY</div>
-      <div class="card-desc">Agency terms &amp; conditions</div>
-    </div>
-    <div class="card-arr">›</div>
-  </div>
-</div>
-
-<div class="div-line"><div class="dl"></div><div class="dm"><div class="dm-s"></div><div class="dm-l"></div><div class="dm-s"></div></div><div class="dl r"></div></div>
-<div class="sec"><div class="sec-gems"><div class="sg-s"></div><div class="sg-l"></div></div><span class="sec-txt">Contact</span><div class="sec-ext"></div></div>
-
-<div class="cards">
-  <a href="https://wa.me/" class="card cw">
-    <div class="card-icon iw">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-    </div>
-    <div class="card-body">
-      <div class="card-title">OFFICIAL CHANNEL</div>
-      <div class="card-desc">Daily updates on WhatsApp</div>
-      <div class="wa-tag">WhatsApp</div>
-    </div>
-    <div class="card-arr">›</div>
-  </a>
-</div>
-
-<div class="chakra-section">
-  <svg class="chakra-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <circle cx="50" cy="50" r="44" stroke="#143090" stroke-width="3.5"/>
-    <circle cx="50" cy="50" r="7" fill="#143090"/>
-    <circle cx="50" cy="50" r="3" fill="#F5E070" opacity=".6"/>
-    <g stroke="#143090" stroke-width="1.4">
-      <line x1="50" y1="50" x2="50" y2="6" transform="rotate(0 50 50)"/><line x1="50" y1="50" x2="50" y2="6" transform="rotate(15 50 50)"/>
-      <line x1="50" y1="50" x2="50" y2="6" transform="rotate(30 50 50)"/><line x1="50" y1="50" x2="50" y2="6" transform="rotate(45 50 50)"/>
-      <line x1="50" y1="50" x2="50" y2="6" transform="rotate(60 50 50)"/><line x1="50" y1="50" x2="50" y2="6" transform="rotate(75 50 50)"/>
-      <line x1="50" y1="50" x2="50" y2="6" transform="rotate(90 50 50)"/><line x1="50" y1="50" x2="50" y2="6" transform="rotate(105 50 50)"/>
-      <line x1="50" y1="50" x2="50" y2="6" transform="rotate(120 50 50)"/><line x1="50" y1="50" x2="50" y2="6" transform="rotate(135 50 50)"/>
-      <line x1="50" y1="50" x2="50" y2="6" transform="rotate(150 50 50)"/><line x1="50" y1="50" x2="50" y2="6" transform="rotate(165 50 50)"/>
-      <line x1="50" y1="50" x2="50" y2="6" transform="rotate(180 50 50)"/><line x1="50" y1="50" x2="50" y2="6" transform="rotate(195 50 50)"/>
-      <line x1="50" y1="50" x2="50" y2="6" transform="rotate(210 50 50)"/><line x1="50" y1="50" x2="50" y2="6" transform="rotate(225 50 50)"/>
-      <line x1="50" y1="50" x2="50" y2="6" transform="rotate(240 50 50)"/><line x1="50" y1="50" x2="50" y2="6" transform="rotate(255 50 50)"/>
-      <line x1="50" y1="50" x2="50" y2="6" transform="rotate(270 50 50)"/><line x1="50" y1="50" x2="50" y2="6" transform="rotate(285 50 50)"/>
-      <line x1="50" y1="50" x2="50" y2="6" transform="rotate(300 50 50)"/><line x1="50" y1="50" x2="50" y2="6" transform="rotate(315 50 50)"/>
-      <line x1="50" y1="50" x2="50" y2="6" transform="rotate(330 50 50)"/><line x1="50" y1="50" x2="50" y2="6" transform="rotate(345 50 50)"/>
-    </g>
-  </svg>
-</div>
-
-<div class="foot">
-  <div class="foot-bar"><div class="fb-s"></div><div class="fb-w"></div><div class="fb-g"></div></div>
-  <p class="foot-text">© 2025 All Rights Reserved · <b>Rizz Live India</b></p>
-</div>
 
 </div><!-- /page-home -->
 
 
-<!-- ════════════════════════════
-     PAGE 2: HOST POLICY
-════════════════════════════ -->
+<!-- ═══════════════════════════
+     PAGE 2 · HOST POLICY
+═══════════════════════════ -->
 <div class="page" id="page-host">
 
-<div class="topbar">
-  <div class="topbar-triaccent"><div class="ta-s"></div><div class="ta-w"></div><div class="ta-g"></div></div>
-  <div class="logo-frame">
-    <div class="logo-ring-outer"></div>
-    <div class="logo-box">
-      <img class="logo-img" src="logo.png" alt="Rizz Live" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-      <span class="logo-fallback" style="display:none;">RL</span>
+  <div class="topbar">
+    <div class="tri-bar"><div class="tri-s"></div><div class="tri-w"></div><div class="tri-g"></div></div>
+    <div class="logo-wrap">
+      <div class="logo-spin-ring"></div>
+      <div class="logo-inner">
+        <img class="logo-img" src="logo.png" alt="Rizz Live" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <span class="logo-fallback" style="display:none">RL</span>
+      </div>
+      <div class="logo-gem lg-tl"></div><div class="logo-gem lg-tr"></div>
+      <div class="logo-gem lg-bl"></div><div class="logo-gem lg-br"></div>
     </div>
-    <div class="logo-gem lg-tl"></div><div class="logo-gem lg-tr"></div>
-    <div class="logo-gem lg-bl"></div><div class="logo-gem lg-br"></div>
-  </div>
-  <div class="topbar-text">
-    <div class="topbar-name">Rizz Live</div>
-    <div class="topbar-sub">Live Streaming Platform</div>
-  </div>
-  <div class="topbar-right">
-    <span class="back-btn" onclick="showPage('page-home')">
-      <svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
-      Back
-    </span>
-    <div class="india-badge"><span class="india-flag">🇮🇳</span><span class="india-txt">India</span></div>
-  </div>
-</div>
-
-<div class="page-hero">
-  <div class="ph-label host">Host Guidelines</div>
-  <div class="ph-title host">HOST POLICY</div>
-  <div class="ph-orn">
-    <div class="ph-line host-line"></div>
-    <div class="ph-gems"><div class="pg-s host"></div><div class="pg-l host"></div><div class="pg-s host"></div></div>
-    <div class="ph-line host-line r"></div>
-  </div>
-</div>
-
-<div class="sections">
-
-  <div class="sec-block host-block sb-1 host open">
-    <div class="sec-header" onclick="toggleSection(this)">
-      <div class="sec-num host-num">01</div>
-      <div class="sec-title">Host Salary Structure</div>
-      <div class="sec-arrow host-arrow">›</div>
+    <div class="topbar-info">
+      <div class="topbar-name">Rizz Live</div>
+      <div class="topbar-sub">Live Streaming Platform</div>
     </div>
-    <div class="sec-body">
-      <div class="sub-label"><div class="host-sub-txt">1.1 Personal Gift Share</div><div class="host-sub-line"></div></div>
-      <div class="sub-label" style="margin-top:4px;"><div class="host-sub-txt">Basic Share</div><div class="host-sub-line"></div></div>
-      <div class="info-box green"><div class="ib-label">Host gift Share</div><div class="ib-text"><b>100%</b></div></div>
-      <div class="sub-label"><div class="host-sub-txt">Example</div><div class="host-sub-line"></div></div>
-      <div class="info-box def"><div class="ib-text">If a user sends <b>10K Coins</b> during a live broadcast, the host will receive <b>10K Rubies</b>.</div></div>
-      <div class="sub-label"><div class="host-sub-txt">1.2 Host Weekly Bonus</div><div class="host-sub-line"></div></div>
-      <table class="pol-table">
-        <tr><th class="host-th">Valid Hours Target</th><th class="host-th">Valid Days Target</th><th class="host-th">Weekly Bonus</th></tr>
-        <tr><td class="gold">   10</td><td class="gold">    4</td><td class="gold">30%</td></tr>
-      </table>
-      <div class="sub-label"><div class="host-sub-txt">Example</div><div class="host-sub-line"></div></div>
-      <div class="info-box orange"><div class="ib-text">If a host earns <b>100K Rubies</b> in one week (Sunday 10:30 PM to Sunday 10:30 PM , they receive a <b>30K Ruby bonus (30%)</b>, credited on <b>Monday</b>.</div></div>
-      <div class="sub-label"><div class="host-sub-txt">To get this bonus, the host must:</div><div class="host-sub-line"></div></div>
-      <ul class="bul-list host-bullets">
-        <li>Complete at least <b>4 active days</b></li>
-        <li>Stream a total of <b>10 hours</b> in the week</li>
-      </ul>
-      <div class="sub-label"><div class="host-sub-txt">1.3 Rules</div><div class="host-sub-line"></div></div>
-      <ul class="bul-list host-bullets">
-        <li><b>Withdrawal Rate:</b> <span class="gold">20,000 Ruby = 1 USD</span></li>
-        <li><b>Day Change:</b> Daily at 10:30 PM </li>
-        <li><b>Weekly Period:</b> Sunday 10:30 PM to Sunday 10:30 PM </li>
-        <li><b>Valid Day:</b> Minimum <b>120 minutes (2 hours)</b> Live</li>
-        <li><b>Valid Hour:</b> 60+ minutes = <span class="gold">1 valid hour</span></li>
-        <li><b>Minimum Live Time:</b> Sessions below <b>30 minutes</b> not counted</li>
-        <li><b>Bonus Payment:</b> Every <b>Monday</b> (In Rubies)</li>
-        <li><b>Withdrawal:</b> Once per day, Minimum = <span class="gold">$10 USD</span></li>
-      </ul>
-      <div class="sub-label"><div class="host-sub-txt">Agency Change Rules</div><div class="host-sub-line"></div></div>
-      <div class="info-box def"><div class="ib-text">A host can change agency if:</div></div>
-      <ul class="bul-list host-bullets" style="margin-top:8px;">
-        <li>No live for <b>120 days</b></li>
-        <li>Current contract agency for <b>2 weeks</b></li>
-        <li>Both host and agency agree</li>
-      </ul>
-      <div class="sub-label"><div class="host-sub-txt">Strict Rule</div><div class="host-sub-line"></div></div>
-      <div class="info-box red"><div class="ib-text">Any misuse or cheating during transfer → <span class="red"><b>Warning / Suspension / Ban</b></span></div></div>
+    <div class="topbar-right">
+      <span class="back-btn" onclick="showPage('page-home')">
+        <svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>Back
+      </span>
+      <div class="india-badge"><span class="india-flag">🇮🇳</span><span class="india-txt">India</span></div>
     </div>
   </div>
 
-  <div class="sec-block host-block sb-2 host open">
-    <div class="sec-header" onclick="toggleSection(this)">
-      <div class="sec-num host-num">02</div>
-      <div class="sec-title">Host Game Commissions</div>
-      <div class="sec-arrow host-arrow">›</div>
-    </div>
-    <div class="sec-body">
-      <table class="pol-table">
-        <tr><th class="host-th">Bet Amount (Coins)</th><th class="host-th">Reward (Ruby)</th></tr>
-        <tr><td class="gold">1,000</td><td class="gold">1</td></tr>
-      </table>
-      <ul class="bul-list host-bullets" style="margin-top:12px;">
-        <li>Host earns <b>1 Ruby</b> for every <b>1,000 coins</b> used in games</li>
-        <li>This income <b class="red">does NOT count</b> toward weekly targets</li>
-        <li>Earnings <b>credited instantly</b> after each stream ends</li>
-      </ul>
+  <div class="policy-hero">
+    <div class="ph-eyebrow ph-host">Host Guidelines</div>
+    <div class="ph-title ph-title-host">HOST POLICY</div>
+    <div class="ph-orn">
+      <div class="pho-line pho-host-l"></div>
+      <div class="pho-gems"><div class="phg-s phg-host-s"></div><div class="phg-l phg-host-l"></div><div class="phg-s phg-host-s"></div></div>
+      <div class="pho-line pho-host-r"></div>
     </div>
   </div>
 
-  <div class="sec-block host-block sb-3 host open">
-    <div class="sec-header" onclick="toggleSection(this)">
-      <div class="sec-num host-num">03</div>
-      <div class="sec-title">Rookie Host Policy</div>
-      <div class="sec-arrow host-arrow">›</div>
-    </div>
-    <div class="sec-body">
-      <table class="pol-table">
-        <tr><th class="host-th">Cycle</th><th class="host-th">Weekly Ruby Target</th><th class="host-th">Valid Days</th><th class="host-th">Valid Hours</th><th class="host-th">Guarantee</th></tr>
-        <tr><td>Week 1</td><td class="gold">0</td><td>4</td><td>10</td><td class="green">$5</td></tr>
-        <tr><td>Week 2</td><td class="gold">50,000</td><td>4</td><td>10</td><td class="green">$5</td></tr>
-        <tr><td>Week 3</td><td class="gold">100,000</td><td>4</td><td>10</td><td class="green">$5</td></tr>
-        <tr><td>Week 4</td><td class="gold">150,000</td><td>4</td><td>10</td><td class="green">$5</td></tr>
-      </table>
-      <ul class="bul-list host-bullets" style="margin-top:12px;">
-        <li>New hosts must be <b>approved</b> to get guarantee for first 4 weeks</li>
-        <li><b>Week 1:</b> No target – guarantee is given</li>
-        <li><b>Week 2:</b> 50,000 Ruby</li>
-        <li><b>Week 3:</b> 100,000 Ruby</li>
-        <li><b>Week 4:</b> 150,000 Ruby</li>
-        <li>Missing one week's target <b class="red">does not cancel</b> next week's guarantee</li>
-        <li>If Valid Days &amp; Hours not met → <b class="red">salary under basic policy</b></li>
-        <li>From <b>Week 5 onward</b>, only <b>basic policy applies</b></li>
-      </ul>
-    </div>
-  </div>
+  <div class="sections">
 
-  <div class="sec-block host-block sb-4 host open">
-    <div class="sec-header" onclick="toggleSection(this)">
-      <div class="sec-num host-num">04</div>
-      <div class="sec-title">Prestige Host Policy</div>
-      <div class="sec-arrow host-arrow">›</div>
-    </div>
-    <div class="sec-body">
-      <table class="pol-table">
-        <tr><th class="host-th">Cycle</th><th class="host-th">Weekly Ruby Target</th><th class="host-th">Valid Days</th><th class="host-th">Valid Hours</th><th class="host-th">Guarantee</th></tr>
-        <tr><td>Week 1</td><td class="gold">0</td><td>4</td><td>10</td><td class="green">$10</td></tr>
-        <tr><td>Week 2</td><td class="gold">100,000</td><td>4</td><td>10</td><td class="green">$15</td></tr>
-        <tr><td>Week 3</td><td class="gold">150,000</td><td>4</td><td>10</td><td class="green">$15</td></tr>
-        <tr><td>Week 4</td><td class="gold">200,000</td><td>4</td><td>10</td><td class="green">$15</td></tr>
-        <tr><td>Week 5+</td><td class="gold">300,000</td><td>4</td><td>10</td><td class="green">$15</td></tr>
-      </table>
-      <ul class="bul-list host-bullets" style="margin-top:12px;">
-        <li>Only <b>approved hosts</b> can join this program</li>
-        <li><b>Week 1:</b> No target – guarantee pay given</li>
-        <li><b>Week 2:</b> 100,000 Ruby</li>
-        <li><b>Week 3:</b> 150,000 Ruby</li>
-        <li><b>Week 4:</b> 200,000 Ruby</li>
-        <li><b>Week 5+ :</b> 300,000 Ruby</li>
-        
-        <li>Missing one week's target <b class="red">does not cancel</b> next week's guarantee</li>
-        <li>If targets not met → <b class="red">salary follows basic policy</b></li>
-      </ul>
-      <div class="sub-label"><div class="host-sub-txt">4.1 Requirements</div><div class="host-sub-line"></div></div>
-      <ul class="bul-list host-bullets">
-        <li>Look clean and presentable</li>
-        <li>Follow schedule and complete hours</li>
-        <li>Keep background neat</li>
-        <li>Maintain good audio &amp; video quality</li>
-        <li>Actively engage with viewers</li>
-        <li>Follow team instructions and join activities</li>
-      </ul>
-      <div class="sub-label"><div class="host-sub-txt">4.2 Removal from Prestige Host Policy</div><div class="host-sub-line"></div></div>
-      <div class="info-box red">
-        <div class="ib-label">Warning Triggers</div>
-        <div class="ib-text">
-          Removal may occur for:<br><br>
-          • Not streaming regularly or showing bad attitude<br>
-          • Ignoring or disrespecting viewers<br>
-          • Noisy setup with no improvement<br>
-          • Not following team instructions<br>
-          • Poor screen quality without fixing<br>
-          • Breaking platform rules or laws<br>
-          • 2 bans/week → removed from policy (1st ban: 1 day, 2nd: 2 days)<br>
-          • Broadcast mandatory 6 PM – 11:50 PM<br>
-          • Old host with new ID → <b>ban, no compensation</b>
+    <!-- 01 Salary -->
+    <div class="sec-block host-block sb-1 host open">
+      <div class="sec-header" onclick="toggleSection(this)">
+        <div class="sec-num host-num">01</div>
+        <div class="sec-title">Host Salary Structure</div>
+        <div class="sec-arrow host-arrow">›</div>
+      </div>
+      <div class="sec-body">
+        <div class="sub-label"><div class="sub-txt host-sub-txt">1.1 Personal Gift Share</div><div class="sub-line host-sub-line"></div></div>
+        <div class="ibox ibox-green">
+          <div class="ibox-lbl">Host Gift Share</div>
+          <div class="ibox-text" style="font-family:'Cinzel',serif;font-size:22px;color:#4ADE80;font-weight:700;">100%</div>
+        </div>
+        <div class="sub-label"><div class="sub-txt host-sub-txt">Example</div><div class="sub-line host-sub-line"></div></div>
+        <div class="ibox ibox-gold">
+          <div class="ibox-text">If a user sends <b>10K Coins</b> during a live broadcast, the host receives <b>10K Rubies</b>.</div>
+        </div>
+
+        <div class="sub-label"><div class="sub-txt host-sub-txt">1.2 Weekly Bonus</div><div class="sub-line host-sub-line"></div></div>
+        <table class="pol-table">
+          <tr><th class="h-th">Valid Hours Target</th><th class="h-th">Valid Days Target</th><th class="h-th">Weekly Bonus</th></tr>
+          <tr><td class="gold">10</td><td class="gold">4</td><td class="gold">30%</td></tr>
+        </table>
+        <div class="sub-label"><div class="sub-txt host-sub-txt">Example</div><div class="sub-line host-sub-line"></div></div>
+        <div class="ibox ibox-saffron">
+          <div class="ibox-text">If a host earns <b>100K Rubies</b> in one week (Sun 10:30 PM – Sun 10:30 PM), they receive a <b>30K Ruby bonus (30%)</b>, credited on <b>Monday</b>.</div>
+        </div>
+        <div class="sub-label"><div class="sub-txt host-sub-txt">Bonus Requirements</div><div class="sub-line host-sub-line"></div></div>
+        <ul class="bul hb">
+          <li>Complete at least <b>4 active days</b></li>
+          <li>Stream a total of <b>10 hours</b> in the week</li>
+        </ul>
+
+        <div class="sub-label"><div class="sub-txt host-sub-txt">1.3 Rules</div><div class="sub-line host-sub-line"></div></div>
+        <ul class="bul hb">
+          <li><b>Withdrawal Rate:</b> <span class="gold">20,000 Ruby = 1 USD</span></li>
+          <li><b>Day Change:</b> Daily at 10:30 PM</li>
+          <li><b>Weekly Period:</b> Sunday 10:30 PM to Sunday 10:30 PM</li>
+          <li><b>Valid Day:</b> Minimum <b>120 minutes (2 hours)</b> Live</li>
+          <li><b>Valid Hour:</b> 60+ minutes = <span class="gold">1 valid hour</span></li>
+          <li><b>Minimum Live Time:</b> Sessions below <b>30 minutes</b> not counted</li>
+          <li><b>Bonus Payment:</b> Every <b>Monday</b> (In Rubies)</li>
+          <li><b>Withdrawal:</b> Once per day — Minimum <span class="gold">$10 USD</span></li>
+        </ul>
+
+        <div class="sub-label"><div class="sub-txt host-sub-txt">Agency Change Rules</div><div class="sub-line host-sub-line"></div></div>
+        <ul class="bul hb">
+          <li>No live for <b>120 days</b></li>
+          <li>Current contract agency unreachable for <b>2 weeks</b></li>
+          <li>Both host and agency <b>mutually agree</b></li>
+        </ul>
+        <div class="ibox ibox-red" style="margin-top:10px">
+          <div class="ibox-lbl">Strict Rule</div>
+          <div class="ibox-text">Any misuse or cheating during transfer → <b>Warning / Suspension / Ban</b></div>
         </div>
       </div>
     </div>
+
+    <!-- 02 Game Commissions -->
+    <div class="sec-block host-block sb-2 host open">
+      <div class="sec-header" onclick="toggleSection(this)">
+        <div class="sec-num host-num">02</div>
+        <div class="sec-title">Host Game Commissions</div>
+        <div class="sec-arrow host-arrow">›</div>
+      </div>
+      <div class="sec-body">
+        <table class="pol-table">
+          <tr><th class="h-th">Bet Amount (Coins)</th><th class="h-th">Reward (Ruby)</th></tr>
+          <tr><td class="gold">1,000</td><td class="gold">1</td></tr>
+        </table>
+        <ul class="bul hb" style="margin-top:14px">
+          <li>Host earns <b>1 Ruby</b> for every <b>1,000 coins</b> used in games</li>
+          <li>This income <b><span class="red">does NOT count</span></b> toward weekly targets</li>
+          <li>Earnings <b>credited instantly</b> after each stream ends</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 03 Rookie -->
+    <div class="sec-block host-block sb-3 host open">
+      <div class="sec-header" onclick="toggleSection(this)">
+        <div class="sec-num host-num">03</div>
+        <div class="sec-title">Rookie Host Policy</div>
+        <div class="sec-arrow host-arrow">›</div>
+      </div>
+      <div class="sec-body">
+        <table class="pol-table">
+          <tr><th class="h-th">Cycle</th><th class="h-th">Ruby Target</th><th class="h-th">Days</th><th class="h-th">Hours</th><th class="h-th">Guarantee</th></tr>
+          <tr><td>Week 1</td><td class="gold">0</td><td>4</td><td>10</td><td class="green">$5</td></tr>
+          <tr><td>Week 2</td><td class="gold">50,000</td><td>4</td><td>10</td><td class="green">$5</td></tr>
+          <tr><td>Week 3</td><td class="gold">100,000</td><td>4</td><td>10</td><td class="green">$5</td></tr>
+          <tr><td>Week 4</td><td class="gold">150,000</td><td>4</td><td>10</td><td class="green">$5</td></tr>
+        </table>
+        <ul class="bul hb" style="margin-top:14px">
+          <li>New hosts must be <b>approved</b> to get guarantee for first 4 weeks</li>
+          <li><b>Week 1:</b> No target – guarantee given automatically</li>
+          <li>Missing one week's target <b><span class="red">does not cancel</span></b> next week's guarantee</li>
+          <li>If Valid Days &amp; Hours not met → <b><span class="red">salary under basic policy</span></b></li>
+          <li>From <b>Week 5 onward</b>, only basic policy applies</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 04 Prestige -->
+    <div class="sec-block host-block sb-4 host open">
+      <div class="sec-header" onclick="toggleSection(this)">
+        <div class="sec-num host-num">04</div>
+        <div class="sec-title">Prestige Host Policy</div>
+        <div class="sec-arrow host-arrow">›</div>
+      </div>
+      <div class="sec-body">
+        <table class="pol-table">
+          <tr><th class="h-th">Cycle</th><th class="h-th">Ruby Target</th><th class="h-th">Days</th><th class="h-th">Hours</th><th class="h-th">Guarantee</th></tr>
+          <tr><td>Week 1</td><td class="gold">0</td><td>4</td><td>10</td><td class="green">$10</td></tr>
+          <tr><td>Week 2</td><td class="gold">100,000</td><td>4</td><td>10</td><td class="green">$15</td></tr>
+          <tr><td>Week 3</td><td class="gold">150,000</td><td>4</td><td>10</td><td class="green">$15</td></tr>
+          <tr><td>Week 4</td><td class="gold">200,000</td><td>4</td><td>10</td><td class="green">$15</td></tr>
+          <tr><td>Week 5+</td><td class="gold">300,000</td><td>4</td><td>10</td><td class="green">$15</td></tr>
+        </table>
+        <ul class="bul hb" style="margin-top:14px">
+          <li>Only <b>approved hosts</b> can join this program</li>
+          <li>Missing one week's target <b><span class="red">does not cancel</span></b> next week's guarantee</li>
+          <li>If targets not met → <b><span class="red">salary follows basic policy</span></b></li>
+        </ul>
+
+        <div class="sub-label"><div class="sub-txt host-sub-txt">4.1 Requirements</div><div class="sub-line host-sub-line"></div></div>
+        <ul class="bul hb">
+          <li>Look clean and presentable on stream</li>
+          <li>Follow schedule and complete required hours</li>
+          <li>Keep background neat and professional</li>
+          <li>Maintain good audio &amp; video quality</li>
+          <li>Actively engage with viewers</li>
+          <li>Follow team instructions and join activities</li>
+        </ul>
+
+        <div class="sub-label"><div class="sub-txt host-sub-txt">4.2 Removal Triggers</div><div class="sub-line host-sub-line"></div></div>
+        <div class="ibox ibox-red">
+          <div class="ibox-lbl">Warning Triggers</div>
+          <div class="ibox-text">
+            • Not streaming regularly or bad attitude<br>
+            • Ignoring or disrespecting viewers<br>
+            • Noisy setup with no improvement<br>
+            • Not following team instructions<br>
+            • Poor screen quality without fixing<br>
+            • Breaking platform rules or laws<br>
+            • <b>2 bans/week</b> → removed from policy<br>
+            &nbsp;&nbsp;(1st ban: 1 day · 2nd: 2 days)<br>
+            • Mandatory broadcast: <b>6 PM – 11:50 PM</b><br>
+            • Old host with new ID → <b>ban, no compensation</b>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 
-</div>
-
-<div class="foot">
-  <div class="foot-bar"><div class="fb-s"></div><div class="fb-w"></div><div class="fb-g"></div></div>
-  <p class="foot-text">© 2026 <b>Rizz Live</b> · All Rights Reserved</p>
-</div>
+  <div class="footer">
+    <div class="footer-bar"><div class="fb-s"></div><div class="fb-w"></div><div class="fb-g"></div></div>
+    <p class="footer-text">© 2026 <b>Rizz Live</b> · All Rights Reserved</p>
+  </div>
 
 </div><!-- /page-host -->
 
 
-<!-- ════════════════════════════
-     PAGE 3: AGENCY POLICY
-════════════════════════════ -->
+<!-- ═══════════════════════════
+     PAGE 3 · AGENCY POLICY
+═══════════════════════════ -->
 <div class="page" id="page-agency">
 
-<div class="topbar">
-  <div class="topbar-triaccent"><div class="ta-s"></div><div class="ta-w"></div><div class="ta-g"></div></div>
-  <div class="logo-frame">
-    <div class="logo-ring-outer"></div>
-    <div class="logo-box">
-      <img class="logo-img" src="logo.png" alt="Rizz Live" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-      <span class="logo-fallback" style="display:none;">RL</span>
+  <div class="topbar">
+    <div class="tri-bar"><div class="tri-s"></div><div class="tri-w"></div><div class="tri-g"></div></div>
+    <div class="logo-wrap">
+      <div class="logo-spin-ring"></div>
+      <div class="logo-inner">
+        <img class="logo-img" src="logo.png" alt="Rizz Live" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <span class="logo-fallback" style="display:none">RL</span>
+      </div>
+      <div class="logo-gem lg-tl"></div><div class="logo-gem lg-tr"></div>
+      <div class="logo-gem lg-bl"></div><div class="logo-gem lg-br"></div>
     </div>
-    <div class="logo-gem lg-tl"></div><div class="logo-gem lg-tr"></div>
-    <div class="logo-gem lg-bl"></div><div class="logo-gem lg-br"></div>
-  </div>
-  <div class="topbar-text">
-    <div class="topbar-name">Rizz Live</div>
-    <div class="topbar-sub">Live Streaming Platform</div>
-  </div>
-  <div class="topbar-right">
-    <span class="back-btn green" onclick="showPage('page-home')">
-      <svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
-      Back
-    </span>
-    <div class="india-badge"><span class="india-flag">🇮🇳</span><span class="india-txt">India</span></div>
-  </div>
-</div>
-
-<div class="page-hero">
-  <div class="ph-label agency">Agency Guidelines</div>
-  <div class="ph-title agency">AGENCY POLICY</div>
-  <div class="ph-orn">
-    <div class="ph-line agency-line"></div>
-    <div class="ph-gems"><div class="pg-s agency"></div><div class="pg-l agency"></div><div class="pg-s agency"></div></div>
-    <div class="ph-line agency-line r"></div>
-  </div>
-</div>
-
-<div class="sections">
-
-  <div class="sec-block agency-block sb-1 agency open">
-    <div class="sec-header" onclick="toggleSection(this)">
-      <div class="sec-num agency-num">01</div>
-      <div class="sec-title">Agency Commission Tiers</div>
-      <div class="sec-arrow agency-arrow">›</div>
+    <div class="topbar-info">
+      <div class="topbar-name">Rizz Live</div>
+      <div class="topbar-sub">Live Streaming Platform</div>
     </div>
-    <div class="sec-body">
-      <div class="tier-grid">
-        <div class="tier-card tc-l1">
-          <div class="tier-lvl">Level 1</div>
-          <div class="tier-range">Weekly Revenue below <b>10M Ruby</b></div>
-          <div class="tier-pct">16%</div>
+    <div class="topbar-right">
+      <span class="back-btn gb" onclick="showPage('page-home')">
+        <svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>Back
+      </span>
+      <div class="india-badge"><span class="india-flag">🇮🇳</span><span class="india-txt">India</span></div>
+    </div>
+  </div>
+
+  <div class="policy-hero">
+    <div class="ph-eyebrow ph-agency">Agency Guidelines</div>
+    <div class="ph-title ph-title-agency">AGENCY POLICY</div>
+    <div class="ph-orn">
+      <div class="pho-line pho-agency-l"></div>
+      <div class="pho-gems"><div class="phg-s phg-agency-s"></div><div class="phg-l phg-agency-l"></div><div class="phg-s phg-agency-s"></div></div>
+      <div class="pho-line pho-agency-r"></div>
+    </div>
+  </div>
+
+  <div class="sections">
+
+    <!-- 01 Commission Tiers -->
+    <div class="sec-block agency-block sb-1 agency open">
+      <div class="sec-header" onclick="toggleSection(this)">
+        <div class="sec-num agency-num">01</div>
+        <div class="sec-title">Agency Commission Tiers</div>
+        <div class="sec-arrow agency-arrow">›</div>
+      </div>
+      <div class="sec-body">
+        <div class="tier-grid">
+          <div class="tier-card tc1">
+            <div class="tier-lvl">Level 1</div>
+            <div class="tier-range">Weekly Revenue below <b>10M Ruby</b></div>
+            <div class="tier-pct">16%</div>
+          </div>
+          <div class="tier-card tc2">
+            <div class="tier-lvl">Level 2</div>
+            <div class="tier-range">Weekly Revenue <b>10M – 30M Ruby</b></div>
+            <div class="tier-pct">18%</div>
+          </div>
+          <div class="tier-card tc3">
+            <div class="tier-lvl">Level 3</div>
+            <div class="tier-range">Weekly Revenue above <b>30M Ruby</b></div>
+            <div class="tier-pct">20%</div>
+          </div>
         </div>
-        <div class="tier-card tc-l2">
-          <div class="tier-lvl">Level 2</div>
-          <div class="tier-range">Weekly Revenue <b>10M – 30M Ruby</b></div>
-          <div class="tier-pct">18%</div>
-        </div>
-        <div class="tier-card tc-l3">
-          <div class="tier-lvl">Level 3</div>
-          <div class="tier-range">Weekly Revenue above <b>30M Ruby</b></div>
-          <div class="tier-pct">20%</div>
+        <div class="sub-label"><div class="sub-txt agency-sub-txt">Requirements</div><div class="sub-line agency-sub-line"></div></div>
+        <ul class="bul ab">
+          <li>Agency must maintain at least <b>5 active hosts</b> every week</li>
+          <li>Actively encourage hosts to go live &amp; join platform events</li>
+        </ul>
+        <div class="ibox ibox-agency" style="margin-top:12px">
+          <div class="ibox-lbl">Weekly Task Period</div>
+          <div class="ibox-text">All weekly tasks counted from <b>Sunday 10:30 PM to Sunday 10:30 PM (IST)</b>.</div>
         </div>
       </div>
-      <div class="sub-label"><div class="agency-sub-txt">Requirements</div><div class="agency-sub-line"></div></div>
-      <ul class="bul-list agency-bullets">
-        <li>Agency must maintain at least <b>5 active hosts</b> every week</li>
-        <li>Agency must encourage hosts to go live &amp; actively join platform events</li>
-      </ul>
-      <div class="sub-label"><div class="agency-sub-txt">Weekly Task Period</div><div class="agency-sub-line"></div></div>
-      <div class="info-box agency-def"><div class="ib-label">Period</div><div class="ib-text">All weekly tasks are counted from <b>Sunday 10:30 PM to Sunday 10:30 PM (IST)</b>.</div></div>
     </div>
-  </div>
 
-  <div class="sec-block agency-block sb-2 agency open">
-    <div class="sec-header" onclick="toggleSection(this)">
-      <div class="sec-num agency-num">02</div>
-      <div class="sec-title">Host Activation Salary</div>
-      <div class="sec-arrow agency-arrow">›</div>
-    </div>
-    <div class="sec-body">
-      <table class="pol-table">
-        <tr><th class="agency-th">Level</th><th class="agency-th">Monthly Target</th><th class="agency-th">Active Hosts</th><th class="agency-th">Basic Pay</th></tr>
-        <tr><td>L1</td><td>Below 10M</td><td>—</td><td>—</td></tr>
-        <tr><td>L2</td><td>Above 10M</td><td class="green">20</td><td class="gold">$25</td></tr>
-        <tr><td>L3</td><td>Above 50M</td><td class="green">30</td><td class="gold">$225</td></tr>
-        <tr><td>L4</td><td>Above 100M</td><td class="green">50</td><td class="gold">$500</td></tr>
-        <tr><td>L5</td><td>Above 200M</td><td class="green">50</td><td class="gold">$1,000</td></tr>
-      </table>
-      <div class="sub-label"><div class="agency-sub-txt">Active Host Definition</div><div class="agency-sub-line"></div></div>
-      <ul class="bul-list agency-bullets">
-        <li>At least <b>10 valid days</b> in a month</li>
-        <li>At least <b>20 valid hours</b> in a month</li>
-        <li>Minimum <b>100,000 Rubies</b> earned in gifts per month</li>
-      </ul>
-      <div class="info-box warn" style="margin-top:12px;">
-        <div class="ib-label">Important</div>
-        <div class="ib-text">Failure to meet either the monthly revenue target or active host requirement results in <b>disqualification</b> from the Host Activation Salary Program.</div>
+    <!-- 02 Host Activation Salary -->
+    <div class="sec-block agency-block sb-2 agency open">
+      <div class="sec-header" onclick="toggleSection(this)">
+        <div class="sec-num agency-num">02</div>
+        <div class="sec-title">Host Activation Salary</div>
+        <div class="sec-arrow agency-arrow">›</div>
+      </div>
+      <div class="sec-body">
+        <table class="pol-table">
+          <tr><th class="a-th">Level</th><th class="a-th">Monthly Target</th><th class="a-th">Active Hosts</th><th class="a-th">Basic Pay</th></tr>
+          <tr><td>L1</td><td>Below 10M</td><td>—</td><td>—</td></tr>
+          <tr><td>L2</td><td>Above 10M</td><td class="green">20</td><td class="gold">$25</td></tr>
+          <tr><td>L3</td><td>Above 50M</td><td class="green">30</td><td class="gold">$225</td></tr>
+          <tr><td>L4</td><td>Above 100M</td><td class="green">50</td><td class="gold">$500</td></tr>
+          <tr><td>L5</td><td>Above 200M</td><td class="green">50</td><td class="gold">$1,000</td></tr>
+        </table>
+        <div class="sub-label"><div class="sub-txt agency-sub-txt">Active Host Definition</div><div class="sub-line agency-sub-line"></div></div>
+        <ul class="bul ab">
+          <li>At least <b>10 valid days</b> in a month</li>
+          <li>At least <b>20 valid hours</b> in a month</li>
+          <li>Minimum <b>100,000 Rubies</b> earned in gifts per month</li>
+        </ul>
+        <div class="ibox ibox-warn" style="margin-top:12px">
+          <div class="ibox-lbl">Important</div>
+          <div class="ibox-text">Failure to meet the monthly revenue target or active host requirement results in <b>disqualification</b> from the Host Activation Salary Program.</div>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div class="sec-block agency-block sb-3 agency open">
-    <div class="sec-header" onclick="toggleSection(this)">
-      <div class="sec-num agency-num">03</div>
-      <div class="sec-title">Commission Payout</div>
-      <div class="sec-arrow agency-arrow">›</div>
-    </div>
-    <div class="sec-body">
-      <div class="info-box gold"><div class="ib-label">Payout Schedule</div><div class="ib-text">Commissions are paid <b>daily basis in Rubies</b>.</div></div>
-    </div>
-  </div>
-
-  <div class="sec-block agency-block sb-4 agency open">
-    <div class="sec-header" onclick="toggleSection(this)">
-      <div class="sec-num agency-num">04</div>
-      <div class="sec-title">Withdrawal Rules</div>
-      <div class="sec-arrow agency-arrow">›</div>
-    </div>
-    <div class="sec-body">
-      <ul class="bul-list agency-bullets">
-        <li>Withdrawal requests may be submitted <b>once per day</b></li>
-        <li>Minimum withdrawal amount: <b>$10 USD</b></li>
-      </ul>
-      <div class="sub-label"><div class="agency-sub-txt">Fee Structure</div><div class="agency-sub-line"></div></div>
-      <div class="fee-row"><div class="fee-amt">Withdrawal less than <b>$100</b></div><div class="fee-val">$2 flat per transaction</div></div>
-      <div class="fee-row"><div class="fee-amt">Withdrawal <b>$100 and above</b></div><div class="fee-val">2% of withdrawal amount</div></div>
-    </div>
-  </div>
-
-  <div class="sec-block agency-block sb-5 agency open">
-    <div class="sec-header" onclick="toggleSection(this)">
-      <div class="sec-num agency-num">05</div>
-      <div class="sec-title">Agency Change Rules</div>
-      <div class="sec-arrow agency-arrow">›</div>
-    </div>
-    <div class="sec-body">
-      <ul class="bul-list agency-bullets">
-        <li>No activity for <b>120 days</b></li>
-        <li>Agency unreachable for <b>2 weeks</b></li>
-        <li>Both agency and host <b>mutually agree</b> to the change</li>
-      </ul>
-      <div class="info-box red" style="margin-top:12px;">
-        <div class="ib-label">Important</div>
-        <div class="ib-text">Any fraudulent transfer attempts → <b>Warning / Suspension / Permanent Ban</b></div>
+    <!-- 03 Payout -->
+    <div class="sec-block agency-block sb-3 agency open">
+      <div class="sec-header" onclick="toggleSection(this)">
+        <div class="sec-num agency-num">03</div>
+        <div class="sec-title">Commission Payout</div>
+        <div class="sec-arrow agency-arrow">›</div>
+      </div>
+      <div class="sec-body">
+        <div class="ibox ibox-gold">
+          <div class="ibox-lbl">Payout Schedule</div>
+          <div class="ibox-text">Commissions are paid on a <b>daily basis in Rubies</b>.</div>
+        </div>
       </div>
     </div>
+
+    <!-- 04 Withdrawal -->
+    <div class="sec-block agency-block sb-4 agency open">
+      <div class="sec-header" onclick="toggleSection(this)">
+        <div class="sec-num agency-num">04</div>
+        <div class="sec-title">Withdrawal Rules</div>
+        <div class="sec-arrow agency-arrow">›</div>
+      </div>
+      <div class="sec-body">
+        <ul class="bul ab">
+          <li>Withdrawal requests may be submitted <b>once per day</b></li>
+          <li>Minimum withdrawal amount: <b>$10 USD</b></li>
+        </ul>
+        <div class="sub-label"><div class="sub-txt agency-sub-txt">Fee Structure</div><div class="sub-line agency-sub-line"></div></div>
+        <div class="fee-row">
+          <div class="fee-label">Withdrawal less than <b>$100</b></div>
+          <div class="fee-val">$2 flat fee</div>
+        </div>
+        <div class="fee-row">
+          <div class="fee-label">Withdrawal <b>$100 and above</b></div>
+          <div class="fee-val">2% of amount</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 05 Agency Change -->
+    <div class="sec-block agency-block sb-5 agency open">
+      <div class="sec-header" onclick="toggleSection(this)">
+        <div class="sec-num agency-num">05</div>
+        <div class="sec-title">Agency Change Rules</div>
+        <div class="sec-arrow agency-arrow">›</div>
+      </div>
+      <div class="sec-body">
+        <ul class="bul ab">
+          <li>No activity for <b>120 days</b></li>
+          <li>Agency unreachable for <b>2 weeks</b></li>
+          <li>Both agency and host <b>mutually agree</b> to the change</li>
+        </ul>
+        <div class="ibox ibox-red" style="margin-top:12px">
+          <div class="ibox-lbl">Strict Warning</div>
+          <div class="ibox-text">Any fraudulent transfer attempts → <b>Warning / Suspension / Permanent Ban</b></div>
+        </div>
+      </div>
+    </div>
+
   </div>
 
-</div>
-
-<div class="foot">
-  <div class="foot-bar"><div class="fb-s"></div><div class="fb-w"></div><div class="fb-g"></div></div>
-  <p class="foot-text">© 2024 <b>Rizz Live</b> · All Rights Reserved</p>
-</div>
+  <div class="footer">
+    <div class="footer-bar"><div class="fb-s"></div><div class="fb-w"></div><div class="fb-g"></div></div>
+    <p class="footer-text">© 2026 <b>Rizz Live</b> · All Rights Reserved</p>
+  </div>
 
 </div><!-- /page-agency -->
 
 <script>
 /* ── PAGE NAVIGATION ── */
-function showPage(id){
-  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-  window.scrollTo(0,0);
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  const target = document.getElementById(id);
+  target.classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 /* ── SECTION TOGGLE ── */
-function toggleSection(header){
-  const block=header.closest('.sec-block');
+function toggleSection(header) {
+  const block = header.closest('.sec-block');
   block.classList.toggle('open');
 }
 
+/* ── FLOATING PARTICLES ── */
+(function() {
+  const container = document.getElementById('particles');
+  const colors = ['rgba(255,180,0,0.8)', 'rgba(255,100,0,0.7)', 'rgba(212,175,55,0.7)', 'rgba(255,220,100,0.5)'];
+  function createParticle() {
+    const p = document.createElement('div');
+    p.classList.add('particle');
+    const x = 5 + Math.random() * 90;
+    const size = 2 + Math.random() * 3;
+    const dur = 6 + Math.random() * 8;
+    const delay = Math.random() * 6;
+    p.style.cssText = `
+      left:${x}%;bottom:${-5 + Math.random() * 20}%;
+      width:${size}px;height:${size}px;
+      background:${colors[Math.floor(Math.random()*colors.length)]};
+      animation-duration:${dur}s;animation-delay:${delay}s;
+      box-shadow:0 0 ${size*2}px ${size}px ${colors[Math.floor(Math.random()*colors.length)]};
+    `;
+    container.appendChild(p);
+    setTimeout(() => p.remove(), (dur + delay) * 1000);
+  }
+  // Create initial batch
+  for(let i = 0; i < 12; i++) createParticle();
+  setInterval(createParticle, 900);
+})();
+
 /* ── BACKGROUND CANVAS ── */
-(function(){
-  const c=document.getElementById('bgCanvas');
-  const ctx=c.getContext('2d');
-  let W,H,t=0;
-  function resize(){W=c.width=window.innerWidth;H=c.height=window.innerHeight;}
-  resize();window.addEventListener('resize',resize);
-  const GOLD='rgba(191,146,0,',SAFFRON='rgba(200,85,14,';
-  function drawMandala(cx,cy,r,angle,alpha){
-    ctx.save();ctx.translate(cx,cy);ctx.rotate(angle);ctx.globalAlpha=alpha;
-    const petals=16;
-    for(let i=0;i<petals;i++){const a=(i/petals)*Math.PI*2;ctx.save();ctx.rotate(a);ctx.beginPath();ctx.ellipse(0,-r*.55,r*.08,r*.28,0,0,Math.PI*2);ctx.strokeStyle=GOLD+'.45)';ctx.lineWidth=.6;ctx.stroke();ctx.restore();}
-    [.28,.55,.78,1].forEach((f,i)=>{ctx.beginPath();ctx.arc(0,0,r*f,0,Math.PI*2);ctx.strokeStyle=(i%2===0?GOLD:SAFFRON)+(0.2-i*.03)+')';ctx.lineWidth=.6;ctx.stroke();});
+(function() {
+  const c = document.getElementById('bgCanvas');
+  const ctx = c.getContext('2d');
+  let W, H, t = 0;
+
+  function resize() {
+    W = c.width = window.innerWidth;
+    H = c.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  /* Rangoli / Mandala drawing */
+  function drawMandala(cx, cy, r, rotation, alpha) {
+    ctx.save();
+    ctx.translate(cx, cy);
+    ctx.rotate(rotation);
+    ctx.globalAlpha = alpha;
+
+    const spokes = 24;
+    for(let i = 0; i < spokes; i++) {
+      const a = (i / spokes) * Math.PI * 2;
+      ctx.save(); ctx.rotate(a);
+      // Petal
+      ctx.beginPath();
+      ctx.ellipse(0, -r * 0.52, r * 0.07, r * 0.25, 0, 0, Math.PI * 2);
+      ctx.strokeStyle = `rgba(212,175,55,0.4)`;
+      ctx.lineWidth = 0.7; ctx.stroke();
+      // Dot at petal tip
+      ctx.beginPath();
+      ctx.arc(0, -r * 0.78, r * 0.03, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(200,85,14,0.35)`;
+      ctx.fill();
+      ctx.restore();
+    }
+
+    // Concentric rings
+    const rings = [0.25, 0.5, 0.75, 1.0];
+    rings.forEach((f, i) => {
+      ctx.beginPath();
+      ctx.arc(0, 0, r * f, 0, Math.PI * 2);
+      const g = i % 2 === 0;
+      ctx.strokeStyle = g ? `rgba(212,175,55,${0.18 - i*0.03})` : `rgba(200,85,14,${0.12 - i*0.02})`;
+      ctx.lineWidth = 0.6; ctx.stroke();
+    });
+
+    // Inner lotus petals (8)
+    for(let i = 0; i < 8; i++) {
+      const a = (i / 8) * Math.PI * 2;
+      ctx.save(); ctx.rotate(a);
+      ctx.beginPath();
+      ctx.ellipse(0, -r * 0.18, r * 0.05, r * 0.12, 0, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(200,85,14,0.12)`;
+      ctx.fill();
+      ctx.restore();
+    }
+
     ctx.restore();
   }
-  const spots=Array.from({length:6},()=>({x:Math.random()*400,y:Math.random()*900,r:60+Math.random()*100,speed:.3+Math.random()*.4,phase:Math.random()*Math.PI*2,col:Math.random()>.5?SAFFRON:GOLD}));
-  function draw(){
-    ctx.clearRect(0,0,W,H);
-    const bg=ctx.createRadialGradient(W/2,0,0,W/2,H/2,H);
-    bg.addColorStop(0,'rgba(28,15,5,.98)');bg.addColorStop(.4,'rgba(15,11,6,1)');bg.addColorStop(1,'rgba(10,8,4,1)');
-    ctx.fillStyle=bg;ctx.fillRect(0,0,W,H);
-    spots.forEach(s=>{const dy=Math.sin(t*s.speed+s.phase)*25;const grad=ctx.createRadialGradient(s.x,s.y+dy,0,s.x,s.y+dy,s.r);grad.addColorStop(0,s.col+'.06)');grad.addColorStop(1,s.col+'0)');ctx.fillStyle=grad;ctx.beginPath();ctx.arc(s.x,s.y+dy,s.r,0,Math.PI*2);ctx.fill();});
-    drawMandala(W/2,H*.15,140,t*.008,.4);
-    drawMandala(W/2,H*.85,100,-t*.007,.28);
-    t+=.4;requestAnimationFrame(draw);
+
+  /* Ambient glow spots */
+  const spots = Array.from({length: 8}, () => ({
+    x: Math.random() * 500,
+    y: Math.random() * 900,
+    r: 80 + Math.random() * 140,
+    speed: 0.2 + Math.random() * 0.5,
+    phase: Math.random() * Math.PI * 2,
+    col: Math.random() > 0.5 ? 'rgba(200,85,14,' : 'rgba(212,175,55,'
+  }));
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+
+    // Deep dark base
+    const bg = ctx.createRadialGradient(W/2, 0, 0, W/2, H * 0.6, H * 0.9);
+    bg.addColorStop(0, 'rgba(30,16,5,0.98)');
+    bg.addColorStop(0.4, 'rgba(14,10,4,1)');
+    bg.addColorStop(1, 'rgba(8,6,2,1)');
+    ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+
+    // Animated glow spots
+    spots.forEach(s => {
+      const dy = Math.sin(t * s.speed + s.phase) * 30;
+      const dx = Math.cos(t * s.speed * 0.7 + s.phase) * 15;
+      const grad = ctx.createRadialGradient(s.x + dx, s.y + dy, 0, s.x + dx, s.y + dy, s.r);
+      grad.addColorStop(0, s.col + '0.055)');
+      grad.addColorStop(1, s.col + '0)');
+      ctx.fillStyle = grad;
+      ctx.beginPath(); ctx.arc(s.x + dx, s.y + dy, s.r, 0, Math.PI * 2); ctx.fill();
+    });
+
+    // Primary mandala top center
+    drawMandala(W/2, H * 0.12, Math.min(160, W * 0.32), t * 0.006, 0.45);
+    // Secondary mandala bottom
+    drawMandala(W/2, H * 0.9, Math.min(110, W * 0.22), -t * 0.005, 0.28);
+    // Side accent
+    drawMandala(W * 0.1, H * 0.5, 60, t * 0.008, 0.12);
+    drawMandala(W * 0.9, H * 0.5, 60, -t * 0.008, 0.12);
+
+    t += 0.3;
+    requestAnimationFrame(draw);
   }
   draw();
 })();
