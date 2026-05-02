@@ -591,9 +591,8 @@ td.red { color: #FCA5A5; font-weight: 500; }
   padding: 5px 0;
   line-height: 1.65;
   font-weight: 300;
-  /* FIX: prevent awkward mid-word/mid-phrase breaks */
   word-break: normal;
-  overflow-wrap: anywhere;
+  overflow-wrap: break-word;
 }
 .bul li::before {
   content: '';
@@ -902,7 +901,7 @@ td.red { color: #FCA5A5; font-weight: 500; }
         <div class="sub-label"><div class="sub-txt host-sub-txt">1.2 Weekly Bonus</div><div class="sub-line host-sub-line"></div></div>
         <table class="pol-table">
           <tr><th class="h-th">Valid Hours Target</th><th class="h-th">Valid Days Target</th><th class="h-th">Weekly Bonus</th></tr>
-          <tr><td class="gold">10</td><td class="gold">4</td><td class="gold">30%</td></tr>
+          <tr><td class="gold" style="white-space:nowrap">10</td><td class="gold" style="white-space:nowrap">4</td><td class="gold">30%</td></tr>
         </table>
         <div class="sub-label"><div class="sub-txt host-sub-txt">Example</div><div class="sub-line host-sub-line"></div></div>
         <div class="ibox ibox-saffron">
@@ -949,12 +948,12 @@ td.red { color: #FCA5A5; font-weight: 500; }
       <div class="sec-body">
         <table class="pol-table">
           <tr><th class="h-th">Bet Amount (Coins)</th><th class="h-th">Reward (Ruby)</th></tr>
-          <tr><td class="gold">1,000</td><td class="gold">1</td></tr>
+          <tr><td class="gold" style="white-space:nowrap">1,000</td><td class="gold" style="white-space:nowrap">1</td></tr>
         </table>
         <ul class="bul hb" style="margin-top:14px">
           <li>Host earns <b>1 Ruby</b> for every <b>1,000 coins</b> used in games</li>
-          <li>This income <b><span class="red">does NOT count</span></b> toward weekly targets</li>
-          <li>Earnings <b>credited instantly</b> after each stream ends</li>
+          <li>This income <span style="white-space:nowrap"><b><span class="red">does NOT count</span></b> toward weekly targets</span></li>
+          <li>Earnings <span style="white-space:nowrap"><b>credited instantly</b> after each stream ends</span></li>
         </ul>
       </div>
     </div>
@@ -969,16 +968,16 @@ td.red { color: #FCA5A5; font-weight: 500; }
       <div class="sec-body">
         <table class="pol-table">
           <tr><th class="h-th">Cycle</th><th class="h-th">Ruby Target</th><th class="h-th">Days</th><th class="h-th">Hours</th><th class="h-th">Guarantee</th></tr>
-          <tr><td>Week 1</td><td class="gold">0</td><td>4</td><td>10</td><td class="green">$5</td></tr>
-          <tr><td>Week 2</td><td class="gold">50,000</td><td>4</td><td>10</td><td class="green">$5</td></tr>
-          <tr><td>Week 3</td><td class="gold">100,000</td><td>4</td><td>10</td><td class="green">$5</td></tr>
-          <tr><td>Week 4</td><td class="gold">150,000</td><td>4</td><td>10</td><td class="green">$5</td></tr>
+          <tr><td style="white-space:nowrap">Week 1</td><td class="gold" style="white-space:nowrap">0</td><td>4</td><td>10</td><td class="green">$5</td></tr>
+          <tr><td style="white-space:nowrap">Week 2</td><td class="gold" style="white-space:nowrap">50,000</td><td>4</td><td>10</td><td class="green">$5</td></tr>
+          <tr><td style="white-space:nowrap">Week 3</td><td class="gold" style="white-space:nowrap">100,000</td><td>4</td><td>10</td><td class="green">$5</td></tr>
+          <tr><td style="white-space:nowrap">Week 4</td><td class="gold" style="white-space:nowrap">150,000</td><td>4</td><td>10</td><td class="green">$5</td></tr>
         </table>
         <ul class="bul hb" style="margin-top:14px">
           <li>New hosts must be <b>approved</b> to get guarantee for first 4 weeks</li>
           <li><b>Week 1:</b> No target – guarantee given automatically</li>
-          <li>Missing one week's target <b>does not cancel</b> next week's guarantee</li>
-          <li>If Valid Days &amp; Hours not met → <b>salary under basic policy</b></li>
+          <li>Missing one week's target <span style="white-space:nowrap"><b>does not cancel</b> next week's guarantee</span></li>
+          <li>If Valid Days &amp; Hours not met → <span style="white-space:nowrap"><b>salary under basic policy</b></span></li>
           <li>From <b>Week 5 onward</b>, only basic policy applies</li>
         </ul>
       </div>
@@ -994,16 +993,16 @@ td.red { color: #FCA5A5; font-weight: 500; }
       <div class="sec-body">
         <table class="pol-table">
           <tr><th class="h-th">Cycle</th><th class="h-th">Ruby Target</th><th class="h-th">Days</th><th class="h-th">Hours</th><th class="h-th">Guarantee</th></tr>
-          <tr><td>Week 1</td><td class="gold">0</td><td>4</td><td>10</td><td class="green">$10</td></tr>
-          <tr><td>Week 2</td><td class="gold">100,000</td><td>4</td><td>10</td><td class="green">$15</td></tr>
-          <tr><td>Week 3</td><td class="gold">150,000</td><td>4</td><td>10</td><td class="green">$15</td></tr>
-          <tr><td>Week 4</td><td class="gold">200,000</td><td>4</td><td>10</td><td class="green">$15</td></tr>
-          <tr><td>Week 5+</td><td class="gold">300,000</td><td>4</td><td>10</td><td class="green">$15</td></tr>
+          <tr><td style="white-space:nowrap">Week 1</td><td class="gold" style="white-space:nowrap">0</td><td>4</td><td>10</td><td class="green">$10</td></tr>
+          <tr><td style="white-space:nowrap">Week 2</td><td class="gold" style="white-space:nowrap">100,000</td><td>4</td><td>10</td><td class="green">$15</td></tr>
+          <tr><td style="white-space:nowrap">Week 3</td><td class="gold" style="white-space:nowrap">150,000</td><td>4</td><td>10</td><td class="green">$15</td></tr>
+          <tr><td style="white-space:nowrap">Week 4</td><td class="gold" style="white-space:nowrap">200,000</td><td>4</td><td>10</td><td class="green">$15</td></tr>
+          <tr><td style="white-space:nowrap">Week 5+</td><td class="gold" style="white-space:nowrap">300,000</td><td>4</td><td>10</td><td class="green">$15</td></tr>
         </table>
         <ul class="bul hb" style="margin-top:14px">
           <li>Only <b>approved hosts</b> can join this program</li>
-          <li>Missing one week's target <b>does not cancel</b> next week's guarantee</li>
-          <li>If targets not met → <b>salary follows basic policy</b></li>
+          <li>Missing one week's target <span style="white-space:nowrap"><b>does not cancel</b> next week's guarantee</span></li>
+          <li>If targets not met → <span style="white-space:nowrap"><b>salary follows basic policy</b></span></li>
         </ul>
 
         <div class="sub-label"><div class="sub-txt host-sub-txt">4.1 Requirements</div><div class="sub-line host-sub-line"></div></div>
@@ -1109,7 +1108,7 @@ td.red { color: #FCA5A5; font-weight: 500; }
         </div>
         <div class="sub-label"><div class="sub-txt agency-sub-txt">Requirements</div><div class="sub-line agency-sub-line"></div></div>
         <ul class="bul ab">
-          <li>Agency must maintain at least <b>5 active hosts</b> every week</li>
+          <li>Agency must maintain at least <span style="white-space:nowrap"><b>5 active hosts</b> every week</span></li>
           <li>Actively encourage hosts to go live &amp; join platform events</li>
         </ul>
         <div class="ibox ibox-agency" style="margin-top:12px">
